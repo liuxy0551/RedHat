@@ -36,7 +36,7 @@
       <file leaf-file-name="egret.wxgame.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/egret.wxgame.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
+            <state relative-caret-position="59483">
               <caret line="3499" column="17" selection-start-line="3499" selection-start-column="17" selection-end-line="3499" selection-end-column="17" />
             </state>
           </provider>
@@ -116,7 +116,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -144,15 +144,15 @@
       <updated>1533778409295</updated>
       <workItem from="1533778410592" duration="3610000" />
       <workItem from="1533798139462" duration="446000" />
+      <workItem from="1533806269187" duration="9000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4056000" />
+    <option name="totallyTimeSpent" value="4065000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15226555" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -180,6 +180,42 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/game.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manifest.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/game.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="28" selection-start-column="28" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/egret.wxgame.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="59483">
+          <caret line="3499" column="17" selection-start-line="3499" selection-start-column="17" selection-end-line="3499" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/weapp-adapter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platform.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="799">
+          <caret line="47" column="19" selection-start-line="47" selection-start-column="4" selection-end-line="47" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/game.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -240,7 +276,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/egret.wxgame.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
+        <state relative-caret-position="59483">
           <caret line="3499" column="17" selection-start-line="3499" selection-start-column="17" selection-end-line="3499" selection-end-column="17" />
         </state>
       </provider>
