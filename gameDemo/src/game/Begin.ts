@@ -45,7 +45,8 @@ class Begin extends eui.Component implements  eui.UIComponent {
         this.addChild(gameRule);
 	}
 	private rankingListClick() {
-		console.log("排行榜")
+        let rankingList = new RankingList();
+        this.addChild(rankingList);
 	}
 	private taskClick() {
         let task = new Task();

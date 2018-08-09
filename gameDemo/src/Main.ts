@@ -70,7 +70,7 @@ class Main extends eui.UILayer {
 
     private textfield: egret.TextField;
 
-    // 创建场景界面
+    // 创建场景界面，未调用
     protected createGameScene(): void {
         let sky = this.createBitmapByName("bg_jpg");
         this.addChild(sky);

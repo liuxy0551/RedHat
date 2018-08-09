@@ -243,7 +243,7 @@ var Main = (function (_super) {
     Main.prototype.createGameScene2 = function () {
         this.addChild(Begin.getInstance());
     };
-    // 创建场景界面
+    // 创建场景界面，未调用
     Main.prototype.createGameScene = function () {
         var sky = this.createBitmapByName("bg_jpg");
         this.addChild(sky);
@@ -476,7 +476,8 @@ var Begin = (function (_super) {
         this.addChild(gameRule);
     };
     Begin.prototype.rankingListClick = function () {
-        console.log("排行榜");
+        var rankingList = new RankingList();
+        this.addChild(rankingList);
     };
     Begin.prototype.taskClick = function () {
         var task = new Task();
@@ -493,6 +494,12 @@ var GameRule = (function (_super) {
     function GameRule() {
         return _super.call(this) || this;
     }
+    GameRule.getInstance = function () {
+        if (!GameRule.shared) {
+            GameRule.shared = new GameRule();
+        }
+        return GameRule.shared;
+    };
     // 添加皮肤的时候自动调用该函数
     GameRule.prototype.partAdded = function (partName, instance) {
         _super.prototype.partAdded.call(this, partName, instance);
@@ -515,11 +522,50 @@ var GameRule = (function (_super) {
     return GameRule;
 }(eui.Component));
 __reflect(GameRule.prototype, "GameRule", ["eui.UIComponent", "egret.DisplayObject"]);
+var RankingList = (function (_super) {
+    __extends(RankingList, _super);
+    function RankingList() {
+        return _super.call(this) || this;
+    }
+    RankingList.getInstance = function () {
+        if (!RankingList.shared) {
+            RankingList.shared = new RankingList();
+        }
+        return RankingList.shared;
+    };
+    // 添加皮肤的时候自动调用该函数
+    RankingList.prototype.partAdded = function (partName, instance) {
+        _super.prototype.partAdded.call(this, partName, instance);
+    };
+    // 组件加载完毕之后调用该函数
+    RankingList.prototype.childrenCreated = function () {
+        _super.prototype.childrenCreated.call(this);
+        this.init();
+    };
+    // 自定义初始化函数
+    RankingList.prototype.init = function () {
+        // 给每个按钮绑定点击事件
+        this.btn_return.addEventListener(egret.TouchEvent.TOUCH_TAP, this.returnClick, this);
+    };
+    RankingList.prototype.returnClick = function () {
+        console.log('RankingList的returnClick');
+        var begin = new Begin();
+        this.addChild(begin);
+    };
+    return RankingList;
+}(eui.Component));
+__reflect(RankingList.prototype, "RankingList", ["eui.UIComponent", "egret.DisplayObject"]);
 var Task = (function (_super) {
     __extends(Task, _super);
     function Task() {
         return _super.call(this) || this;
     }
+    Task.getInstance = function () {
+        if (!Task.shared) {
+            Task.shared = new Task();
+        }
+        return Task.shared;
+    };
     // 添加皮肤的时候自动调用该函数
     Task.prototype.partAdded = function (partName, instance) {
         _super.prototype.partAdded.call(this, partName, instance);

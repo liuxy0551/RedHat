@@ -15,7 +15,8 @@
 		"eui.ItemRenderer": "resource/eui_skins/ItemRendererSkin.exml",
 		"Begin": "resource/game/Begin.exml",
 		"GameRule": "resource/game/GameRule.exml",
-		"Task": "resource/game/Task.exml"
+		"Task": "resource/game/Task.exml",
+		"RankingList": "resource/game/RankingList.exml"
 	},
 	"autoGenerateExmlsList": true,
 	"exmls": [
@@ -34,6 +35,7 @@
 		"resource/eui_skins/VSliderSkin.exml",
 		"resource/game/Begin.exml",
 		"resource/game/GameRule.exml",
+		"resource/game/RankingList.exml",
 		"resource/game/Task.exml"
 	],
 	"path": "resource/default.thm.json"

@@ -10,7 +10,7 @@ var egret = window.egret;window.skins={};
                 window.generateEUI = {};
                 generateEUI.paths = {};
                 generateEUI.styles = undefined;
-                generateEUI.skins = {"eui.Button":"resource/eui_skins/ButtonSkin.exml","eui.CheckBox":"resource/eui_skins/CheckBoxSkin.exml","eui.HScrollBar":"resource/eui_skins/HScrollBarSkin.exml","eui.HSlider":"resource/eui_skins/HSliderSkin.exml","eui.Panel":"resource/eui_skins/PanelSkin.exml","eui.TextInput":"resource/eui_skins/TextInputSkin.exml","eui.ProgressBar":"resource/eui_skins/ProgressBarSkin.exml","eui.RadioButton":"resource/eui_skins/RadioButtonSkin.exml","eui.Scroller":"resource/eui_skins/ScrollerSkin.exml","eui.ToggleSwitch":"resource/eui_skins/ToggleSwitchSkin.exml","eui.VScrollBar":"resource/eui_skins/VScrollBarSkin.exml","eui.VSlider":"resource/eui_skins/VSliderSkin.exml","eui.ItemRenderer":"resource/eui_skins/ItemRendererSkin.exml","Begin":"resource/game/Begin.exml","GameRule":"resource/game/GameRule.exml","Task":"resource/game/Task.exml"};generateEUI.paths['resource/eui_skins/ButtonSkin.exml'] = window.skins.ButtonSkin = (function (_super) {
+                generateEUI.skins = {"eui.Button":"resource/eui_skins/ButtonSkin.exml","eui.CheckBox":"resource/eui_skins/CheckBoxSkin.exml","eui.HScrollBar":"resource/eui_skins/HScrollBarSkin.exml","eui.HSlider":"resource/eui_skins/HSliderSkin.exml","eui.Panel":"resource/eui_skins/PanelSkin.exml","eui.TextInput":"resource/eui_skins/TextInputSkin.exml","eui.ProgressBar":"resource/eui_skins/ProgressBarSkin.exml","eui.RadioButton":"resource/eui_skins/RadioButtonSkin.exml","eui.Scroller":"resource/eui_skins/ScrollerSkin.exml","eui.ToggleSwitch":"resource/eui_skins/ToggleSwitchSkin.exml","eui.VScrollBar":"resource/eui_skins/VScrollBarSkin.exml","eui.VSlider":"resource/eui_skins/VSliderSkin.exml","eui.ItemRenderer":"resource/eui_skins/ItemRendererSkin.exml","Begin":"resource/game/Begin.exml","GameRule":"resource/game/GameRule.exml","Task":"resource/game/Task.exml","RankingList":"resource/game/RankingList.exml"};generateEUI.paths['resource/eui_skins/ButtonSkin.exml'] = window.skins.ButtonSkin = (function (_super) {
 	__extends(ButtonSkin, _super);
 	function ButtonSkin() {
 		_super.call(this);
@@ -1170,11 +1170,11 @@ var egret = window.egret;window.skins={};
 		return t;
 	};
 	return GameRuleSkin;
-})(eui.Skin);generateEUI.paths['resource/game/Task.exml'] = window.TaskSkin = (function (_super) {
-	__extends(TaskSkin, _super);
-	var TaskSkin$Skin6 = 	(function (_super) {
-		__extends(TaskSkin$Skin6, _super);
-		function TaskSkin$Skin6() {
+})(eui.Skin);generateEUI.paths['resource/game/RankingList.exml'] = window.RankingListSkin = (function (_super) {
+	__extends(RankingListSkin, _super);
+	var RankingListSkin$Skin6 = 	(function (_super) {
+		__extends(RankingListSkin$Skin6, _super);
+		function RankingListSkin$Skin6() {
 			_super.call(this);
 			this.skinParts = ["labelDisplay"];
 			
@@ -1193,7 +1193,7 @@ var egret = window.egret;window.skins={};
 					])
 			];
 		}
-		var _proto = TaskSkin$Skin6.prototype;
+		var _proto = RankingListSkin$Skin6.prototype;
 
 		_proto._Image1_i = function () {
 			var t = new eui.Image();
@@ -1209,9 +1209,92 @@ var egret = window.egret;window.skins={};
 			t.verticalCenter = 0;
 			return t;
 		};
-		return TaskSkin$Skin6;
+		return RankingListSkin$Skin6;
 	})(eui.Skin);
 
+	function RankingListSkin() {
+		_super.call(this);
+		this.skinParts = ["btn_return"];
+		
+		this.height = 1136;
+		this.width = 640;
+		this.elementsContent = [this._Image1_i(),this._Image2_i(),this.btn_return_i(),this._Image3_i(),this._Label1_i(),this._Label2_i()];
+	}
+	var _proto = RankingListSkin.prototype;
+
+	_proto._Image1_i = function () {
+		var t = new eui.Image();
+		t.anchorOffsetX = 0;
+		t.anchorOffsetY = 0;
+		t.height = 1136;
+		t.source = "big_box_png";
+		t.width = 640;
+		t.x = -0.87;
+		t.y = 0;
+		return t;
+	};
+	_proto._Image2_i = function () {
+		var t = new eui.Image();
+		t.anchorOffsetY = 0;
+		t.height = 117.21;
+		t.horizontalCenter = 1.5;
+		t.source = "no_btns_png";
+		t.width = 523;
+		t.y = 893.8;
+		return t;
+	};
+	_proto.btn_return_i = function () {
+		var t = new eui.Button();
+		this.btn_return = t;
+		t.height = 80;
+		t.label = "";
+		t.width = 80;
+		t.x = 74;
+		t.y = 912.41;
+		t.skinName = RankingListSkin$Skin6;
+		return t;
+	};
+	_proto._Image3_i = function () {
+		var t = new eui.Image();
+		t.height = 596;
+		t.horizontalCenter = 0.5;
+		t.source = "small_box_png";
+		t.width = 523;
+		t.y = 232.92;
+		return t;
+	};
+	_proto._Label1_i = function () {
+		var t = new eui.Label();
+		t.anchorOffsetX = 0;
+		t.anchorOffsetY = 0;
+		t.bottom = 824;
+		t.height = 34;
+		t.horizontalCenter = 0;
+		t.size = 32;
+		t.text = "好友排行榜";
+		t.top = 278;
+		t.width = 173.94;
+		return t;
+	};
+	_proto._Label2_i = function () {
+		var t = new eui.Label();
+		t.anchorOffsetX = 0;
+		t.anchorOffsetY = 0;
+		t.fontFamily = "Microsoft YaHei";
+		t.height = 37.57;
+		t.right = 58;
+		t.scaleX = 1;
+		t.scaleY = 1;
+		t.size = 24;
+		t.text = "每周一零点数据刷新";
+		t.verticalAlign = "top";
+		t.width = 234.6;
+		t.y = 855.92;
+		return t;
+	};
+	return RankingListSkin;
+})(eui.Skin);generateEUI.paths['resource/game/Task.exml'] = window.TaskSkin = (function (_super) {
+	__extends(TaskSkin, _super);
 	var TaskSkin$Skin7 = 	(function (_super) {
 		__extends(TaskSkin$Skin7, _super);
 		function TaskSkin$Skin7() {
@@ -1238,7 +1321,7 @@ var egret = window.egret;window.skins={};
 		_proto._Image1_i = function () {
 			var t = new eui.Image();
 			t.percentHeight = 100;
-			t.source = "to_share_png";
+			t.source = "return_btn_png";
 			t.percentWidth = 100;
 			return t;
 		};
@@ -1250,6 +1333,46 @@ var egret = window.egret;window.skins={};
 			return t;
 		};
 		return TaskSkin$Skin7;
+	})(eui.Skin);
+
+	var TaskSkin$Skin8 = 	(function (_super) {
+		__extends(TaskSkin$Skin8, _super);
+		function TaskSkin$Skin8() {
+			_super.call(this);
+			this.skinParts = ["labelDisplay"];
+			
+			this.elementsContent = [this._Image1_i(),this.labelDisplay_i()];
+			this.states = [
+				new eui.State ("up",
+					[
+					])
+				,
+				new eui.State ("down",
+					[
+					])
+				,
+				new eui.State ("disabled",
+					[
+					])
+			];
+		}
+		var _proto = TaskSkin$Skin8.prototype;
+
+		_proto._Image1_i = function () {
+			var t = new eui.Image();
+			t.percentHeight = 100;
+			t.source = "to_share_png";
+			t.percentWidth = 100;
+			return t;
+		};
+		_proto.labelDisplay_i = function () {
+			var t = new eui.Label();
+			this.labelDisplay = t;
+			t.horizontalCenter = 0;
+			t.verticalCenter = 0;
+			return t;
+		};
+		return TaskSkin$Skin8;
 	})(eui.Skin);
 
 	function TaskSkin() {
@@ -1291,7 +1414,7 @@ var egret = window.egret;window.skins={};
 		t.width = 80;
 		t.x = 74;
 		t.y = 912.41;
-		t.skinName = TaskSkin$Skin6;
+		t.skinName = TaskSkin$Skin7;
 		return t;
 	};
 	_proto._Image3_i = function () {
@@ -1312,7 +1435,7 @@ var egret = window.egret;window.skins={};
 		t.width = 82;
 		t.x = 445.91;
 		t.y = 734.53;
-		t.skinName = TaskSkin$Skin7;
+		t.skinName = TaskSkin$Skin8;
 		return t;
 	};
 	_proto._Label1_i = function () {
