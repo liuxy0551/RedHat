@@ -1,0 +1,275 @@
+{
+	"groups": [
+		{
+			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,bg_jpg,egret_icon_png,description_json,cloud4_png,bg_png,ranking_list_btn_png,task_btn_png,home_btn_png,gift1_png,gift2_png,gift3_png,face_right_png,face_left_png,face_me_png,rule_btn_png,cloud1_png,cloud2_png,cloud3_png,return_btn_png,share_btn_png,up_png,right_png,left_png,start_png,again_png,title_png,small_box_png,big_box_png,no_btns_png,to_share_png",
+			"name": "preload"
+		}
+	],
+	"resources": [
+		{
+			"url": "assets/CheckBox/checkbox_select_disabled.png",
+			"type": "image",
+			"name": "checkbox_select_disabled_png"
+		},
+		{
+			"url": "assets/CheckBox/checkbox_select_down.png",
+			"type": "image",
+			"name": "checkbox_select_down_png"
+		},
+		{
+			"url": "assets/CheckBox/checkbox_select_up.png",
+			"type": "image",
+			"name": "checkbox_select_up_png"
+		},
+		{
+			"url": "assets/CheckBox/checkbox_unselect.png",
+			"type": "image",
+			"name": "checkbox_unselect_png"
+		},
+		{
+			"url": "assets/ItemRenderer/selected.png",
+			"type": "image",
+			"name": "selected_png"
+		},
+		{
+			"url": "assets/Panel/border.png",
+			"type": "image",
+			"name": "border_png"
+		},
+		{
+			"url": "assets/Panel/header.png",
+			"type": "image",
+			"name": "header_png"
+		},
+		{
+			"url": "assets/RadioButton/radiobutton_select_disabled.png",
+			"type": "image",
+			"name": "radiobutton_select_disabled_png"
+		},
+		{
+			"url": "assets/RadioButton/radiobutton_select_down.png",
+			"type": "image",
+			"name": "radiobutton_select_down_png"
+		},
+		{
+			"url": "assets/RadioButton/radiobutton_select_up.png",
+			"type": "image",
+			"name": "radiobutton_select_up_png"
+		},
+		{
+			"url": "assets/RadioButton/radiobutton_unselect.png",
+			"type": "image",
+			"name": "radiobutton_unselect_png"
+		},
+		{
+			"url": "assets/ScrollBar/roundthumb.png",
+			"type": "image",
+			"name": "roundthumb_png"
+		},
+		{
+			"url": "assets/Slider/thumb.png",
+			"type": "image",
+			"name": "thumb_png"
+		},
+		{
+			"url": "assets/Slider/track.png",
+			"type": "image",
+			"name": "track_png"
+		},
+		{
+			"url": "assets/Slider/tracklight.png",
+			"type": "image",
+			"name": "tracklight_png"
+		},
+		{
+			"url": "assets/ToggleSwitch/handle.png",
+			"type": "image",
+			"name": "handle_png"
+		},
+		{
+			"url": "assets/ToggleSwitch/off.png",
+			"type": "image",
+			"name": "off_png"
+		},
+		{
+			"url": "assets/ToggleSwitch/on.png",
+			"type": "image",
+			"name": "on_png"
+		},
+		{
+			"url": "assets/Button/button_down.png",
+			"type": "image",
+			"name": "button_down_png"
+		},
+		{
+			"url": "assets/Button/button_up.png",
+			"type": "image",
+			"name": "button_up_png"
+		},
+		{
+			"url": "assets/ProgressBar/thumb_pb.png",
+			"type": "image",
+			"name": "thumb_pb_png"
+		},
+		{
+			"url": "assets/ProgressBar/track_pb.png",
+			"type": "image",
+			"name": "track_pb_png"
+		},
+		{
+			"url": "assets/ScrollBar/track_sb.png",
+			"type": "image",
+			"name": "track_sb_png"
+		},
+		{
+			"url": "assets/bg.jpg",
+			"type": "image",
+			"name": "bg_jpg"
+		},
+		{
+			"url": "assets/egret_icon.png",
+			"type": "image",
+			"name": "egret_icon_png"
+		},
+		{
+			"name": "description_json",
+			"type": "json",
+			"url": "config/description.json"
+		},
+		{
+			"name": "cloud4_png",
+			"type": "image",
+			"url": "assets/RedHat/cloud4.png"
+		},
+		{
+			"name": "bg_png",
+			"type": "image",
+			"url": "assets/RedHat/bg.png"
+		},
+		{
+			"name": "ranking_list_btn_png",
+			"type": "image",
+			"url": "assets/RedHat/ranking_list_btn.png"
+		},
+		{
+			"name": "task_btn_png",
+			"type": "image",
+			"url": "assets/RedHat/task_btn.png"
+		},
+		{
+			"name": "home_btn_png",
+			"type": "image",
+			"url": "assets/RedHat/home_btn.png"
+		},
+		{
+			"name": "gift1_png",
+			"type": "image",
+			"url": "assets/RedHat/gift1.png"
+		},
+		{
+			"name": "gift2_png",
+			"type": "image",
+			"url": "assets/RedHat/gift2.png"
+		},
+		{
+			"name": "gift3_png",
+			"type": "image",
+			"url": "assets/RedHat/gift3.png"
+		},
+		{
+			"name": "face_right_png",
+			"type": "image",
+			"url": "assets/RedHat/face_right.png"
+		},
+		{
+			"name": "face_left_png",
+			"type": "image",
+			"url": "assets/RedHat/face_left.png"
+		},
+		{
+			"name": "face_me_png",
+			"type": "image",
+			"url": "assets/RedHat/face_me.png"
+		},
+		{
+			"name": "rule_btn_png",
+			"type": "image",
+			"url": "assets/RedHat/rule_btn.png"
+		},
+		{
+			"name": "cloud1_png",
+			"type": "image",
+			"url": "assets/RedHat/cloud1.png"
+		},
+		{
+			"name": "cloud2_png",
+			"type": "image",
+			"url": "assets/RedHat/cloud2.png"
+		},
+		{
+			"name": "cloud3_png",
+			"type": "image",
+			"url": "assets/RedHat/cloud3.png"
+		},
+		{
+			"name": "return_btn_png",
+			"type": "image",
+			"url": "assets/RedHat/return_btn.png"
+		},
+		{
+			"name": "share_btn_png",
+			"type": "image",
+			"url": "assets/RedHat/share_btn.png"
+		},
+		{
+			"name": "up_png",
+			"type": "image",
+			"url": "assets/RedHat/up.png"
+		},
+		{
+			"name": "right_png",
+			"type": "image",
+			"url": "assets/RedHat/right.png"
+		},
+		{
+			"name": "left_png",
+			"type": "image",
+			"url": "assets/RedHat/left.png"
+		},
+		{
+			"name": "start_png",
+			"type": "image",
+			"url": "assets/RedHat/start.png"
+		},
+		{
+			"name": "again_png",
+			"type": "image",
+			"url": "assets/RedHat/again.png"
+		},
+		{
+			"name": "title_png",
+			"type": "image",
+			"url": "assets/RedHat/title.png"
+		},
+		{
+			"name": "small_box_png",
+			"type": "image",
+			"url": "assets/RedHat/small_box.png"
+		},
+		{
+			"name": "big_box_png",
+			"type": "image",
+			"url": "assets/RedHat/big_box.png"
+		},
+		{
+			"name": "no_btns_png",
+			"type": "image",
+			"url": "assets/RedHat/no_btns.png"
+		},
+		{
+			"name": "to_share_png",
+			"type": "image",
+			"url": "assets/RedHat/to_share.png"
+		}
+	]
+}

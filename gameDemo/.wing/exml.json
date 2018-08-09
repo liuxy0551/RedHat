@@ -1,0 +1,25 @@
+{
+  "16517f32a50": {
+    "path": "game\\Begin.ts",
+    "class": "Begin",
+    "parentPath": ""
+  },
+  "global": {
+    "globalAutoLayerMarkEnable": true
+  },
+  "1651838f2a8": {
+    "path": "game\\GameRule.ts",
+    "class": "GameRule",
+    "parentPath": ""
+  },
+  "165183b75e2": {
+    "path": "game\\GameRule.ts",
+    "class": "GameRule",
+    "parentPath": ""
+  },
+  "165183c8fd9": {
+    "path": "game\\GameRule.ts",
+    "class": "GameRule",
+    "parentPath": ""
+  }
+}
