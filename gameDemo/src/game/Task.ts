@@ -36,43 +36,10 @@ class Task extends eui.Component implements  eui.UIComponent {
 		this.btn_to_share.addEventListener(egret.TouchEvent.TOUCH_TAP,this.toShare,this)
 	}
 
-    private async loadResource() {
-        try {
-            const loadingView = new LoadingUI();
-            this.stage.addChild(loadingView);
-            await RES.loadConfig("resource/default.res.json", "resource/");
-            await this.loadTheme();
-            await RES.loadGroup("preload", 0, loadingView);
-            this.stage.removeChild(loadingView);
-        }
-        catch (e) {
-            console.error(e);
-        }
-    }
-    private loadTheme() {
-        return new Promise((resolve, reject) => {
-            let theme = new eui.Theme("resource/default.thm.json", this.stage);
-            theme.addEventListener(eui.UIEvent.COMPLETE, () => {
-                resolve();
-            }, this);
-
-        })
-    }
-
 	private returnClick() {
-		console.log('Task的returnClick')
-
-        let begin = new Begin();
-        this.addChild(begin);
+		this.parent.removeChild(this);
 	}
-	private async toShare() {
-        // let begin = new Begin();
-        // this.addChild(begin);
-		
-		console.log('Task的toShare')
+	private toShare() {
 
-        await this.loadResource()
-        const showShareMenu = await platform.showShareMenu();
-        console.log(showShareMenu);
 	}
 }

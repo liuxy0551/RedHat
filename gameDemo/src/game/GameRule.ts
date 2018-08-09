@@ -35,8 +35,6 @@ class GameRule extends eui.Component implements  eui.UIComponent {
 	}
 
 	private returnClick() {
-		console.log('GameRule的returnClick')
-        let begin = new Begin();
-        this.addChild(begin);
+		this.parent.removeChild(this);
 	}
 }

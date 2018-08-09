@@ -472,8 +472,7 @@ var Begin = (function (_super) {
         this.btn_start_game.addEventListener(egret.TouchEvent.TOUCH_TAP, this.startGameClick, this);
     };
     Begin.prototype.gameRuleClick = function () {
-        var gameRule = new GameRule();
-        this.addChild(gameRule);
+        this.addChild(GameRule.getInstance());
     };
     Begin.prototype.rankingListClick = function () {
         var rankingList = new RankingList();
@@ -515,9 +514,7 @@ var GameRule = (function (_super) {
         this.btn_return.addEventListener(egret.TouchEvent.TOUCH_TAP, this.returnClick, this);
     };
     GameRule.prototype.returnClick = function () {
-        console.log('GameRule的returnClick');
-        var begin = new Begin();
-        this.addChild(begin);
+        this.parent.removeChild(this);
     };
     return GameRule;
 }(eui.Component));
@@ -548,9 +545,7 @@ var RankingList = (function (_super) {
         this.btn_return.addEventListener(egret.TouchEvent.TOUCH_TAP, this.returnClick, this);
     };
     RankingList.prototype.returnClick = function () {
-        console.log('RankingList的returnClick');
-        var begin = new Begin();
-        this.addChild(begin);
+        this.parent.removeChild(this);
     };
     return RankingList;
 }(eui.Component));
@@ -581,69 +576,10 @@ var Task = (function (_super) {
         this.btn_return.addEventListener(egret.TouchEvent.TOUCH_TAP, this.returnClick, this);
         this.btn_to_share.addEventListener(egret.TouchEvent.TOUCH_TAP, this.toShare, this);
     };
-    Task.prototype.loadResource = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var loadingView, e_2;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 4, , 5]);
-                        loadingView = new LoadingUI();
-                        this.stage.addChild(loadingView);
-                        return [4 /*yield*/, RES.loadConfig("resource/default.res.json", "resource/")];
-                    case 1:
-                        _a.sent();
-                        return [4 /*yield*/, this.loadTheme()];
-                    case 2:
-                        _a.sent();
-                        return [4 /*yield*/, RES.loadGroup("preload", 0, loadingView)];
-                    case 3:
-                        _a.sent();
-                        this.stage.removeChild(loadingView);
-                        return [3 /*break*/, 5];
-                    case 4:
-                        e_2 = _a.sent();
-                        console.error(e_2);
-                        return [3 /*break*/, 5];
-                    case 5: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    Task.prototype.loadTheme = function () {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            var theme = new eui.Theme("resource/default.thm.json", _this.stage);
-            theme.addEventListener(eui.UIEvent.COMPLETE, function () {
-                resolve();
-            }, _this);
-        });
-    };
     Task.prototype.returnClick = function () {
-        console.log('Task的returnClick');
-        var begin = new Begin();
-        this.addChild(begin);
+        this.parent.removeChild(this);
     };
     Task.prototype.toShare = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var showShareMenu;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        // let begin = new Begin();
-                        // this.addChild(begin);
-                        console.log('Task的toShare');
-                        return [4 /*yield*/, this.loadResource()];
-                    case 1:
-                        _a.sent();
-                        return [4 /*yield*/, platform.showShareMenu()];
-                    case 2:
-                        showShareMenu = _a.sent();
-                        console.log(showShareMenu);
-                        return [2 /*return*/];
-                }
-            });
-        });
     };
     return Task;
 }(eui.Component));

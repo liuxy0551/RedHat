@@ -35,8 +35,6 @@ class RankingList extends eui.Component implements  eui.UIComponent {
 	}
 
 	private returnClick() {
-		console.log('RankingList的returnClick')
-        let begin = new Begin();
-        this.addChild(begin);
+		this.parent.removeChild(this);
 	}
 }
