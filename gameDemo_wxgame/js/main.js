@@ -170,18 +170,18 @@ var Main = (function (_super) {
         egret.registerImplementation("eui.IAssetAdapter", assetAdapter);
         egret.registerImplementation("eui.IThemeAdapter", new ThemeAdapter());
         this.runGame().catch(function (e) {
-            console.log(e);
+            // console.log(e);
         });
     };
     Main.prototype.runGame = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var result, userInfo, systemInfo, showShareMenu;
+            var result, userInfo;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.loadResource()];
                     case 1:
                         _a.sent();
-                        this.createGameScene();
+                        this.createGameScene2();
                         return [4 /*yield*/, RES.getResAsync("description_json")];
                     case 2:
                         result = _a.sent();
@@ -192,14 +192,10 @@ var Main = (function (_super) {
                         return [4 /*yield*/, platform.getUserInfo()];
                     case 4:
                         userInfo = _a.sent();
-                        return [4 /*yield*/, platform.getSystemInfo()];
-                    case 5:
-                        systemInfo = _a.sent();
-                        console.log(systemInfo);
+                        console.log(userInfo);
                         return [4 /*yield*/, platform.showShareMenu()];
-                    case 6:
-                        showShareMenu = _a.sent();
-                        console.log(showShareMenu);
+                    case 5:
+                        _a.sent();
                         return [2 /*return*/];
                 }
             });
@@ -237,7 +233,6 @@ var Main = (function (_super) {
     Main.prototype.loadTheme = function () {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            // load skin theme configuration file, you can manually modify the file. And replace the default skin.
             //加载皮肤主题配置文件,可以手动修改这个文件。替换默认皮肤。
             var theme = new eui.Theme("resource/default.thm.json", _this.stage);
             theme.addEventListener(eui.UIEvent.COMPLETE, function () {
@@ -245,34 +240,92 @@ var Main = (function (_super) {
             }, _this);
         });
     };
-    /**
-     * 创建场景界面
-     * Create scene interface
-     */
-    Main.prototype.createGameScene = function () {
-        var begin = new Begin();
-        this.addChild(begin);
+    Main.prototype.createGameScene2 = function () {
+        this.addChild(Begin.getInstance());
     };
-    /**
-     * 根据name关键字创建一个Bitmap对象。name属性请参考resources/resource.json配置文件的内容。
-     * Create a Bitmap object according to name keyword.As for the property of name please refer to the configuration file of resources/resource.json.
-     */
+    // 创建场景界面
+    Main.prototype.createGameScene = function () {
+        var sky = this.createBitmapByName("bg_jpg");
+        this.addChild(sky);
+        var stageW = this.stage.stageWidth;
+        var stageH = this.stage.stageHeight;
+        sky.width = stageW;
+        sky.height = stageH;
+        var topMask = new egret.Shape();
+        topMask.graphics.beginFill(0x000000, 0.5);
+        topMask.graphics.drawRect(0, 0, stageW, 172);
+        topMask.graphics.endFill();
+        topMask.y = 33;
+        this.addChild(topMask);
+        var icon = this.createBitmapByName("egret_icon_png");
+        this.addChild(icon);
+        icon.x = 26;
+        icon.y = 33;
+        var line = new egret.Shape();
+        line.graphics.lineStyle(2, 0xffffff);
+        line.graphics.moveTo(0, 0);
+        line.graphics.lineTo(0, 117);
+        line.graphics.endFill();
+        line.x = 172;
+        line.y = 61;
+        this.addChild(line);
+        var colorLabel = new egret.TextField();
+        colorLabel.textColor = 0xffffff;
+        colorLabel.width = stageW - 172;
+        colorLabel.textAlign = "center";
+        colorLabel.text = "Hello Egret";
+        colorLabel.size = 24;
+        colorLabel.x = 172;
+        colorLabel.y = 80;
+        this.addChild(colorLabel);
+        var textfield = new egret.TextField();
+        this.addChild(textfield);
+        textfield.alpha = 0;
+        textfield.width = stageW - 172;
+        textfield.textAlign = egret.HorizontalAlign.CENTER;
+        textfield.size = 24;
+        textfield.textColor = 0xffffff;
+        textfield.x = 172;
+        textfield.y = 135;
+        this.textfield = textfield;
+        var button = new eui.Button();
+        button.label = "Click!";
+        button.horizontalCenter = 0;
+        button.verticalCenter = 0;
+        this.addChild(button);
+        button.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onButtonClick, this);
+    };
+    // 根据name关键字创建一个Bitmap对象。name属性请参考resources/resource.json配置文件的内容。
     Main.prototype.createBitmapByName = function (name) {
         var result = new egret.Bitmap();
         var texture = RES.getRes(name);
         result.texture = texture;
         return result;
     };
-    /**
-     * 描述文件加载成功，开始播放动画
-     * Description file loading is successful, start to play the animation
-     */
+    // 描述文件加载成功，开始播放动画
     Main.prototype.startAnimation = function (result) {
+        var _this = this;
+        var parser = new egret.HtmlTextParser();
+        var textflowArr = result.map(function (text) { return parser.parse(text); });
+        var textfield = this.textfield;
+        var count = -1;
+        var change = function () {
+            count++;
+            if (count >= textflowArr.length) {
+                count = 0;
+            }
+            var textFlow = textflowArr[count];
+            // 切换描述内容
+            textfield.textFlow = textFlow;
+            var tw = egret.Tween.get(textfield);
+            tw.to({ "alpha": 1 }, 200);
+            tw.wait(2000);
+            tw.to({ "alpha": 0 }, 200);
+            tw.call(change, _this);
+        };
+        change();
     };
-    /**
-     * 点击按钮
-     * Click the button
-     */
+    // 点击按钮
     Main.prototype.onButtonClick = function (e) {
         var panel = new eui.Panel();
         panel.title = "Title";
@@ -395,6 +448,12 @@ var Begin = (function (_super) {
     function Begin() {
         return _super.call(this) || this;
     }
+    Begin.getInstance = function () {
+        if (!Begin.shared) {
+            Begin.shared = new Begin();
+        }
+        return Begin.shared;
+    };
     // 添加皮肤的时候自动调用该函数
     Begin.prototype.partAdded = function (partName, instance) {
         _super.prototype.partAdded.call(this, partName, instance);

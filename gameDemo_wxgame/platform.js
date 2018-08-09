@@ -48,10 +48,12 @@ class WxgamePlatform {
     showShareMenu() {
         return new Promise((resolve, reject) => {
             wx.showShareMenu({
-                success: (res) => {
-
-                    resolve(res)
-                }
+                withShareTicket: true,
+                success: function (res) {
+                    resolve(res);
+                },
+                fail: function (res) { },
+                complete: function (res) { },
             })
         })
     }

@@ -5,6 +5,14 @@ class Begin extends eui.Component implements  eui.UIComponent {
 	public btn_task:eui.Button;
 	public btn_start_game:eui.Button;
 
+    private static shared:Begin;
+    public static getInstance(){
+        if( !Begin.shared){
+            Begin.shared =  new Begin();
+        }
+        return Begin.shared;
+    }
+
 	public constructor() {
 		super();
 	}

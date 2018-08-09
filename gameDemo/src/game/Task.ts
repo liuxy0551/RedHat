@@ -3,6 +3,13 @@ class Task extends eui.Component implements  eui.UIComponent {
 	public btn_return:eui.Button;
 	public btn_to_share:eui.Button;
 
+    private static shared:Task;
+    public static getInstance(){
+        if( !Task.shared){
+            Task.shared =  new Task();
+        }
+        return Task.shared;
+    }
 
 	public constructor() {
 		super();

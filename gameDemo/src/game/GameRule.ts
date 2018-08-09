@@ -2,6 +2,14 @@ class GameRule extends eui.Component implements  eui.UIComponent {
 
 	public btn_return:eui.Button;
 
+    private static shared:GameRule;
+    public static getInstance(){
+        if( !GameRule.shared){
+            GameRule.shared =  new GameRule();
+        }
+        return GameRule.shared;
+    }
+
 	public constructor() {
 		super();
 	}

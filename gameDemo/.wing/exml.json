@@ -5,7 +5,7 @@
     "parentPath": ""
   },
   "global": {
-    "globalAutoLayerMarkEnable": true
+    "globalAutoLayerMarkEnable": false
   },
   "1651838f2a8": {
     "path": "game\\GameRule.ts",
@@ -20,6 +20,11 @@
   "165183c8fd9": {
     "path": "game\\GameRule.ts",
     "class": "GameRule",
+    "parentPath": ""
+  },
+  "1651de1aafb": {
+    "path": "game\\RankingList.ts",
+    "class": "RankingList",
     "parentPath": ""
   }
 }
