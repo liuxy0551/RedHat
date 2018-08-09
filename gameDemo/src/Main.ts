@@ -35,6 +35,8 @@ class Main extends eui.UILayer {
         await platform.login();
         const userInfo = await platform.getUserInfo();
         console.log(userInfo);
+        const systemInfo = await platform.getSystemInfo();
+        console.log(systemInfo);
 
         await platform.showShareMenu();
     }

@@ -1282,7 +1282,7 @@ var egret = window.egret;window.skins={};
 		t.anchorOffsetY = 0;
 		t.fontFamily = "Microsoft YaHei";
 		t.height = 37.57;
-		t.right = 58;
+		t.right = 42;
 		t.scaleX = 1;
 		t.scaleY = 1;
 		t.size = 24;

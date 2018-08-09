@@ -175,7 +175,7 @@ var Main = (function (_super) {
     };
     Main.prototype.runGame = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var result, userInfo;
+            var result, userInfo, systemInfo;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.loadResource()];
@@ -193,8 +193,12 @@ var Main = (function (_super) {
                     case 4:
                         userInfo = _a.sent();
                         console.log(userInfo);
-                        return [4 /*yield*/, platform.showShareMenu()];
+                        return [4 /*yield*/, platform.getSystemInfo()];
                     case 5:
+                        systemInfo = _a.sent();
+                        console.log(systemInfo);
+                        return [4 /*yield*/, platform.showShareMenu()];
+                    case 6:
                         _a.sent();
                         return [2 /*return*/];
                 }
