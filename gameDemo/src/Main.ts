@@ -1,6 +1,5 @@
 class Main extends eui.UILayer {
 
-
     protected createChildren(): void {
         super.createChildren();
 
@@ -39,6 +38,13 @@ class Main extends eui.UILayer {
         console.log(systemInfo);
 
         await platform.showShareMenu();
+    }
+
+    private async getApi() {
+        const userInfo = await platform.getUserInfo();
+        console.log(userInfo);
+        const systemInfo = await platform.getSystemInfo();
+        console.log(systemInfo);
     }
 
     private async loadResource() {

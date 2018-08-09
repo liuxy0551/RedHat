@@ -40,6 +40,5 @@ class Task extends eui.Component implements  eui.UIComponent {
 		this.parent.removeChild(this);
 	}
 	private toShare() {
-
 	}
 }
