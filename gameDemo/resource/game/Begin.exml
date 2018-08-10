@@ -39,6 +39,6 @@
 		</e:skinName>
 	</e:Button>
 	<e:Image width="190" height="56" x="228" y="143.38" anchorOffsetX="0" anchorOffsetY="0" source="title_png"/>
-	<e:Image width="155" height="48" x="35.5" y="257.93" anchorOffsetX="0" anchorOffsetY="0" source="cloud2_png"/>
+	<e:Image width="167" height="42" x="35.5" y="257.93" anchorOffsetX="0" anchorOffsetY="0" source="cloud2_png"/>
 	<e:Image width="60" height="117" x="295.36" y="402.19" anchorOffsetX="0" anchorOffsetY="0" source="face_right_png"/>
 </e:Skin>

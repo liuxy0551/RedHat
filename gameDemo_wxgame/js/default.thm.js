@@ -918,9 +918,9 @@ var egret = window.egret;window.skins={};
 		var t = new eui.Image();
 		t.anchorOffsetX = 0;
 		t.anchorOffsetY = 0;
-		t.height = 48;
+		t.height = 42;
 		t.source = "cloud2_png";
-		t.width = 155;
+		t.width = 167;
 		t.x = 35.5;
 		t.y = 257.93;
 		return t;
@@ -1101,7 +1101,7 @@ var egret = window.egret;window.skins={};
 
 	function GamePageSkin() {
 		_super.call(this);
-		this.skinParts = ["img_cloud1","img_cloud3","img_cloud2","img_cloud4","img_face_right","img_gift1","img_gift2","img_gift3","gp_cloud","sc_cloud","btn_return","btn_left","btn_up","btn_right"];
+		this.skinParts = ["img_cloud1","img_cloud2","img_cloud3","img_cloud4","img_face_right","img_gift1","img_gift2","img_gift3","gp_cloud","sc_cloud","btn_return","btn_left","btn_up","btn_right"];
 		
 		this.height = 1136;
 		this.width = 640;
@@ -1126,7 +1126,7 @@ var egret = window.egret;window.skins={};
 		t.anchorOffsetY = 0;
 		t.height = 1136;
 		t.width = 640;
-		t.elementsContent = [this.img_cloud1_i(),this.img_cloud3_i(),this.img_cloud2_i(),this.img_cloud4_i(),this.img_face_right_i(),this.img_gift1_i(),this.img_gift2_i(),this.img_gift3_i()];
+		t.elementsContent = [this.img_cloud1_i(),this.img_cloud2_i(),this.img_cloud3_i(),this.img_cloud4_i(),this.img_face_right_i(),this.img_gift1_i(),this.img_gift2_i(),this.img_gift3_i()];
 		return t;
 	};
 	_proto.img_cloud1_i = function () {
@@ -1139,22 +1139,22 @@ var egret = window.egret;window.skins={};
 		t.y = 895.55;
 		return t;
 	};
-	_proto.img_cloud3_i = function () {
-		var t = new eui.Image();
-		this.img_cloud3 = t;
-		t.height = 42;
-		t.source = "cloud3_png";
-		t.width = 167;
-		t.x = 418;
-		t.y = 634.34;
-		return t;
-	};
 	_proto.img_cloud2_i = function () {
 		var t = new eui.Image();
 		this.img_cloud2 = t;
 		t.height = 48;
-		t.source = "cloud2_png";
+		t.source = "cloud3_png";
 		t.width = 155;
+		t.x = 418;
+		t.y = 634.34;
+		return t;
+	};
+	_proto.img_cloud3_i = function () {
+		var t = new eui.Image();
+		this.img_cloud3 = t;
+		t.height = 42;
+		t.source = "cloud2_png";
+		t.width = 167;
 		t.x = 31.5;
 		t.y = 418.58;
 		return t;
@@ -1189,7 +1189,7 @@ var egret = window.egret;window.skins={};
 		t.height = 45;
 		t.source = "gift1_png";
 		t.width = 47;
-		t.x = 538.62;
+		t.x = 532.54;
 		t.y = 595.19;
 		return t;
 	};

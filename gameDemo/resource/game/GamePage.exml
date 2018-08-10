@@ -4,11 +4,11 @@
 	<e:Scroller id="sc_cloud" width="640" height="1136" x="0" y="0">
 		<e:Group id="gp_cloud" anchorOffsetX="0" width="640" anchorOffsetY="0" height="1136">
 			<e:Image id="img_cloud1" width="201" height="48" x="146.27" y="895.55" source="cloud1_png"/>
-			<e:Image id="img_cloud3" width="167" height="42" x="418" y="634.34" source="cloud3_png"/>
-			<e:Image id="img_cloud2" width="155" height="48" x="31.5" y="418.58" source="cloud2_png"/>
+			<e:Image id="img_cloud2" width="155" height="48" x="418" y="634.34" source="cloud3_png"/>
+			<e:Image id="img_cloud3" width="167" height="42" x="31.5" y="418.58" source="cloud2_png"/>
 			<e:Image id="img_cloud4" width="209" height="42" x="297.5" y="142.22" source="cloud4_png"/>
 			<e:Image id="img_face_right" width="60" height="117" x="218.08" y="780.57" anchorOffsetX="0" anchorOffsetY="0" source="face_right_png"/>
-			<e:Image id="img_gift1" width="47" height="45" x="538.62" y="595.19" anchorOffsetX="0" anchorOffsetY="0" source="gift1_png"/>
+			<e:Image id="img_gift1" width="47" height="45" x="532.54" y="595.19" anchorOffsetX="0" anchorOffsetY="0" source="gift1_png"/>
 			<e:Image id="img_gift2" width="37" height="37" x="93.07" y="384.22" anchorOffsetX="0" anchorOffsetY="0" source="gift2_png"/>
 			<e:Image id="img_gift3" width="38" height="38" x="300.27" y="104.61" anchorOffsetX="0" anchorOffsetY="0" source="gift3_png"/>
 		</e:Group>

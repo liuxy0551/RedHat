@@ -50,18 +50,11 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 
 		// scroller  关闭水平方向滚动
 		this.sc_cloud.scrollPolicyH = eui.ScrollPolicy.OFF;
-		//20行*10列
-		// let col = 10;
-		// let row = 20;
-		// let icon_width = this.width / col;
-		// let icon_height = this.height / row;
 
 		//创建icon的group添加到scroller上
 		let group:eui.Group = new eui.Group();
 		this.gp_cloud.addChild(group);
 		group.width = 640;
-		// 每个icon的高度 * 总关卡数
-		// group.height = icon_height * LevelDataManager.getInstance().totalLevels;
 		group.height = 0;
 
 		// 填充背景图
@@ -72,16 +65,27 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 		}
 
 		//设置小红帽的初始位置
-        // this.img_face_right.anchorOffsetX = this.img_face_right.width / 2;
-        // this.img_face_right.anchorOffsetY = 0;
-        // console.log(this.img_face_right.width, this.img_face_right.anchorOffsetY);
-        // let curretIcon:LevelIcon = this.levelIcons[milestrone-1];
         this.img_face_right.x = 260;
         this.img_face_right.y = 780;
 	}
 
 	private returnClick() {
-		this.parent.removeChild(this);
+		// this.parent.removeChild(this);
+		let index1 = "this.img_cloud";
+		let index = null;
+		for(let i=1;i<5;i++) {
+			index = index1 + i;
+			console.log(index);
+			console.log(index.x);
+		}
+		// console.log("img_cloud1+", this.img_cloud1.x);
+		// console.log("img_cloud2-", this.img_cloud2.x);
+		// console.log("img_cloud3+", this.img_cloud3.x);
+		// console.log("img_cloud4-", this.img_cloud4.x);
+		// this.img_cloud1.x = this.img_cloud1.x + 50;
+		// this.img_cloud2.x = this.img_cloud2.x - 50;
+		// this.img_cloud3.x = this.img_cloud3.x + 50;
+		// this.img_cloud4.x = this.img_cloud4.x - 50;
 	}
 	private leftClick() {
         if(this.img_face_right.source == "face_right_png") {
