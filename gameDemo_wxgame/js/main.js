@@ -486,8 +486,11 @@ var GamePage = (function (_super) {
         console.log("img_cloud4-", this.img_cloud4.x);
         this.img_cloud1.x = this.img_cloud1.x + 50;
         this.img_cloud2.x = this.img_cloud2.x - 50;
+        this.img_gift1.x = this.img_gift1.x - 50;
         this.img_cloud3.x = this.img_cloud3.x + 50;
+        this.img_gift2.x = this.img_gift2.x - 50;
         this.img_cloud4.x = this.img_cloud4.x - 50;
+        this.img_gift3.x = this.img_gift3.x - 50;
     };
     GamePage.prototype.leftClick = function () {
         if (this.img_face_right.source == "face_right_png") {
