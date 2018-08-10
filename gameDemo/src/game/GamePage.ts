@@ -2,10 +2,19 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 
 	public sc_cloud:eui.Scroller;
 	public gp_cloud:eui.Group;
+	public img_cloud1:eui.Image;
+	public img_cloud3:eui.Image;
+	public img_cloud2:eui.Image;
+	public img_cloud4:eui.Image;
+	public img_face_right:eui.Image;
+	public img_gift1:eui.Image;
+	public img_gift2:eui.Image;
+	public img_gift3:eui.Image;
 	public btn_return:eui.Button;
 	public btn_left:eui.Button;
 	public btn_up:eui.Button;
 	public btn_right:eui.Button;
+
 
 
     private static shared:GamePage;
@@ -53,7 +62,7 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 		group.width = 640;
 		// 每个icon的高度 * 总关卡数
 		// group.height = icon_height * LevelDataManager.getInstance().totalLevels;
-		// group.height = ;
+		group.height = 0;
 
 		// 填充背景图
 		for( let i:number = 0; i < 2; i++){
@@ -61,18 +70,37 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 			img_bg.y = i * this.height ;
 			this.gp_cloud.addChildAt( img_bg,0);
 		}
+
+		//设置小红帽的初始位置
+        // this.img_face_right.anchorOffsetX = this.img_face_right.width / 2;
+        // this.img_face_right.anchorOffsetY = 0;
+        // console.log(this.img_face_right.width, this.img_face_right.anchorOffsetY);
+        // let curretIcon:LevelIcon = this.levelIcons[milestrone-1];
+        this.img_face_right.x = 260;
+        this.img_face_right.y = 780;
 	}
 
 	private returnClick() {
 		this.parent.removeChild(this);
 	}
 	private leftClick() {
-		console.log("向左")
+        if(this.img_face_right.source == "face_right_png") {
+            this.img_face_right.source = "face_left_png"
+            this.img_face_right.x = this.img_face_right.x - 20
+        }else {
+            this.img_face_right.x = this.img_face_right.x - 20
+        }
 	}
 	private upClick() {
-		console.log("向上")
+        this.img_face_right.source = "face_me_png"
+        this.img_face_right.y = 450
 	}
 	private rightClick() {
-		console.log("向右")
+        if(this.img_face_right.source == "face_left_png") {
+            this.img_face_right.source = "face_right_png"
+            this.img_face_right.x = this.img_face_right.x + 20
+        }else {
+            this.img_face_right.x = this.img_face_right.x + 20
+        }
 	}
 }

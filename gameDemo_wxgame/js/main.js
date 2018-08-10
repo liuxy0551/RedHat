@@ -474,25 +474,45 @@ var GamePage = (function (_super) {
         group.width = 640;
         // 每个icon的高度 * 总关卡数
         // group.height = icon_height * LevelDataManager.getInstance().totalLevels;
-        // group.height = ;
+        group.height = 0;
         // 填充背景图
         for (var i = 0; i < 2; i++) {
             var img_bg = new eui.Image("resource/assets/RedHat/bg.png");
             img_bg.y = i * this.height;
             this.gp_cloud.addChildAt(img_bg, 0);
         }
+        //设置小红帽的初始位置
+        // this.img_face_right.anchorOffsetX = this.img_face_right.width / 2;
+        // this.img_face_right.anchorOffsetY = 0;
+        // console.log(this.img_face_right.width, this.img_face_right.anchorOffsetY);
+        // let curretIcon:LevelIcon = this.levelIcons[milestrone-1];
+        this.img_face_right.x = 260;
+        this.img_face_right.y = 780;
     };
     GamePage.prototype.returnClick = function () {
         this.parent.removeChild(this);
     };
     GamePage.prototype.leftClick = function () {
-        console.log("向左");
+        if (this.img_face_right.source == "face_right_png") {
+            this.img_face_right.source = "face_left_png";
+            this.img_face_right.x = this.img_face_right.x - 20;
+        }
+        else {
+            this.img_face_right.x = this.img_face_right.x - 20;
+        }
     };
     GamePage.prototype.upClick = function () {
-        console.log("向上");
+        this.img_face_right.source = "face_me_png";
+        this.img_face_right.y = 450;
     };
     GamePage.prototype.rightClick = function () {
-        console.log("向右");
+        if (this.img_face_right.source == "face_left_png") {
+            this.img_face_right.source = "face_right_png";
+            this.img_face_right.x = this.img_face_right.x + 20;
+        }
+        else {
+            this.img_face_right.x = this.img_face_right.x + 20;
+        }
     };
     return GamePage;
 }(eui.Component));
