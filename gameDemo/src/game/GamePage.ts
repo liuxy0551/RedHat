@@ -71,21 +71,15 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 
 	private returnClick() {
 		// this.parent.removeChild(this);
-		let index1 = "this.img_cloud";
-		let index = null;
-		for(let i=1;i<5;i++) {
-			index = index1 + i;
-			console.log(index);
-			console.log(index.x);
-		}
-		// console.log("img_cloud1+", this.img_cloud1.x);
-		// console.log("img_cloud2-", this.img_cloud2.x);
-		// console.log("img_cloud3+", this.img_cloud3.x);
-		// console.log("img_cloud4-", this.img_cloud4.x);
-		// this.img_cloud1.x = this.img_cloud1.x + 50;
-		// this.img_cloud2.x = this.img_cloud2.x - 50;
-		// this.img_cloud3.x = this.img_cloud3.x + 50;
-		// this.img_cloud4.x = this.img_cloud4.x - 50;
+		
+		console.log("img_cloud1+", this.img_cloud1.x);
+		console.log("img_cloud2-", this.img_cloud2.x);
+		console.log("img_cloud3+", this.img_cloud3.x);
+		console.log("img_cloud4-", this.img_cloud4.x);
+		this.img_cloud1.x = this.img_cloud1.x + 50;
+		this.img_cloud2.x = this.img_cloud2.x - 50;
+		this.img_cloud3.x = this.img_cloud3.x + 50;
+		this.img_cloud4.x = this.img_cloud4.x - 50;
 	}
 	private leftClick() {
         if(this.img_face_right.source == "face_right_png") {
