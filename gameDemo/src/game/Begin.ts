@@ -52,6 +52,7 @@ class Begin extends eui.Component implements  eui.UIComponent {
         this.addChild(task);
 	}
 	private startGameClick() {
-		console.log("开始游戏")
+        let gamePage = new GamePage();
+        this.addChild(gamePage);
 	}
 }

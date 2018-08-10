@@ -175,13 +175,13 @@ var Main = (function (_super) {
     };
     Main.prototype.runGame = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var result, userInfo, systemInfo;
+            var result, userInfo;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.loadResource()];
                     case 1:
                         _a.sent();
-                        this.createGameScene2();
+                        this.createGameScene();
                         return [4 /*yield*/, RES.getResAsync("description_json")];
                     case 2:
                         result = _a.sent();
@@ -193,13 +193,23 @@ var Main = (function (_super) {
                     case 4:
                         userInfo = _a.sent();
                         console.log(userInfo);
-                        return [4 /*yield*/, platform.getSystemInfo()];
-                    case 5:
-                        systemInfo = _a.sent();
-                        console.log(systemInfo);
                         return [4 /*yield*/, platform.showShareMenu()];
-                    case 6:
+                    case 5:
                         _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    Main.prototype.getApi = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var userInfo;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, platform.getUserInfo()];
+                    case 1:
+                        userInfo = _a.sent();
+                        console.log(userInfo);
                         return [2 /*return*/];
                 }
             });
@@ -244,60 +254,8 @@ var Main = (function (_super) {
             }, _this);
         });
     };
-    Main.prototype.createGameScene2 = function () {
-        this.addChild(Begin.getInstance());
-    };
-    // 创建场景界面，未调用
     Main.prototype.createGameScene = function () {
-        var sky = this.createBitmapByName("bg_jpg");
-        this.addChild(sky);
-        var stageW = this.stage.stageWidth;
-        var stageH = this.stage.stageHeight;
-        sky.width = stageW;
-        sky.height = stageH;
-        var topMask = new egret.Shape();
-        topMask.graphics.beginFill(0x000000, 0.5);
-        topMask.graphics.drawRect(0, 0, stageW, 172);
-        topMask.graphics.endFill();
-        topMask.y = 33;
-        this.addChild(topMask);
-        var icon = this.createBitmapByName("egret_icon_png");
-        this.addChild(icon);
-        icon.x = 26;
-        icon.y = 33;
-        var line = new egret.Shape();
-        line.graphics.lineStyle(2, 0xffffff);
-        line.graphics.moveTo(0, 0);
-        line.graphics.lineTo(0, 117);
-        line.graphics.endFill();
-        line.x = 172;
-        line.y = 61;
-        this.addChild(line);
-        var colorLabel = new egret.TextField();
-        colorLabel.textColor = 0xffffff;
-        colorLabel.width = stageW - 172;
-        colorLabel.textAlign = "center";
-        colorLabel.text = "Hello Egret";
-        colorLabel.size = 24;
-        colorLabel.x = 172;
-        colorLabel.y = 80;
-        this.addChild(colorLabel);
-        var textfield = new egret.TextField();
-        this.addChild(textfield);
-        textfield.alpha = 0;
-        textfield.width = stageW - 172;
-        textfield.textAlign = egret.HorizontalAlign.CENTER;
-        textfield.size = 24;
-        textfield.textColor = 0xffffff;
-        textfield.x = 172;
-        textfield.y = 135;
-        this.textfield = textfield;
-        var button = new eui.Button();
-        button.label = "Click!";
-        button.horizontalCenter = 0;
-        button.verticalCenter = 0;
-        this.addChild(button);
-        button.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onButtonClick, this);
+        this.addChild(Begin.getInstance());
     };
     // 根据name关键字创建一个Bitmap对象。name属性请参考resources/resource.json配置文件的内容。
     Main.prototype.createBitmapByName = function (name) {
@@ -329,14 +287,6 @@ var Main = (function (_super) {
         };
         change();
     };
-    // 点击按钮
-    Main.prototype.onButtonClick = function (e) {
-        var panel = new eui.Panel();
-        panel.title = "Title";
-        panel.horizontalCenter = 0;
-        panel.verticalCenter = 0;
-        this.addChild(panel);
-    };
     return Main;
 }(eui.UILayer));
 __reflect(Main.prototype, "Main");
@@ -351,13 +301,6 @@ var DebugPlatform = (function () {
         });
     };
     DebugPlatform.prototype.login = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                return [2 /*return*/];
-            });
-        });
-    };
-    DebugPlatform.prototype.getSystemInfo = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 return [2 /*return*/];
@@ -487,11 +430,73 @@ var Begin = (function (_super) {
         this.addChild(task);
     };
     Begin.prototype.startGameClick = function () {
-        console.log("开始游戏");
+        var gamePage = new GamePage();
+        this.addChild(gamePage);
     };
     return Begin;
 }(eui.Component));
 __reflect(Begin.prototype, "Begin", ["eui.UIComponent", "egret.DisplayObject"]);
+var GamePage = (function (_super) {
+    __extends(GamePage, _super);
+    function GamePage() {
+        return _super.call(this) || this;
+    }
+    GamePage.getInstance = function () {
+        if (!GamePage.shared) {
+            GamePage.shared = new GamePage();
+        }
+        return GamePage.shared;
+    };
+    GamePage.prototype.partAdded = function (partName, instance) {
+        _super.prototype.partAdded.call(this, partName, instance);
+    };
+    GamePage.prototype.childrenCreated = function () {
+        _super.prototype.childrenCreated.call(this);
+        this.init();
+    };
+    // 自定义初始化函数
+    GamePage.prototype.init = function () {
+        // 给每个按钮绑定点击事件
+        this.btn_return.addEventListener(egret.TouchEvent.TOUCH_TAP, this.returnClick, this);
+        this.btn_left.addEventListener(egret.TouchEvent.TOUCH_TAP, this.leftClick, this);
+        this.btn_up.addEventListener(egret.TouchEvent.TOUCH_TAP, this.upClick, this);
+        this.btn_right.addEventListener(egret.TouchEvent.TOUCH_TAP, this.rightClick, this);
+        // scroller  关闭水平方向滚动
+        this.sc_cloud.scrollPolicyH = eui.ScrollPolicy.OFF;
+        //20行*10列
+        // let col = 10;
+        // let row = 20;
+        // let icon_width = this.width / col;
+        // let icon_height = this.height / row;
+        //创建icon的group添加到scroller上
+        var group = new eui.Group();
+        this.gp_cloud.addChild(group);
+        group.width = 640;
+        // 每个icon的高度 * 总关卡数
+        // group.height = icon_height * LevelDataManager.getInstance().totalLevels;
+        // group.height = ;
+        // 填充背景图
+        for (var i = 0; i < 2; i++) {
+            var img_bg = new eui.Image("resource/assets/RedHat/bg.png");
+            img_bg.y = i * this.height;
+            this.gp_cloud.addChildAt(img_bg, 0);
+        }
+    };
+    GamePage.prototype.returnClick = function () {
+        this.parent.removeChild(this);
+    };
+    GamePage.prototype.leftClick = function () {
+        console.log("向左");
+    };
+    GamePage.prototype.upClick = function () {
+        console.log("向上");
+    };
+    GamePage.prototype.rightClick = function () {
+        console.log("向右");
+    };
+    return GamePage;
+}(eui.Component));
+__reflect(GamePage.prototype, "GamePage", ["eui.UIComponent", "egret.DisplayObject"]);
 var GameRule = (function (_super) {
     __extends(GameRule, _super);
     function GameRule() {

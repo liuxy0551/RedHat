@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="GameRuleSkin" width="640" height="1136" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" >
 	<w:Config id="165183c8fd9" ></w:Config>
+	<e:Image width="523" height="117.21" y="893.8" horizontalCenter="1.5" anchorOffsetY="0" source="no_btns_png"/>
 	<e:Image width="640" height="1136" x="-0.87" y="0" anchorOffsetX="0" anchorOffsetY="0" source="big_box_png"/>
 	<e:Image width="523" height="596" y="232.92" horizontalCenter="0.5" source="small_box_png"/>
-	<e:Image width="523" height="117.21" y="893.8" horizontalCenter="1.5" anchorOffsetY="0" source="no_btns_png"/>
 	<e:Label text="       所有云层会匀速下降，跳跃失败" y="678.63" anchorOffsetX="0" width="419.45" anchorOffsetY="0" height="37.57" size="24" fontFamily="Microsoft YaHei" verticalAlign="top" scaleX="1" scaleY="1" horizontalCenter="7.5"/>
 	<e:Label text="或小红帽掉 出屏幕及游戏结束。" y="722.58" anchorOffsetX="0" width="395.21" anchorOffsetY="0" height="37.57" size="24" fontFamily="Microsoft YaHei" verticalAlign="top" horizontalCenter="-0.5" scaleX="1" scaleY="1"/>
 	<e:Label text="游戏规则" size="32" top="284" width="143.64" height="34" anchorOffsetY="0" bottom="818" anchorOffsetX="0" horizontalCenter="0"/>

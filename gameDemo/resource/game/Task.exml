@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="TaskSkin" width="640" height="1136" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" >
 	<w:Config id="1651d5ca858" ></w:Config>
-	<e:Image width="640" height="1136" x="-0.87" y="0" anchorOffsetX="0" anchorOffsetY="0" source="big_box_png"/>
 	<e:Image width="523" height="117.21" y="893.8" horizontalCenter="1.5" anchorOffsetY="0" source="no_btns_png"/>
+	<e:Image width="640" height="1136" x="-0.87" y="0" anchorOffsetX="0" anchorOffsetY="0" source="big_box_png"/>
 	<e:Button id="btn_return" label="" x="74" y="912.41" width="80" height="80">
 		<e:skinName>
 		<e:Skin states="up,down,disabled">

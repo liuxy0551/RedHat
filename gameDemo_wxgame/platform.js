@@ -34,28 +34,17 @@ class WxgamePlatform {
         })
     }
 
-    getSystemInfo() {
-      return new Promise((resolve, reject) => {
-          wx.getSystemInfo({
-              success: (res) => {
-                  let HW = res.windowHeight / res.windowWidth
-                  resolve("宽高比："+HW)
-              }
-          })
-      })
-    }
-
     showShareMenu() {
-        return new Promise((resolve, reject) => {
-            wx.showShareMenu({
-                withShareTicket: true,
-                success: function (res) {
-                    resolve(res);
-                },
-                fail: function (res) { },
-                complete: function (res) { },
-            })
+      return new Promise((resolve, reject) => {
+        wx.showShareMenu({
+          withShareTicket: true,
+          success: function (res) {
+              resolve(res);
+          },
+          fail: function (res) { },
+          complete: function (res) { },
         })
+      })
     }
 
     openDataContext = new WxgameOpenDataContext();

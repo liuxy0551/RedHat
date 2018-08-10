@@ -10,8 +10,6 @@ declare interface Platform {
 
     login(): Promise<any>
 
-    getSystemInfo(): Promise<any>
-
     showShareMenu(): Promise<any>
 }
 
@@ -20,9 +18,6 @@ class DebugPlatform implements Platform {
         return { nickName: "username" }
     }
     async login() {
-        
-    }
-    async getSystemInfo() {
         
     }
     async showShareMenu() {
