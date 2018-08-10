@@ -477,6 +477,7 @@ var GamePage = (function (_super) {
         //设置小红帽的初始位置
         this.img_face_right.x = 260;
         this.img_face_right.y = 780;
+        console.log("this.img_cloud1", this.img_cloud1.x, this.img_cloud1.y);
     };
     GamePage.prototype.returnClick = function () {
         // this.parent.removeChild(this);
@@ -484,15 +485,16 @@ var GamePage = (function (_super) {
         console.log("img_cloud2-", this.img_cloud2.x);
         console.log("img_cloud3+", this.img_cloud3.x);
         console.log("img_cloud4-", this.img_cloud4.x);
-        this.img_cloud1.x = this.img_cloud1.x + 50;
+        // this.img_cloud1.x = this.img_cloud1.x + 50;
         this.img_cloud2.x = this.img_cloud2.x - 50;
         this.img_gift1.x = this.img_gift1.x - 50;
         this.img_cloud3.x = this.img_cloud3.x + 50;
-        this.img_gift2.x = this.img_gift2.x - 50;
+        this.img_gift2.x = this.img_gift2.x + 50;
         this.img_cloud4.x = this.img_cloud4.x - 50;
         this.img_gift3.x = this.img_gift3.x - 50;
     };
     GamePage.prototype.leftClick = function () {
+        console.log("this.img_face_right", this.img_face_right.x);
         if (this.img_face_right.source == "face_right_png") {
             this.img_face_right.source = "face_left_png";
             this.img_face_right.x = this.img_face_right.x - 20;
@@ -502,10 +504,11 @@ var GamePage = (function (_super) {
         }
     };
     GamePage.prototype.upClick = function () {
-        this.img_face_right.source = "face_me_png";
+        this.img_face_right.source = "face_me_pnsg";
         this.img_face_right.y = 450;
     };
     GamePage.prototype.rightClick = function () {
+        console.log("this.img_face_right", this.img_face_right.x);
         if (this.img_face_right.source == "face_left_png") {
             this.img_face_right.source = "face_right_png";
             this.img_face_right.x = this.img_face_right.x + 20;
