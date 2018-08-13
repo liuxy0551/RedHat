@@ -85,7 +85,8 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 		var time1 = 3000;
 
 		var funcChange = function(): void {
-			console.log(this.source, this.x);
+			// console.log(this.source, this.x);
+			// egret build -e
 		}
 		egret.Tween.get(this.img_cloud2, { loop: true, onChange: funcChange, onChangeObj: this.img_cloud2 }).
             to({ x: 0 }, time, egret.Ease.sineIn).

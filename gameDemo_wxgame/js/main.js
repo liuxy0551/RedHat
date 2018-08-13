@@ -492,7 +492,8 @@ var GamePage = (function (_super) {
         var time = 2000;
         var time1 = 3000;
         var funcChange = function () {
-            console.log(this.source, this.x);
+            // console.log(this.source, this.x);
+            // egret build -e
         };
         egret.Tween.get(this.img_cloud2, { loop: true, onChange: funcChange, onChangeObj: this.img_cloud2 }).
             to({ x: 0 }, time, egret.Ease.sineIn).
