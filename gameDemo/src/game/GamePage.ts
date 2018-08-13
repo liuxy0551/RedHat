@@ -15,8 +15,7 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 	public btn_up:eui.Button;
 	public btn_right:eui.Button;
 
-
-
+	// 单例模式
     private static shared:GamePage;
     public static getInstance(){
         if( !GamePage.shared){
@@ -64,16 +63,31 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 			this.gp_cloud.addChildAt( img_bg,0);
 		}
 
-		//设置小红帽的初始位置
-        this.img_face_right.x = 260;
+		//设置小红帽及所在云朵的初始位置
+        // this.img_face_right.x = this.width / 2 - 30;
         this.img_face_right.y = 780;
+		// this.img_cloud1.x = this.width / 2 - 100
 
-        console.log("this.img_cloud1", this.img_cloud1.x, this.img_cloud1.y)
+        // console.log("this.img_cloud1", this.img_cloud1.x, this.img_cloud1.y)
+
+		// 添加缓动动画
+		// var shp:egret.Shape = new egret.Shape();
+		// shp.graphics.beginFill( 0x00ff00 );
+        // shp.graphics.drawRect( 0, 0, 100, 100 );
+        // shp.graphics.endFill();
+        // shp.x = 50;
+        // this.addChild( shp );
+        // var tw = egret.Tween.get( shp );
+        // tw.to( {x:150}, 1000 );
+		egret.Tween.get(this.img_cloud2, { loop: true }).
+            to({ x: 0 }, 4000, egret.Ease.sineIn).
+            to({ x: 485 }, 4000, egret.Ease.sineIn);
+			// to({scaleX:1,scaleY:1},800,egret.Ease.sineOut);
 	}
 
 	private returnClick() {
 		// this.parent.removeChild(this);
-		
+
 		console.log("img_cloud1+", this.img_cloud1.x);
 		console.log("img_cloud2-", this.img_cloud2.x);
 		console.log("img_cloud3+", this.img_cloud3.x);
@@ -99,8 +113,8 @@ class GamePage extends eui.Component implements  eui.UIComponent {
         }
 	}
 	private upClick() {
-        this.img_face_right.source = "face_me_pnsg"
-        this.img_face_right.y = 450
+        this.img_face_right.source = "face_me_png"
+        this.img_face_right.y = this.img_face_right.y - 330;
 	}
 	private rightClick() {
         console.log("this.img_face_right", this.img_face_right.x)

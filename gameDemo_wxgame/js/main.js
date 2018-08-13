@@ -474,10 +474,24 @@ var GamePage = (function (_super) {
             img_bg.y = i * this.height;
             this.gp_cloud.addChildAt(img_bg, 0);
         }
-        //设置小红帽的初始位置
-        this.img_face_right.x = 260;
+        //设置小红帽及所在云朵的初始位置
+        // this.img_face_right.x = this.width / 2 - 30;
         this.img_face_right.y = 780;
-        console.log("this.img_cloud1", this.img_cloud1.x, this.img_cloud1.y);
+        // this.img_cloud1.x = this.width / 2 - 100
+        // console.log("this.img_cloud1", this.img_cloud1.x, this.img_cloud1.y)
+        // 添加缓动动画
+        // var shp:egret.Shape = new egret.Shape();
+        // shp.graphics.beginFill( 0x00ff00 );
+        // shp.graphics.drawRect( 0, 0, 100, 100 );
+        // shp.graphics.endFill();
+        // shp.x = 50;
+        // this.addChild( shp );
+        // var tw = egret.Tween.get( shp );
+        // tw.to( {x:150}, 1000 );
+        egret.Tween.get(this.img_cloud2, { loop: true }).
+            to({ x: 0 }, 4000, egret.Ease.sineIn).
+            to({ x: 485 }, 4000, egret.Ease.sineIn);
+        // to({scaleX:1,scaleY:1},800,egret.Ease.sineOut);
     };
     GamePage.prototype.returnClick = function () {
         // this.parent.removeChild(this);
@@ -504,8 +518,8 @@ var GamePage = (function (_super) {
         }
     };
     GamePage.prototype.upClick = function () {
-        this.img_face_right.source = "face_me_pnsg";
-        this.img_face_right.y = 450;
+        this.img_face_right.source = "face_me_png";
+        this.img_face_right.y = this.img_face_right.y - 330;
     };
     GamePage.prototype.rightClick = function () {
         console.log("this.img_face_right", this.img_face_right.x);
