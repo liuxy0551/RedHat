@@ -1101,7 +1101,7 @@ var egret = window.egret;window.skins={};
 
 	function GamePageSkin() {
 		_super.call(this);
-		this.skinParts = ["img_cloud1","img_cloud2","img_cloud3","img_cloud4","img_face_right","img_gift1","img_gift2","img_gift3","gp_cloud","sc_cloud","btn_return","btn_left","btn_up","btn_right"];
+		this.skinParts = ["img_cloud1","img_cloud2","img_cloud3","img_cloud4","img_gift1","img_gift2","img_gift3","img_face_right","gp_cloud","sc_cloud","btn_return","btn_left","btn_up","btn_right"];
 		
 		this.height = 1136;
 		this.width = 640;
@@ -1126,7 +1126,7 @@ var egret = window.egret;window.skins={};
 		t.anchorOffsetY = 0;
 		t.height = 1136;
 		t.width = 640;
-		t.elementsContent = [this.img_cloud1_i(),this.img_cloud2_i(),this.img_cloud3_i(),this.img_cloud4_i(),this.img_face_right_i(),this.img_gift1_i(),this.img_gift2_i(),this.img_gift3_i()];
+		t.elementsContent = [this.img_cloud1_i(),this.img_cloud2_i(),this.img_cloud3_i(),this.img_cloud4_i(),this.img_gift1_i(),this.img_gift2_i(),this.img_gift3_i(),this.img_face_right_i()];
 		return t;
 	};
 	_proto.img_cloud1_i = function () {
@@ -1135,7 +1135,7 @@ var egret = window.egret;window.skins={};
 		t.height = 48;
 		t.source = "cloud1_png";
 		t.width = 201;
-		t.x = 146;
+		t.x = 220;
 		t.y = 895;
 		return t;
 	};
@@ -1167,18 +1167,6 @@ var egret = window.egret;window.skins={};
 		t.width = 209;
 		t.x = 431;
 		t.y = 142;
-		return t;
-	};
-	_proto.img_face_right_i = function () {
-		var t = new eui.Image();
-		this.img_face_right = t;
-		t.anchorOffsetX = 0;
-		t.anchorOffsetY = 0;
-		t.height = 117;
-		t.source = "face_right_png";
-		t.width = 60;
-		t.x = 218;
-		t.y = 780;
 		return t;
 	};
 	_proto.img_gift1_i = function () {
@@ -1215,6 +1203,18 @@ var egret = window.egret;window.skins={};
 		t.width = 38;
 		t.x = 431;
 		t.y = 105;
+		return t;
+	};
+	_proto.img_face_right_i = function () {
+		var t = new eui.Image();
+		this.img_face_right = t;
+		t.anchorOffsetX = 0;
+		t.anchorOffsetY = 0;
+		t.height = 117;
+		t.source = "face_right_png";
+		t.width = 60;
+		t.x = 292;
+		t.y = 780;
 		return t;
 	};
 	_proto.btn_return_i = function () {

@@ -13,6 +13,12 @@ var Begin = (function (_super) {
     function Begin() {
         return _super.call(this) || this;
     }
+    Begin.getInstance = function () {
+        if (!Begin.shared) {
+            Begin.shared = new Begin();
+        }
+        return Begin.shared;
+    };
     // 添加皮肤的时候自动调用该函数
     Begin.prototype.partAdded = function (partName, instance) {
         _super.prototype.partAdded.call(this, partName, instance);
@@ -25,20 +31,26 @@ var Begin = (function (_super) {
     // 自定义初始化函数
     Begin.prototype.init = function () {
         // 给每个按钮绑定点击事件
-        this.btn_game_rule.addEventListener(egret.TouchEvent.TOUCH_TAP, this.game_rule_click, this);
-        this.btn_ranking_list.addEventListener(egret.TouchEvent.TOUCH_TAP, this.ranking_list_click, this);
-        this.btn_task.addEventListener(egret.TouchEvent.TOUCH_TAP, this.task_click, this);
-        this.btn_start_game.addEventListener(egret.TouchEvent.TOUCH_TAP, this.start_game_click, this);
+        this.btn_game_rule.addEventListener(egret.TouchEvent.TOUCH_TAP, this.gameRuleClick, this);
+        this.btn_ranking_list.addEventListener(egret.TouchEvent.TOUCH_TAP, this.rankingListClick, this);
+        this.btn_task.addEventListener(egret.TouchEvent.TOUCH_TAP, this.taskClick, this);
+        this.btn_start_game.addEventListener(egret.TouchEvent.TOUCH_TAP, this.startGameClick, this);
     };
-    Begin.prototype.game_rule_click = function () {
+    Begin.prototype.gameRuleClick = function () {
+        this.addChild(GameRule.getInstance());
     };
-    Begin.prototype.ranking_list_click = function () {
+    Begin.prototype.rankingListClick = function () {
+        var rankingList = new RankingList();
+        this.addChild(rankingList);
     };
-    Begin.prototype.task_click = function () {
+    Begin.prototype.taskClick = function () {
+        var task = new Task();
+        this.addChild(task);
     };
-    Begin.prototype.start_game_click = function () {
+    Begin.prototype.startGameClick = function () {
+        var gamePage = new GamePage();
+        this.addChild(gamePage);
     };
     return Begin;
 }(eui.Component));
 __reflect(Begin.prototype, "Begin", ["eui.UIComponent", "egret.DisplayObject"]);
-//# sourceMappingURL=Begin.js.map

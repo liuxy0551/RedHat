@@ -491,10 +491,13 @@ var GamePage = (function (_super) {
         // 定义动画缓动时间
         var time = 2000;
         var time1 = 3000;
-        egret.Tween.get(this.img_cloud2, { loop: true }).
+        var funcChange = function () {
+            console.log(this.source, this.x);
+        };
+        egret.Tween.get(this.img_cloud2, { loop: true, onChange: funcChange, onChangeObj: this.img_cloud2 }).
             to({ x: 0 }, time, egret.Ease.sineIn).
             to({ x: 485 }, time, egret.Ease.sineIn);
-        egret.Tween.get(this.img_gift1, { loop: true }).
+        egret.Tween.get(this.img_gift1, { loop: true, onChange: funcChange, onChangeObj: this.img_gift1 }).
             to({ x: 108 }, time, egret.Ease.sineIn).
             to({ x: 593 }, time, egret.Ease.sineIn);
         egret.Tween.get(this.img_cloud3, { loop: true }).
@@ -536,7 +539,10 @@ var GamePage = (function (_super) {
     };
     GamePage.prototype.upClick = function () {
         this.img_face_right.source = "face_me_png";
-        this.img_face_right.y = this.img_face_right.y - 330;
+        // this.img_face_right.y = this.img_face_right.y - 330;
+        egret.Tween.get(this.img_face_right).
+            to({ y: this.img_face_right.y - 330 }, 1200, egret.Ease.sineOut).
+            to({ y: this.img_face_right.y - 245 }, 600, egret.Ease.sineOut);
     };
     GamePage.prototype.rightClick = function () {
         console.log("this.img_face_right", this.img_face_right.x);

@@ -53,10 +53,16 @@ var DebugPlatform = (function () {
             });
         });
     };
+    DebugPlatform.prototype.showShareMenu = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/];
+            });
+        });
+    };
     return DebugPlatform;
 }());
 __reflect(DebugPlatform.prototype, "DebugPlatform", ["Platform"]);
 if (!window.platform) {
     window.platform = new DebugPlatform();
 }
-//# sourceMappingURL=Platform.js.map

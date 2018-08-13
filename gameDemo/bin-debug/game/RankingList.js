@@ -8,34 +8,34 @@ var __extends = this && this.__extends || function __extends(t, e) {
 for (var i in e) e.hasOwnProperty(i) && (t[i] = e[i]);
 r.prototype = e.prototype, t.prototype = new r();
 };
-var GameRule = (function (_super) {
-    __extends(GameRule, _super);
-    function GameRule() {
+var RankingList = (function (_super) {
+    __extends(RankingList, _super);
+    function RankingList() {
         return _super.call(this) || this;
     }
-    GameRule.getInstance = function () {
-        if (!GameRule.shared) {
-            GameRule.shared = new GameRule();
+    RankingList.getInstance = function () {
+        if (!RankingList.shared) {
+            RankingList.shared = new RankingList();
         }
-        return GameRule.shared;
+        return RankingList.shared;
     };
     // 添加皮肤的时候自动调用该函数
-    GameRule.prototype.partAdded = function (partName, instance) {
+    RankingList.prototype.partAdded = function (partName, instance) {
         _super.prototype.partAdded.call(this, partName, instance);
     };
     // 组件加载完毕之后调用该函数
-    GameRule.prototype.childrenCreated = function () {
+    RankingList.prototype.childrenCreated = function () {
         _super.prototype.childrenCreated.call(this);
         this.init();
     };
     // 自定义初始化函数
-    GameRule.prototype.init = function () {
+    RankingList.prototype.init = function () {
         // 给每个按钮绑定点击事件
         this.btn_return.addEventListener(egret.TouchEvent.TOUCH_TAP, this.returnClick, this);
     };
-    GameRule.prototype.returnClick = function () {
+    RankingList.prototype.returnClick = function () {
         this.parent.removeChild(this);
     };
-    return GameRule;
+    return RankingList;
 }(eui.Component));
-__reflect(GameRule.prototype, "GameRule", ["eui.UIComponent", "egret.DisplayObject"]);
+__reflect(RankingList.prototype, "RankingList", ["eui.UIComponent", "egret.DisplayObject"]);

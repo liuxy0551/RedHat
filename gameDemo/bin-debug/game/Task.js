@@ -8,34 +8,37 @@ var __extends = this && this.__extends || function __extends(t, e) {
 for (var i in e) e.hasOwnProperty(i) && (t[i] = e[i]);
 r.prototype = e.prototype, t.prototype = new r();
 };
-var GameRule = (function (_super) {
-    __extends(GameRule, _super);
-    function GameRule() {
+var Task = (function (_super) {
+    __extends(Task, _super);
+    function Task() {
         return _super.call(this) || this;
     }
-    GameRule.getInstance = function () {
-        if (!GameRule.shared) {
-            GameRule.shared = new GameRule();
+    Task.getInstance = function () {
+        if (!Task.shared) {
+            Task.shared = new Task();
         }
-        return GameRule.shared;
+        return Task.shared;
     };
     // 添加皮肤的时候自动调用该函数
-    GameRule.prototype.partAdded = function (partName, instance) {
+    Task.prototype.partAdded = function (partName, instance) {
         _super.prototype.partAdded.call(this, partName, instance);
     };
     // 组件加载完毕之后调用该函数
-    GameRule.prototype.childrenCreated = function () {
+    Task.prototype.childrenCreated = function () {
         _super.prototype.childrenCreated.call(this);
         this.init();
     };
     // 自定义初始化函数
-    GameRule.prototype.init = function () {
+    Task.prototype.init = function () {
         // 给每个按钮绑定点击事件
         this.btn_return.addEventListener(egret.TouchEvent.TOUCH_TAP, this.returnClick, this);
+        this.btn_to_share.addEventListener(egret.TouchEvent.TOUCH_TAP, this.toShare, this);
     };
-    GameRule.prototype.returnClick = function () {
+    Task.prototype.returnClick = function () {
         this.parent.removeChild(this);
     };
-    return GameRule;
+    Task.prototype.toShare = function () {
+    };
+    return Task;
 }(eui.Component));
-__reflect(GameRule.prototype, "GameRule", ["eui.UIComponent", "egret.DisplayObject"]);
+__reflect(Task.prototype, "Task", ["eui.UIComponent", "egret.DisplayObject"]);
