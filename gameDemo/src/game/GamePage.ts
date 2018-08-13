@@ -142,7 +142,7 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 
 		egret.Tween.get(this.img_face_right).
             to({ y: this.img_face_right.y - 330 }, 1200, egret.Ease.sineOut).
-            to({ y: this.img_face_right.y - 245 }, 600, egret.Ease.sineOut);
+            to({ y: this.img_face_right.y - 248 }, 600, egret.Ease.sineOut);
 	}
 	private rightClick() {
         console.log("this.img_face_right", this.img_face_right.x)
