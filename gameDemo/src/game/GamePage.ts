@@ -143,8 +143,17 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 
 		egret.Tween.get(this.img_face_right).
             to({ y: this.img_face_right.y - 330 }, 1200, egret.Ease.sineOut).
-            to({ y: this.img_face_right.y - 248 }, 600, egret.Ease.sineOut);
+            to({ y: this.img_face_right.y - 248 }, 600, egret.Ease.sineOut).
+			wait(1).call(this.onComplete, this, ["param1"]);//设置延时，设置回调函数及作用域，可用于侦听动画完成;
+
 	}
+    private onComplete(e):void {
+        egret.log("onComplete");
+		// 删除一个对象上的全部 Tween 动画
+		egret.Tween.removeTweens(this.img_cloud2)
+		egret.Tween.removeTweens(this.img_gift1)
+		this.img_face_right.source = "face_right_png"
+    }
 	private rightClick() {
         console.log("this.img_face_right", this.img_face_right.x)
         if(this.img_face_right.source == "face_left_png") {

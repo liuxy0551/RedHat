@@ -543,7 +543,15 @@ var GamePage = (function (_super) {
         // this.img_face_right.y = this.img_face_right.y - 330;
         egret.Tween.get(this.img_face_right).
             to({ y: this.img_face_right.y - 330 }, 1200, egret.Ease.sineOut).
-            to({ y: this.img_face_right.y - 248 }, 600, egret.Ease.sineOut);
+            to({ y: this.img_face_right.y - 248 }, 600, egret.Ease.sineOut).
+            wait(1).call(this.onComplete, this, ["param1"]); //设置延时，设置回调函数及作用域，可用于侦听动画完成;
+    };
+    GamePage.prototype.onComplete = function (e) {
+        egret.log("onComplete");
+        // 删除一个对象上的全部 Tween 动画
+        egret.Tween.removeTweens(this.img_cloud2);
+        egret.Tween.removeTweens(this.img_gift1);
+        this.img_face_right.source = "face_right_png";
     };
     GamePage.prototype.rightClick = function () {
         console.log("this.img_face_right", this.img_face_right.x);
