@@ -3,17 +3,17 @@
 	<w:Config id="165225b4789" ></w:Config>
 	<e:Scroller id="sc_cloud" width="640" height="1136" x="0" y="0">
 		<e:Group id="gp_cloud" anchorOffsetX="0" width="640" anchorOffsetY="0" height="1136">
-			<e:Image id="img_cloud1" width="201" height="48" x="146.27" y="895.55" source="cloud1_png"/>
-			<e:Image id="img_cloud2" width="155" height="48" x="418" y="634.34" source="cloud3_png"/>
-			<e:Image id="img_cloud3" width="167" height="42" x="31.5" y="418.58" source="cloud2_png"/>
-			<e:Image id="img_cloud4" width="209" height="42" x="297.5" y="142.22" source="cloud4_png"/>
-			<e:Image id="img_face_right" width="60" height="117" x="218.08" y="780.57" anchorOffsetX="0" anchorOffsetY="0" source="face_right_png"/>
-			<e:Image id="img_gift1" width="47" height="45" x="532.54" y="595.19" anchorOffsetX="0" anchorOffsetY="0" source="gift1_png"/>
-			<e:Image id="img_gift2" width="37" height="37" x="93.07" y="384.22" anchorOffsetX="0" anchorOffsetY="0" source="gift2_png"/>
-			<e:Image id="img_gift3" width="38" height="38" x="300.27" y="104.61" anchorOffsetX="0" anchorOffsetY="0" source="gift3_png"/>
+			<e:Image id="img_cloud1" width="201" height="48" x="146" y="895" source="cloud1_png"/>
+			<e:Image id="img_cloud2" width="155" height="48" x="485" y="640" source="cloud3_png"/>
+			<e:Image id="img_cloud3" width="167" height="42" x="0" y="391" source="cloud2_png"/>
+			<e:Image id="img_cloud4" width="209" height="42" x="431" y="142" source="cloud4_png"/>
+			<e:Image id="img_face_right" width="60" height="117" x="218" y="780" anchorOffsetX="0" anchorOffsetY="0" source="face_right_png"/>
+			<e:Image id="img_gift1" width="47" height="45" x="593" y="600" anchorOffsetX="0" anchorOffsetY="0" source="gift1_png"/>
+			<e:Image id="img_gift2" width="37" height="37" x="65" y="355" anchorOffsetX="0" anchorOffsetY="0" source="gift2_png"/>
+			<e:Image id="img_gift3" width="38" height="38" x="431" y="105" anchorOffsetX="0" anchorOffsetY="0" source="gift3_png"/>
 		</e:Group>
 	</e:Scroller>
-	<e:Button id="btn_return" label="" y="30.39" horizontalCenter="-260" width="80" height="80">
+	<e:Button id="btn_return" label="" y="30" width="80" height="80" x="20">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
 			<e:Image width="100%" height="100%" source="home_btn_png"/>
@@ -21,7 +21,7 @@
 			</e:Skin>
 		</e:skinName>
 	</e:Button>
-	<e:Button id="btn_left" label="" y="991.01" horizontalCenter="-205">
+	<e:Button id="btn_left" label="" y="991" x="60" width="110" height="112">
 		<e:skinName>
 		<e:Skin states="up,down,disabled">
 			<e:Image width="100%" height="100%" source="left_png"/>
@@ -29,7 +29,7 @@
 		</e:Skin>
 		</e:skinName>
 	</e:Button>
-	<e:Button id="btn_up" label="" y="991.01" horizontalCenter="0">
+	<e:Button id="btn_up" label="" y="991" x="265" width="110" height="112">
 		<e:skinName>
 		<e:Skin states="up,down,disabled">
 			<e:Image width="100%" height="100%" source="up_png"/>
@@ -37,7 +37,7 @@
 		</e:Skin>
 		</e:skinName>
 	</e:Button>
-	<e:Button id="btn_right" label="" y="987.55" horizontalCenter="209.5">
+	<e:Button id="btn_right" label="" y="987" x="474" width="111" height="111">
 		<e:skinName>
 		<e:Skin states="up,down,disabled">
 			<e:Image width="100%" height="100%" source="right_png"/>

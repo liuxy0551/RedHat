@@ -79,10 +79,31 @@ class GamePage extends eui.Component implements  eui.UIComponent {
         // this.addChild( shp );
         // var tw = egret.Tween.get( shp );
         // tw.to( {x:150}, 1000 );
+
+		// 定义动画缓动时间
+		var time = 2000;
+		var time1 = 3000;
+
 		egret.Tween.get(this.img_cloud2, { loop: true }).
-            to({ x: 0 }, 4000, egret.Ease.sineIn).
-            to({ x: 485 }, 4000, egret.Ease.sineIn);
-			// to({scaleX:1,scaleY:1},800,egret.Ease.sineOut);
+            to({ x: 0 }, time, egret.Ease.sineIn).
+            to({ x: 485 }, time, egret.Ease.sineIn);
+		egret.Tween.get(this.img_gift1, { loop: true }).
+            to({ x: 108 }, time, egret.Ease.sineIn).
+            to({ x: 593 }, time, egret.Ease.sineIn);
+
+		egret.Tween.get(this.img_cloud3, { loop: true }).
+            to({ x: 473 }, time1, egret.Ease.sineIn).
+            to({ x: 0 }, time1, egret.Ease.sineIn);
+		egret.Tween.get(this.img_gift2, { loop: true }).
+            to({ x: 538 }, time1, egret.Ease.sineIn).
+            to({ x: 65 }, time1, egret.Ease.sineIn);
+
+		egret.Tween.get(this.img_cloud4, { loop: true }).
+            to({ x: 0 }, time1, egret.Ease.sineIn).
+            to({ x: 431 }, time1, egret.Ease.sineIn);
+		egret.Tween.get(this.img_gift3, { loop: true }).
+            to({ x: 0 }, time1, egret.Ease.sineIn).
+            to({ x: 431 }, time1, egret.Ease.sineIn);
 	}
 
 	private returnClick() {
