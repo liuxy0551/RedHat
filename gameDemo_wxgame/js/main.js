@@ -43,6 +43,52 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var Begin = (function (_super) {
+    __extends(Begin, _super);
+    function Begin() {
+        return _super.call(this) || this;
+    }
+    Begin.getInstance = function () {
+        if (!Begin.shared) {
+            Begin.shared = new Begin();
+        }
+        return Begin.shared;
+    };
+    // 添加皮肤的时候自动调用该函数
+    Begin.prototype.partAdded = function (partName, instance) {
+        _super.prototype.partAdded.call(this, partName, instance);
+    };
+    // 组件加载完毕之后调用该函数
+    Begin.prototype.childrenCreated = function () {
+        _super.prototype.childrenCreated.call(this);
+        this.init();
+    };
+    // 自定义初始化函数
+    Begin.prototype.init = function () {
+        // 给每个按钮绑定点击事件
+        this.btn_game_rule.addEventListener(egret.TouchEvent.TOUCH_TAP, this.gameRuleClick, this);
+        this.btn_ranking_list.addEventListener(egret.TouchEvent.TOUCH_TAP, this.rankingListClick, this);
+        this.btn_task.addEventListener(egret.TouchEvent.TOUCH_TAP, this.taskClick, this);
+        this.btn_start_game.addEventListener(egret.TouchEvent.TOUCH_TAP, this.startGameClick, this);
+    };
+    Begin.prototype.gameRuleClick = function () {
+        this.addChild(GameRule.getInstance());
+    };
+    Begin.prototype.rankingListClick = function () {
+        var rankingList = new RankingList();
+        this.addChild(rankingList);
+    };
+    Begin.prototype.taskClick = function () {
+        var task = new Task();
+        this.addChild(task);
+    };
+    Begin.prototype.startGameClick = function () {
+        var gamePage = new GamePage();
+        this.addChild(gamePage);
+    };
+    return Begin;
+}(eui.Component));
+__reflect(Begin.prototype, "Begin", ["eui.UIComponent", "egret.DisplayObject"]);
 //////////////////////////////////////////////////////////////////////////////////////
 //
 //  Copyright (c) 2014-present, Egret Technology.
@@ -101,55 +147,6 @@ var AssetAdapter = (function () {
     return AssetAdapter;
 }());
 __reflect(AssetAdapter.prototype, "AssetAdapter", ["eui.IAssetAdapter"]);
-//////////////////////////////////////////////////////////////////////////////////////
-//
-//  Copyright (c) 2014-present, Egret Technology.
-//  All rights reserved.
-//  Redistribution and use in source and binary forms, with or without
-//  modification, are permitted provided that the following conditions are met:
-//
-//     * Redistributions of source code must retain the above copyright
-//       notice, this list of conditions and the following disclaimer.
-//     * Redistributions in binary form must reproduce the above copyright
-//       notice, this list of conditions and the following disclaimer in the
-//       documentation and/or other materials provided with the distribution.
-//     * Neither the name of the Egret nor the
-//       names of its contributors may be used to endorse or promote products
-//       derived from this software without specific prior written permission.
-//
-//  THIS SOFTWARE IS PROVIDED BY EGRET AND CONTRIBUTORS "AS IS" AND ANY EXPRESS
-//  OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
-//  OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
-//  IN NO EVENT SHALL EGRET AND CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-//  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-//  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;LOSS OF USE, DATA,
-//  OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
-//  LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
-//  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
-//  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-//
-//////////////////////////////////////////////////////////////////////////////////////
-var LoadingUI = (function (_super) {
-    __extends(LoadingUI, _super);
-    function LoadingUI() {
-        var _this = _super.call(this) || this;
-        _this.createView();
-        return _this;
-    }
-    LoadingUI.prototype.createView = function () {
-        this.textField = new egret.TextField();
-        this.addChild(this.textField);
-        this.textField.y = 300;
-        this.textField.width = 480;
-        this.textField.height = 100;
-        this.textField.textAlign = "center";
-    };
-    LoadingUI.prototype.onProgress = function (current, total) {
-        this.textField.text = "Loading..." + current + "/" + total;
-    };
-    return LoadingUI;
-}(egret.Sprite));
-__reflect(LoadingUI.prototype, "LoadingUI", ["RES.PromiseTaskReporter"]);
 var Main = (function (_super) {
     __extends(Main, _super);
     function Main() {
@@ -390,52 +387,79 @@ var ThemeAdapter = (function () {
     return ThemeAdapter;
 }());
 __reflect(ThemeAdapter.prototype, "ThemeAdapter", ["eui.IThemeAdapter"]);
-var Begin = (function (_super) {
-    __extends(Begin, _super);
-    function Begin() {
+//////////////////////////////////////////////////////////////////////////////////////
+//
+//  Copyright (c) 2014-present, Egret Technology.
+//  All rights reserved.
+//  Redistribution and use in source and binary forms, with or without
+//  modification, are permitted provided that the following conditions are met:
+//
+//     * Redistributions of source code must retain the above copyright
+//       notice, this list of conditions and the following disclaimer.
+//     * Redistributions in binary form must reproduce the above copyright
+//       notice, this list of conditions and the following disclaimer in the
+//       documentation and/or other materials provided with the distribution.
+//     * Neither the name of the Egret nor the
+//       names of its contributors may be used to endorse or promote products
+//       derived from this software without specific prior written permission.
+//
+//  THIS SOFTWARE IS PROVIDED BY EGRET AND CONTRIBUTORS "AS IS" AND ANY EXPRESS
+//  OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+//  OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+//  IN NO EVENT SHALL EGRET AND CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+//  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+//  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;LOSS OF USE, DATA,
+//  OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+//  LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+//  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+//  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
+//////////////////////////////////////////////////////////////////////////////////////
+var LoadingUI = (function (_super) {
+    __extends(LoadingUI, _super);
+    function LoadingUI() {
+        var _this = _super.call(this) || this;
+        _this.createView();
+        return _this;
+    }
+    LoadingUI.prototype.createView = function () {
+        this.textField = new egret.TextField();
+        this.addChild(this.textField);
+        this.textField.y = 300;
+        this.textField.width = 480;
+        this.textField.height = 100;
+        this.textField.textAlign = "center";
+    };
+    LoadingUI.prototype.onProgress = function (current, total) {
+        this.textField.text = "Loading..." + current + "/" + total;
+    };
+    return LoadingUI;
+}(egret.Sprite));
+__reflect(LoadingUI.prototype, "LoadingUI", ["RES.PromiseTaskReporter"]);
+var GameOver = (function (_super) {
+    __extends(GameOver, _super);
+    function GameOver() {
         return _super.call(this) || this;
     }
-    Begin.getInstance = function () {
-        if (!Begin.shared) {
-            Begin.shared = new Begin();
+    GameOver.getInstance = function () {
+        if (!GameOver.shared) {
+            GameOver.shared = new GameOver();
         }
-        return Begin.shared;
+        return GameOver.shared;
     };
-    // 添加皮肤的时候自动调用该函数
-    Begin.prototype.partAdded = function (partName, instance) {
+    GameOver.prototype.partAdded = function (partName, instance) {
         _super.prototype.partAdded.call(this, partName, instance);
     };
-    // 组件加载完毕之后调用该函数
-    Begin.prototype.childrenCreated = function () {
+    GameOver.prototype.childrenCreated = function () {
         _super.prototype.childrenCreated.call(this);
         this.init();
     };
     // 自定义初始化函数
-    Begin.prototype.init = function () {
-        // 给每个按钮绑定点击事件
-        this.btn_game_rule.addEventListener(egret.TouchEvent.TOUCH_TAP, this.gameRuleClick, this);
-        this.btn_ranking_list.addEventListener(egret.TouchEvent.TOUCH_TAP, this.rankingListClick, this);
-        this.btn_task.addEventListener(egret.TouchEvent.TOUCH_TAP, this.taskClick, this);
-        this.btn_start_game.addEventListener(egret.TouchEvent.TOUCH_TAP, this.startGameClick, this);
+    GameOver.prototype.init = function () {
     };
-    Begin.prototype.gameRuleClick = function () {
-        this.addChild(GameRule.getInstance());
-    };
-    Begin.prototype.rankingListClick = function () {
-        var rankingList = new RankingList();
-        this.addChild(rankingList);
-    };
-    Begin.prototype.taskClick = function () {
-        var task = new Task();
-        this.addChild(task);
-    };
-    Begin.prototype.startGameClick = function () {
-        var gamePage = new GamePage();
-        this.addChild(gamePage);
-    };
-    return Begin;
+    return GameOver;
 }(eui.Component));
-__reflect(Begin.prototype, "Begin", ["eui.UIComponent", "egret.DisplayObject"]);
+__reflect(GameOver.prototype, "GameOver", ["eui.UIComponent", "egret.DisplayObject"]);
 var GamePage = (function (_super) {
     __extends(GamePage, _super);
     function GamePage() {
@@ -483,7 +507,6 @@ var GamePage = (function (_super) {
         var time1 = 3000;
         // 绑定的对象发生变化时调用该方法
         var that = this;
-        console.log(that);
         var funcChange = function () {
             // console.log(this.source, this.x);
             console.log(that);

@@ -10,7 +10,7 @@ var egret = window.egret;window.skins={};
                 window.generateEUI = {};
                 generateEUI.paths = {};
                 generateEUI.styles = undefined;
-                generateEUI.skins = {"eui.Button":"resource/eui_skins/ButtonSkin.exml","eui.CheckBox":"resource/eui_skins/CheckBoxSkin.exml","eui.HScrollBar":"resource/eui_skins/HScrollBarSkin.exml","eui.HSlider":"resource/eui_skins/HSliderSkin.exml","eui.Panel":"resource/eui_skins/PanelSkin.exml","eui.TextInput":"resource/eui_skins/TextInputSkin.exml","eui.ProgressBar":"resource/eui_skins/ProgressBarSkin.exml","eui.RadioButton":"resource/eui_skins/RadioButtonSkin.exml","eui.Scroller":"resource/eui_skins/ScrollerSkin.exml","eui.ToggleSwitch":"resource/eui_skins/ToggleSwitchSkin.exml","eui.VScrollBar":"resource/eui_skins/VScrollBarSkin.exml","eui.VSlider":"resource/eui_skins/VSliderSkin.exml","eui.ItemRenderer":"resource/eui_skins/ItemRendererSkin.exml","Begin":"resource/game/Begin.exml","GameRule":"resource/game/GameRule.exml","Task":"resource/game/Task.exml","RankingList":"resource/game/RankingList.exml","GamePage":"resource/game/GamePage.exml"};generateEUI.paths['resource/eui_skins/ButtonSkin.exml'] = window.skins.ButtonSkin = (function (_super) {
+                generateEUI.skins = {"eui.Button":"resource/eui_skins/ButtonSkin.exml","eui.CheckBox":"resource/eui_skins/CheckBoxSkin.exml","eui.HScrollBar":"resource/eui_skins/HScrollBarSkin.exml","eui.HSlider":"resource/eui_skins/HSliderSkin.exml","eui.Panel":"resource/eui_skins/PanelSkin.exml","eui.TextInput":"resource/eui_skins/TextInputSkin.exml","eui.ProgressBar":"resource/eui_skins/ProgressBarSkin.exml","eui.RadioButton":"resource/eui_skins/RadioButtonSkin.exml","eui.Scroller":"resource/eui_skins/ScrollerSkin.exml","eui.ToggleSwitch":"resource/eui_skins/ToggleSwitchSkin.exml","eui.VScrollBar":"resource/eui_skins/VScrollBarSkin.exml","eui.VSlider":"resource/eui_skins/VSliderSkin.exml","eui.ItemRenderer":"resource/eui_skins/ItemRendererSkin.exml","Begin":"resource/game/Begin.exml","GameRule":"resource/game/GameRule.exml","Task":"resource/game/Task.exml","RankingList":"resource/game/RankingList.exml","GamePage":"resource/game/GamePage.exml","GameOver":"resource/game/GameOver.exml"};generateEUI.paths['resource/eui_skins/ButtonSkin.exml'] = window.skins.ButtonSkin = (function (_super) {
 	__extends(ButtonSkin, _super);
 	function ButtonSkin() {
 		_super.call(this);
@@ -949,11 +949,11 @@ var egret = window.egret;window.skins={};
 		return t;
 	};
 	return BeginSkin;
-})(eui.Skin);generateEUI.paths['resource/game/GamePage.exml'] = window.GamePageSkin = (function (_super) {
-	__extends(GamePageSkin, _super);
-	var GamePageSkin$Skin5 = 	(function (_super) {
-		__extends(GamePageSkin$Skin5, _super);
-		function GamePageSkin$Skin5() {
+})(eui.Skin);generateEUI.paths['resource/game/GameOver.exml'] = window.GameOverSkin = (function (_super) {
+	__extends(GameOverSkin, _super);
+	var GameOverSkin$Skin5 = 	(function (_super) {
+		__extends(GameOverSkin$Skin5, _super);
+		function GameOverSkin$Skin5() {
 			_super.call(this);
 			this.skinParts = ["labelDisplay"];
 			
@@ -972,7 +972,127 @@ var egret = window.egret;window.skins={};
 					])
 			];
 		}
-		var _proto = GamePageSkin$Skin5.prototype;
+		var _proto = GameOverSkin$Skin5.prototype;
+
+		_proto._Image1_i = function () {
+			var t = new eui.Image();
+			t.percentHeight = 100;
+			t.source = "again_png";
+			t.percentWidth = 100;
+			return t;
+		};
+		_proto.labelDisplay_i = function () {
+			var t = new eui.Label();
+			this.labelDisplay = t;
+			t.horizontalCenter = 0;
+			t.verticalCenter = 0;
+			return t;
+		};
+		return GameOverSkin$Skin5;
+	})(eui.Skin);
+
+	var GameOverSkin$Skin6 = 	(function (_super) {
+		__extends(GameOverSkin$Skin6, _super);
+		function GameOverSkin$Skin6() {
+			_super.call(this);
+			this.skinParts = ["labelDisplay"];
+			
+			this.elementsContent = [this._Image1_i(),this.labelDisplay_i()];
+			this.states = [
+				new eui.State ("up",
+					[
+					])
+				,
+				new eui.State ("down",
+					[
+					])
+				,
+				new eui.State ("disabled",
+					[
+					])
+			];
+		}
+		var _proto = GameOverSkin$Skin6.prototype;
+
+		_proto._Image1_i = function () {
+			var t = new eui.Image();
+			t.percentHeight = 100;
+			t.source = "share_btn_png";
+			t.percentWidth = 100;
+			return t;
+		};
+		_proto.labelDisplay_i = function () {
+			var t = new eui.Label();
+			this.labelDisplay = t;
+			t.horizontalCenter = 0;
+			t.verticalCenter = 0;
+			return t;
+		};
+		return GameOverSkin$Skin6;
+	})(eui.Skin);
+
+	var GameOverSkin$Skin7 = 	(function (_super) {
+		__extends(GameOverSkin$Skin7, _super);
+		function GameOverSkin$Skin7() {
+			_super.call(this);
+			this.skinParts = ["labelDisplay"];
+			
+			this.elementsContent = [this._Image1_i(),this.labelDisplay_i()];
+			this.states = [
+				new eui.State ("up",
+					[
+					])
+				,
+				new eui.State ("down",
+					[
+					])
+				,
+				new eui.State ("disabled",
+					[
+					])
+			];
+		}
+		var _proto = GameOverSkin$Skin7.prototype;
+
+		_proto._Image1_i = function () {
+			var t = new eui.Image();
+			t.percentHeight = 100;
+			t.source = "ranking_list_btn_png";
+			t.percentWidth = 100;
+			return t;
+		};
+		_proto.labelDisplay_i = function () {
+			var t = new eui.Label();
+			this.labelDisplay = t;
+			t.horizontalCenter = 0;
+			t.verticalCenter = 0;
+			return t;
+		};
+		return GameOverSkin$Skin7;
+	})(eui.Skin);
+
+	var GameOverSkin$Skin8 = 	(function (_super) {
+		__extends(GameOverSkin$Skin8, _super);
+		function GameOverSkin$Skin8() {
+			_super.call(this);
+			this.skinParts = ["labelDisplay"];
+			
+			this.elementsContent = [this._Image1_i(),this.labelDisplay_i()];
+			this.states = [
+				new eui.State ("up",
+					[
+					])
+				,
+				new eui.State ("down",
+					[
+					])
+				,
+				new eui.State ("disabled",
+					[
+					])
+			];
+		}
+		var _proto = GameOverSkin$Skin8.prototype;
 
 		_proto._Image1_i = function () {
 			var t = new eui.Image();
@@ -988,12 +1108,151 @@ var egret = window.egret;window.skins={};
 			t.verticalCenter = 0;
 			return t;
 		};
-		return GamePageSkin$Skin5;
+		return GameOverSkin$Skin8;
 	})(eui.Skin);
 
-	var GamePageSkin$Skin6 = 	(function (_super) {
-		__extends(GamePageSkin$Skin6, _super);
-		function GamePageSkin$Skin6() {
+	function GameOverSkin() {
+		_super.call(this);
+		this.skinParts = ["btn_again_game","btn_to_share","btn_ranking_list","btn_ranking_list0","total_score"];
+		
+		this.height = 1136;
+		this.width = 640;
+		this.elementsContent = [this._Image1_i(),this.btn_again_game_i(),this.btn_to_share_i(),this.btn_ranking_list_i(),this._Label1_i(),this.btn_ranking_list0_i(),this._Label2_i(),this.total_score_i(),this._Label3_i(),this._Label4_i()];
+	}
+	var _proto = GameOverSkin.prototype;
+
+	_proto._Image1_i = function () {
+		var t = new eui.Image();
+		t.anchorOffsetX = 0;
+		t.anchorOffsetY = 0;
+		t.height = 1136;
+		t.source = "big_box_png";
+		t.width = 640;
+		t.x = -0.87;
+		t.y = 0;
+		return t;
+	};
+	_proto.btn_again_game_i = function () {
+		var t = new eui.Button();
+		this.btn_again_game = t;
+		t.height = 90;
+		t.label = "";
+		t.width = 300;
+		t.x = 169.13;
+		t.y = 896.54;
+		t.skinName = GameOverSkin$Skin5;
+		return t;
+	};
+	_proto.btn_to_share_i = function () {
+		var t = new eui.Button();
+		this.btn_to_share = t;
+		t.height = 90;
+		t.label = "";
+		t.width = 300;
+		t.x = 170;
+		t.y = 743.52;
+		t.skinName = GameOverSkin$Skin6;
+		return t;
+	};
+	_proto.btn_ranking_list_i = function () {
+		var t = new eui.Button();
+		this.btn_ranking_list = t;
+		t.anchorOffsetX = 0;
+		t.anchorOffsetY = 0;
+		t.height = 80;
+		t.label = "";
+		t.width = 80;
+		t.x = 115;
+		t.y = 573.68;
+		t.skinName = GameOverSkin$Skin7;
+		return t;
+	};
+	_proto._Label1_i = function () {
+		var t = new eui.Label();
+		t.fontFamily = "PingFangSC";
+		t.height = 20;
+		t.size = 20;
+		t.text = "排行榜";
+		t.textAlign = "center";
+		t.width = 60;
+		t.x = 124.52;
+		t.y = 664.68;
+		return t;
+	};
+	_proto.btn_ranking_list0_i = function () {
+		var t = new eui.Button();
+		this.btn_ranking_list0 = t;
+		t.anchorOffsetX = 0;
+		t.anchorOffsetY = 0;
+		t.height = 80;
+		t.label = "";
+		t.width = 80;
+		t.x = 445;
+		t.y = 573.68;
+		t.skinName = GameOverSkin$Skin8;
+		return t;
+	};
+	_proto._Label2_i = function () {
+		var t = new eui.Label();
+		t.fontFamily = "PingFangSC";
+		t.height = 20;
+		t.size = 20;
+		t.text = "首页";
+		t.textAlign = "center";
+		t.width = 60;
+		t.x = 455;
+		t.y = 663.68;
+		return t;
+	};
+	_proto.total_score_i = function () {
+		var t = new eui.Label();
+		this.total_score = t;
+		t.anchorOffsetX = 0;
+		t.anchorOffsetY = 0;
+		t.fontFamily = "Georgia";
+		t.height = 95;
+		t.size = 80;
+		t.text = "125";
+		t.textAlign = "center";
+		t.textColor = 0xf1527b;
+		t.verticalAlign = "middle";
+		t.width = 320;
+		t.x = 160;
+		t.y = 280;
+		return t;
+	};
+	_proto._Label3_i = function () {
+		var t = new eui.Label();
+		t.anchorOffsetX = 0;
+		t.anchorOffsetY = 0;
+		t.height = 35;
+		t.size = 38;
+		t.text = "游戏结束";
+		t.width = 157;
+		t.x = 242;
+		t.y = 155;
+		return t;
+	};
+	_proto._Label4_i = function () {
+		var t = new eui.Label();
+		t.anchorOffsetX = 0;
+		t.anchorOffsetY = 0;
+		t.height = 35;
+		t.size = 22;
+		t.strokeColor = 0x000000;
+		t.text = "——  本次得分  ——";
+		t.textAlign = "center";
+		t.width = 250;
+		t.x = 195;
+		t.y = 240;
+		return t;
+	};
+	return GameOverSkin;
+})(eui.Skin);generateEUI.paths['resource/game/GamePage.exml'] = window.GamePageSkin = (function (_super) {
+	__extends(GamePageSkin, _super);
+	var GamePageSkin$Skin9 = 	(function (_super) {
+		__extends(GamePageSkin$Skin9, _super);
+		function GamePageSkin$Skin9() {
 			_super.call(this);
 			this.skinParts = ["labelDisplay"];
 			
@@ -1012,7 +1271,47 @@ var egret = window.egret;window.skins={};
 					])
 			];
 		}
-		var _proto = GamePageSkin$Skin6.prototype;
+		var _proto = GamePageSkin$Skin9.prototype;
+
+		_proto._Image1_i = function () {
+			var t = new eui.Image();
+			t.percentHeight = 100;
+			t.source = "home_btn_png";
+			t.percentWidth = 100;
+			return t;
+		};
+		_proto.labelDisplay_i = function () {
+			var t = new eui.Label();
+			this.labelDisplay = t;
+			t.horizontalCenter = 0;
+			t.verticalCenter = 0;
+			return t;
+		};
+		return GamePageSkin$Skin9;
+	})(eui.Skin);
+
+	var GamePageSkin$Skin10 = 	(function (_super) {
+		__extends(GamePageSkin$Skin10, _super);
+		function GamePageSkin$Skin10() {
+			_super.call(this);
+			this.skinParts = ["labelDisplay"];
+			
+			this.elementsContent = [this._Image1_i(),this.labelDisplay_i()];
+			this.states = [
+				new eui.State ("up",
+					[
+					])
+				,
+				new eui.State ("down",
+					[
+					])
+				,
+				new eui.State ("disabled",
+					[
+					])
+			];
+		}
+		var _proto = GamePageSkin$Skin10.prototype;
 
 		_proto._Image1_i = function () {
 			var t = new eui.Image();
@@ -1028,12 +1327,12 @@ var egret = window.egret;window.skins={};
 			t.verticalCenter = 0;
 			return t;
 		};
-		return GamePageSkin$Skin6;
+		return GamePageSkin$Skin10;
 	})(eui.Skin);
 
-	var GamePageSkin$Skin7 = 	(function (_super) {
-		__extends(GamePageSkin$Skin7, _super);
-		function GamePageSkin$Skin7() {
+	var GamePageSkin$Skin11 = 	(function (_super) {
+		__extends(GamePageSkin$Skin11, _super);
+		function GamePageSkin$Skin11() {
 			_super.call(this);
 			this.skinParts = ["labelDisplay"];
 			
@@ -1052,7 +1351,7 @@ var egret = window.egret;window.skins={};
 					])
 			];
 		}
-		var _proto = GamePageSkin$Skin7.prototype;
+		var _proto = GamePageSkin$Skin11.prototype;
 
 		_proto._Image1_i = function () {
 			var t = new eui.Image();
@@ -1068,12 +1367,12 @@ var egret = window.egret;window.skins={};
 			t.verticalCenter = 0;
 			return t;
 		};
-		return GamePageSkin$Skin7;
+		return GamePageSkin$Skin11;
 	})(eui.Skin);
 
-	var GamePageSkin$Skin8 = 	(function (_super) {
-		__extends(GamePageSkin$Skin8, _super);
-		function GamePageSkin$Skin8() {
+	var GamePageSkin$Skin12 = 	(function (_super) {
+		__extends(GamePageSkin$Skin12, _super);
+		function GamePageSkin$Skin12() {
 			_super.call(this);
 			this.skinParts = ["labelDisplay"];
 			
@@ -1092,7 +1391,7 @@ var egret = window.egret;window.skins={};
 					])
 			];
 		}
-		var _proto = GamePageSkin$Skin8.prototype;
+		var _proto = GamePageSkin$Skin12.prototype;
 
 		_proto._Image1_i = function () {
 			var t = new eui.Image();
@@ -1108,7 +1407,7 @@ var egret = window.egret;window.skins={};
 			t.verticalCenter = 0;
 			return t;
 		};
-		return GamePageSkin$Skin8;
+		return GamePageSkin$Skin12;
 	})(eui.Skin);
 
 	function GamePageSkin() {
@@ -1249,7 +1548,7 @@ var egret = window.egret;window.skins={};
 		t.width = 80;
 		t.x = 20;
 		t.y = 30;
-		t.skinName = GamePageSkin$Skin5;
+		t.skinName = GamePageSkin$Skin9;
 		return t;
 	};
 	_proto.btn_left_i = function () {
@@ -1260,7 +1559,7 @@ var egret = window.egret;window.skins={};
 		t.width = 112;
 		t.x = 60;
 		t.y = 991;
-		t.skinName = GamePageSkin$Skin6;
+		t.skinName = GamePageSkin$Skin10;
 		return t;
 	};
 	_proto.btn_up_i = function () {
@@ -1271,7 +1570,7 @@ var egret = window.egret;window.skins={};
 		t.width = 112;
 		t.x = 265;
 		t.y = 991;
-		t.skinName = GamePageSkin$Skin7;
+		t.skinName = GamePageSkin$Skin11;
 		return t;
 	};
 	_proto.btn_right_i = function () {
@@ -1282,15 +1581,15 @@ var egret = window.egret;window.skins={};
 		t.width = 112;
 		t.x = 474;
 		t.y = 987;
-		t.skinName = GamePageSkin$Skin8;
+		t.skinName = GamePageSkin$Skin12;
 		return t;
 	};
 	return GamePageSkin;
 })(eui.Skin);generateEUI.paths['resource/game/GameRule.exml'] = window.GameRuleSkin = (function (_super) {
 	__extends(GameRuleSkin, _super);
-	var GameRuleSkin$Skin9 = 	(function (_super) {
-		__extends(GameRuleSkin$Skin9, _super);
-		function GameRuleSkin$Skin9() {
+	var GameRuleSkin$Skin13 = 	(function (_super) {
+		__extends(GameRuleSkin$Skin13, _super);
+		function GameRuleSkin$Skin13() {
 			_super.call(this);
 			this.skinParts = ["labelDisplay"];
 			
@@ -1309,7 +1608,7 @@ var egret = window.egret;window.skins={};
 					])
 			];
 		}
-		var _proto = GameRuleSkin$Skin9.prototype;
+		var _proto = GameRuleSkin$Skin13.prototype;
 
 		_proto._Image1_i = function () {
 			var t = new eui.Image();
@@ -1325,7 +1624,7 @@ var egret = window.egret;window.skins={};
 			t.verticalCenter = 0;
 			return t;
 		};
-		return GameRuleSkin$Skin9;
+		return GameRuleSkin$Skin13;
 	})(eui.Skin);
 
 	function GameRuleSkin() {
@@ -1517,15 +1816,15 @@ var egret = window.egret;window.skins={};
 		t.width = 80;
 		t.x = 74;
 		t.y = 912.41;
-		t.skinName = GameRuleSkin$Skin9;
+		t.skinName = GameRuleSkin$Skin13;
 		return t;
 	};
 	return GameRuleSkin;
 })(eui.Skin);generateEUI.paths['resource/game/RankingList.exml'] = window.RankingListSkin = (function (_super) {
 	__extends(RankingListSkin, _super);
-	var RankingListSkin$Skin10 = 	(function (_super) {
-		__extends(RankingListSkin$Skin10, _super);
-		function RankingListSkin$Skin10() {
+	var RankingListSkin$Skin14 = 	(function (_super) {
+		__extends(RankingListSkin$Skin14, _super);
+		function RankingListSkin$Skin14() {
 			_super.call(this);
 			this.skinParts = ["labelDisplay"];
 			
@@ -1544,7 +1843,7 @@ var egret = window.egret;window.skins={};
 					])
 			];
 		}
-		var _proto = RankingListSkin$Skin10.prototype;
+		var _proto = RankingListSkin$Skin14.prototype;
 
 		_proto._Image1_i = function () {
 			var t = new eui.Image();
@@ -1560,7 +1859,7 @@ var egret = window.egret;window.skins={};
 			t.verticalCenter = 0;
 			return t;
 		};
-		return RankingListSkin$Skin10;
+		return RankingListSkin$Skin14;
 	})(eui.Skin);
 
 	function RankingListSkin() {
@@ -1602,7 +1901,7 @@ var egret = window.egret;window.skins={};
 		t.width = 80;
 		t.x = 74;
 		t.y = 912.41;
-		t.skinName = RankingListSkin$Skin10;
+		t.skinName = RankingListSkin$Skin14;
 		return t;
 	};
 	_proto._Image3_i = function () {
@@ -1646,9 +1945,9 @@ var egret = window.egret;window.skins={};
 	return RankingListSkin;
 })(eui.Skin);generateEUI.paths['resource/game/Task.exml'] = window.TaskSkin = (function (_super) {
 	__extends(TaskSkin, _super);
-	var TaskSkin$Skin11 = 	(function (_super) {
-		__extends(TaskSkin$Skin11, _super);
-		function TaskSkin$Skin11() {
+	var TaskSkin$Skin15 = 	(function (_super) {
+		__extends(TaskSkin$Skin15, _super);
+		function TaskSkin$Skin15() {
 			_super.call(this);
 			this.skinParts = ["labelDisplay"];
 			
@@ -1667,7 +1966,7 @@ var egret = window.egret;window.skins={};
 					])
 			];
 		}
-		var _proto = TaskSkin$Skin11.prototype;
+		var _proto = TaskSkin$Skin15.prototype;
 
 		_proto._Image1_i = function () {
 			var t = new eui.Image();
@@ -1683,12 +1982,12 @@ var egret = window.egret;window.skins={};
 			t.verticalCenter = 0;
 			return t;
 		};
-		return TaskSkin$Skin11;
+		return TaskSkin$Skin15;
 	})(eui.Skin);
 
-	var TaskSkin$Skin12 = 	(function (_super) {
-		__extends(TaskSkin$Skin12, _super);
-		function TaskSkin$Skin12() {
+	var TaskSkin$Skin16 = 	(function (_super) {
+		__extends(TaskSkin$Skin16, _super);
+		function TaskSkin$Skin16() {
 			_super.call(this);
 			this.skinParts = ["labelDisplay"];
 			
@@ -1707,7 +2006,7 @@ var egret = window.egret;window.skins={};
 					])
 			];
 		}
-		var _proto = TaskSkin$Skin12.prototype;
+		var _proto = TaskSkin$Skin16.prototype;
 
 		_proto._Image1_i = function () {
 			var t = new eui.Image();
@@ -1723,7 +2022,7 @@ var egret = window.egret;window.skins={};
 			t.verticalCenter = 0;
 			return t;
 		};
-		return TaskSkin$Skin12;
+		return TaskSkin$Skin16;
 	})(eui.Skin);
 
 	function TaskSkin() {
@@ -1765,7 +2064,7 @@ var egret = window.egret;window.skins={};
 		t.width = 80;
 		t.x = 74;
 		t.y = 912.41;
-		t.skinName = TaskSkin$Skin11;
+		t.skinName = TaskSkin$Skin15;
 		return t;
 	};
 	_proto._Image3_i = function () {
@@ -1786,7 +2085,7 @@ var egret = window.egret;window.skins={};
 		t.width = 82;
 		t.x = 445.91;
 		t.y = 734.53;
-		t.skinName = TaskSkin$Skin12;
+		t.skinName = TaskSkin$Skin16;
 		return t;
 	};
 	_proto._Label1_i = function () {

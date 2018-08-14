@@ -17,7 +17,8 @@
 		"GameRule": "resource/game/GameRule.exml",
 		"Task": "resource/game/Task.exml",
 		"RankingList": "resource/game/RankingList.exml",
-		"GamePage": "resource/game/GamePage.exml"
+		"GamePage": "resource/game/GamePage.exml",
+		"GameOver": "resource/game/GameOver.exml"
 	},
 	"autoGenerateExmlsList": true,
 	"exmls": [
@@ -35,6 +36,7 @@
 		"resource/eui_skins/VScrollBarSkin.exml",
 		"resource/eui_skins/VSliderSkin.exml",
 		"resource/game/Begin.exml",
+		"resource/game/GameOver.exml",
 		"resource/game/GamePage.exml",
 		"resource/game/GameRule.exml",
 		"resource/game/RankingList.exml",
