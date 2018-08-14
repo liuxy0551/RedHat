@@ -476,20 +476,27 @@ var GamePage = (function (_super) {
         }
         //设置小红帽及所在云朵的初始位置
         // this.img_face_right.x = this.width / 2 - 30;
-        this.img_face_right.y = 530;
+        this.img_face_right.y = 780;
         // this.img_cloud1.x = this.width / 2 - 100
         // 添加缓动动画，定义动画缓动时间
         var time = 2000;
         var time1 = 3000;
         // 绑定的对象发生变化时调用该方法
+        var that = this;
+        console.log(that);
         var funcChange = function () {
-            console.log(this.source, this.x);
+            // console.log(this.source, this.x);
+            console.log(that);
+            console.log(this);
+            // if(this.x + this.width < that.img_face_right.x + that.img_face_right.width / 2) {
+            // 	console.log("小红帽右侧掉落");
+            // }
             // 在egretProperties.json 中添加 game，需要再执行 egret build -e
         };
         egret.Tween.get(this.img_cloud2, { loop: true, onChange: funcChange, onChangeObj: this.img_cloud2 }).
             to({ x: 0 }, time, egret.Ease.sineIn).
             to({ x: 473 }, time, egret.Ease.sineIn);
-        egret.Tween.get(this.img_gift1, { loop: true, onChange: funcChange, onChangeObj: this.img_gift1 }).
+        egret.Tween.get(this.img_gift1, { loop: true }).
             to({ x: 129 }, time, egret.Ease.sineIn).
             to({ x: 602 }, time, egret.Ease.sineIn);
         egret.Tween.get(this.img_cloud3, { loop: true }).
@@ -508,6 +515,7 @@ var GamePage = (function (_super) {
     // 碰撞检测
     GamePage.prototype.redHatMeet = function () {
     };
+    // 返回首页
     GamePage.prototype.returnClick = function () {
         this.parent.removeChild(this);
     };
@@ -516,12 +524,14 @@ var GamePage = (function (_super) {
             this.img_face_right.source = "face_left_png";
             this.img_face_right.x = this.img_face_right.x - 20;
             // 小红帽左侧掉落
-            this.redHatDrop('left');
+            console.log(this.img_face_right.x);
+            // this.redHatDrop('left')
         }
         else {
             this.img_face_right.x = this.img_face_right.x - 20;
             // 小红帽左侧掉落
-            this.redHatDrop('left');
+            console.log(this.img_face_right.x);
+            // this.redHatDrop('left')
         }
     };
     GamePage.prototype.upClick = function () {
@@ -539,12 +549,14 @@ var GamePage = (function (_super) {
             this.img_face_right.source = "face_right_png";
             this.img_face_right.x = this.img_face_right.x + 20;
             // 小红帽右侧掉落
-            this.redHatDrop('right');
+            console.log(this.img_face_right.x);
+            // this.redHatDrop('right')
         }
         else {
             this.img_face_right.x = this.img_face_right.x + 20;
             // 小红帽右侧掉落
-            this.redHatDrop('right');
+            console.log(this.img_face_right.x);
+            // this.redHatDrop('right')
         }
     };
     // 移除某个对象上的全部 Tween 动画

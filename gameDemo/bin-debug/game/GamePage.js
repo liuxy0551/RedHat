@@ -50,34 +50,30 @@ var GamePage = (function (_super) {
         // this.img_face_right.x = this.width / 2 - 30;
         this.img_face_right.y = 780;
         // this.img_cloud1.x = this.width / 2 - 100
-        // console.log("this.img_cloud1", this.img_cloud1.x, this.img_cloud1.y)
-        // 添加缓动动画
-        // var shp:egret.Shape = new egret.Shape();
-        // shp.graphics.beginFill( 0x00ff00 );
-        // shp.graphics.drawRect( 0, 0, 100, 100 );
-        // shp.graphics.endFill();
-        // shp.x = 50;
-        // this.addChild( shp );
-        // var tw = egret.Tween.get( shp );
-        // tw.to( {x:150}, 1000 );
-        // 定义动画缓动时间
+        // 添加缓动动画，定义动画缓动时间
         var time = 2000;
         var time1 = 3000;
+        // 绑定的对象发生变化时调用该方法
+        var that = this;
         var funcChange = function () {
-            console.log(this.source, this.x);
+            // console.log(this.source, this.x);
+            if (this.x + this.width < that.img_face_right.x + that.img_face_right.width / 2) {
+                console.log("小红帽右侧掉落");
+            }
+            // 在egretProperties.json 中添加 game，需要再执行 egret build -e
         };
         egret.Tween.get(this.img_cloud2, { loop: true, onChange: funcChange, onChangeObj: this.img_cloud2 }).
             to({ x: 0 }, time, egret.Ease.sineIn).
-            to({ x: 485 }, time, egret.Ease.sineIn);
-        egret.Tween.get(this.img_gift1, { loop: true, onChange: funcChange, onChangeObj: this.img_gift1 }).
-            to({ x: 108 }, time, egret.Ease.sineIn).
-            to({ x: 593 }, time, egret.Ease.sineIn);
+            to({ x: 473 }, time, egret.Ease.sineIn);
+        egret.Tween.get(this.img_gift1, { loop: true }).
+            to({ x: 129 }, time, egret.Ease.sineIn).
+            to({ x: 602 }, time, egret.Ease.sineIn);
         egret.Tween.get(this.img_cloud3, { loop: true }).
-            to({ x: 473 }, time1, egret.Ease.sineIn).
+            to({ x: 505 }, time1, egret.Ease.sineIn).
             to({ x: 0 }, time1, egret.Ease.sineIn);
         egret.Tween.get(this.img_gift2, { loop: true }).
-            to({ x: 538 }, time1, egret.Ease.sineIn).
-            to({ x: 65 }, time1, egret.Ease.sineIn);
+            to({ x: 554 }, time1, egret.Ease.sineIn).
+            to({ x: 49 }, time1, egret.Ease.sineIn);
         egret.Tween.get(this.img_cloud4, { loop: true }).
             to({ x: 0 }, time1, egret.Ease.sineIn).
             to({ x: 431 }, time1, egret.Ease.sineIn);
@@ -85,45 +81,77 @@ var GamePage = (function (_super) {
             to({ x: 0 }, time1, egret.Ease.sineIn).
             to({ x: 431 }, time1, egret.Ease.sineIn);
     };
+    // 碰撞检测
+    GamePage.prototype.redHatMeet = function () {
+    };
+    // 返回首页
     GamePage.prototype.returnClick = function () {
-        // this.parent.removeChild(this);
-        console.log("img_cloud1+", this.img_cloud1.x);
-        console.log("img_cloud2-", this.img_cloud2.x);
-        console.log("img_cloud3+", this.img_cloud3.x);
-        console.log("img_cloud4-", this.img_cloud4.x);
-        // this.img_cloud1.x = this.img_cloud1.x + 50;
-        this.img_cloud2.x = this.img_cloud2.x - 50;
-        this.img_gift1.x = this.img_gift1.x - 50;
-        this.img_cloud3.x = this.img_cloud3.x + 50;
-        this.img_gift2.x = this.img_gift2.x + 50;
-        this.img_cloud4.x = this.img_cloud4.x - 50;
-        this.img_gift3.x = this.img_gift3.x - 50;
+        this.parent.removeChild(this);
     };
     GamePage.prototype.leftClick = function () {
-        console.log("this.img_face_right", this.img_face_right.x);
         if (this.img_face_right.source == "face_right_png") {
             this.img_face_right.source = "face_left_png";
             this.img_face_right.x = this.img_face_right.x - 20;
+            // 小红帽左侧掉落
+            console.log(this.img_face_right.x);
+            // this.redHatDrop('left')
         }
         else {
             this.img_face_right.x = this.img_face_right.x - 20;
+            // 小红帽左侧掉落
+            console.log(this.img_face_right.x);
+            // this.redHatDrop('left')
         }
     };
     GamePage.prototype.upClick = function () {
+        var face_where = this.img_face_right.source;
         this.img_face_right.source = "face_me_png";
-        // this.img_face_right.y = this.img_face_right.y - 330;
+        // 跳起及落下的动作
         egret.Tween.get(this.img_face_right).
-            to({ y: this.img_face_right.y - 330 }, 1200, egret.Ease.sineOut).
-            to({ y: this.img_face_right.y - 245 }, 600, egret.Ease.sineOut);
+            to({ y: this.img_face_right.y - 330 }, 700, egret.Ease.sineOut).
+            to({ y: this.img_face_right.y - 250 }, 400, egret.Ease.sineOut).
+            wait(1).call(this.removeTweens, this, [face_where]); //设置延时，设置回调函数及作用域，用于侦听动画完成;
+        console.log(this.img_cloud2.x);
     };
     GamePage.prototype.rightClick = function () {
-        console.log("this.img_face_right", this.img_face_right.x);
         if (this.img_face_right.source == "face_left_png") {
             this.img_face_right.source = "face_right_png";
             this.img_face_right.x = this.img_face_right.x + 20;
+            // 小红帽右侧掉落
+            console.log(this.img_face_right.x);
+            // this.redHatDrop('right')
         }
         else {
             this.img_face_right.x = this.img_face_right.x + 20;
+            // 小红帽右侧掉落
+            console.log(this.img_face_right.x);
+            // this.redHatDrop('right')
+        }
+    };
+    // 移除某个对象上的全部 Tween 动画
+    GamePage.prototype.removeTweens = function (face_where) {
+        // 删除一个对象上的全部 Tween 动画
+        egret.Tween.removeTweens(this.img_cloud2);
+        egret.Tween.removeTweens(this.img_gift1);
+        this.img_face_right.source = face_where;
+    };
+    //小红帽旋转掉落
+    GamePage.prototype.redHatDrop = function (direction) {
+        if (direction == 'left') {
+            //小红帽从左边旋转掉落
+            if (this.img_face_right.x + this.img_face_right.width / 2 < this.img_cloud1.x) {
+                egret.Tween.get(this.img_face_right).
+                    to({ y: this.img_face_right.y + 117 }, 300, egret.Ease.sineOut).
+                    to({ rotation: 720, y: this.img_face_right.y + 750 }, 1000, egret.Ease.sineIn);
+            }
+        }
+        else if (direction == 'right') {
+            //小红帽从右边旋转掉落
+            if (this.img_face_right.x + this.img_face_right.width / 2 > this.img_cloud1.x + this.img_cloud1.width) {
+                egret.Tween.get(this.img_face_right).
+                    to({ y: this.img_face_right.y + 117 }, 300, egret.Ease.sineOut).
+                    to({ rotation: 720, y: this.img_face_right.y + 750 }, 1000, egret.Ease.sineIn);
+            }
         }
     };
     return GamePage;
