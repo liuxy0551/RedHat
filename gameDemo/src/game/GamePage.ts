@@ -74,22 +74,22 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 		var time1 = 3000;
 		// 绑定的对象发生变化时调用该方法
 		var funcChange = function(): void {
-			// console.log(this.source, this.x);
+			console.log(this.source, this.x);
 			// 在egretProperties.json 中添加 game，需要再执行 egret build -e
 		}
 		egret.Tween.get(this.img_cloud2, { loop: true, onChange: funcChange, onChangeObj: this.img_cloud2 }).
             to({ x: 0 }, time, egret.Ease.sineIn).
-            to({ x: 505 }, time, egret.Ease.sineIn);
+            to({ x: 473 }, time, egret.Ease.sineIn);
 		egret.Tween.get(this.img_gift1, { loop: true, onChange: funcChange, onChangeObj: this.img_gift1 }).
-            to({ x: 97 }, time, egret.Ease.sineIn).
+            to({ x: 129 }, time, egret.Ease.sineIn).
             to({ x: 602 }, time, egret.Ease.sineIn);
 
 		egret.Tween.get(this.img_cloud3, { loop: true }).
-            to({ x: 473 }, time1, egret.Ease.sineIn).
+            to({ x: 505 }, time1, egret.Ease.sineIn).
             to({ x: 0 }, time1, egret.Ease.sineIn);
 		egret.Tween.get(this.img_gift2, { loop: true }).
-            to({ x: 538 }, time1, egret.Ease.sineIn).
-            to({ x: 65 }, time1, egret.Ease.sineIn);
+            to({ x: 554 }, time1, egret.Ease.sineIn).
+            to({ x: 49 }, time1, egret.Ease.sineIn);
 
 		egret.Tween.get(this.img_cloud4, { loop: true }).
             to({ x: 0 }, time1, egret.Ease.sineIn).
@@ -127,7 +127,7 @@ class GamePage extends eui.Component implements  eui.UIComponent {
             to({ y: this.img_face_right.y - 250 }, 400, egret.Ease.sineOut).
 			wait(1).call(this.removeTweens, this, [face_where]);//设置延时，设置回调函数及作用域，用于侦听动画完成;
 
-		console.log(this.img_face_right.x)
+		console.log(this.img_cloud2.x)
 	}
 	private rightClick() {
         if(this.img_face_right.source == "face_left_png") {
