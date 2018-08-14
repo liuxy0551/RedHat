@@ -1113,11 +1113,11 @@ var egret = window.egret;window.skins={};
 
 	function GamePageSkin() {
 		_super.call(this);
-		this.skinParts = ["img_cloud1","img_cloud2","img_cloud3","img_cloud4","img_gift1","img_gift2","img_gift3","img_face_right","gp_cloud","sc_cloud","img_gift0","btn_return","btn_left","btn_up","btn_right"];
+		this.skinParts = ["img_cloud1","img_cloud2","img_cloud3","img_cloud4","img_gift1","img_gift2","img_gift3","img_face_right","img_score","gp_cloud","sc_cloud","btn_return","btn_left","btn_up","btn_right"];
 		
 		this.height = 1136;
 		this.width = 640;
-		this.elementsContent = [this.sc_cloud_i(),this.img_gift0_i(),this.btn_return_i(),this.btn_left_i(),this.btn_up_i(),this.btn_right_i()];
+		this.elementsContent = [this.sc_cloud_i(),this.btn_return_i(),this.btn_left_i(),this.btn_up_i(),this.btn_right_i()];
 	}
 	var _proto = GamePageSkin.prototype;
 
@@ -1138,7 +1138,7 @@ var egret = window.egret;window.skins={};
 		t.anchorOffsetY = 0;
 		t.height = 1136;
 		t.width = 640;
-		t.elementsContent = [this.img_cloud1_i(),this.img_cloud2_i(),this.img_cloud3_i(),this.img_cloud4_i(),this.img_gift1_i(),this.img_gift2_i(),this.img_gift3_i(),this.img_face_right_i()];
+		t.elementsContent = [this.img_cloud1_i(),this.img_cloud2_i(),this.img_cloud3_i(),this.img_cloud4_i(),this.img_gift1_i(),this.img_gift2_i(),this.img_gift3_i(),this.img_face_right_i(),this.img_score_i()];
 		return t;
 	};
 	_proto.img_cloud1_i = function () {
@@ -1229,16 +1229,16 @@ var egret = window.egret;window.skins={};
 		t.y = 780;
 		return t;
 	};
-	_proto.img_gift0_i = function () {
+	_proto.img_score_i = function () {
 		var t = new eui.Image();
-		this.img_gift0 = t;
+		this.img_score = t;
 		t.anchorOffsetX = 0;
 		t.anchorOffsetY = 0;
-		t.height = 40;
+		t.height = 77;
 		t.source = "score_png";
-		t.width = 40;
-		t.x = 300;
-		t.y = 285;
+		t.width = 152;
+		t.x = 244;
+		t.y = 252;
 		return t;
 	};
 	_proto.btn_return_i = function () {
@@ -1257,7 +1257,7 @@ var egret = window.egret;window.skins={};
 		this.btn_left = t;
 		t.height = 112;
 		t.label = "";
-		t.width = 110;
+		t.width = 112;
 		t.x = 60;
 		t.y = 991;
 		t.skinName = GamePageSkin$Skin6;
@@ -1268,7 +1268,7 @@ var egret = window.egret;window.skins={};
 		this.btn_up = t;
 		t.height = 112;
 		t.label = "";
-		t.width = 110;
+		t.width = 112;
 		t.x = 265;
 		t.y = 991;
 		t.skinName = GamePageSkin$Skin7;
@@ -1277,9 +1277,9 @@ var egret = window.egret;window.skins={};
 	_proto.btn_right_i = function () {
 		var t = new eui.Button();
 		this.btn_right = t;
-		t.height = 111;
+		t.height = 112;
 		t.label = "";
-		t.width = 111;
+		t.width = 112;
 		t.x = 474;
 		t.y = 987;
 		t.skinName = GamePageSkin$Skin8;

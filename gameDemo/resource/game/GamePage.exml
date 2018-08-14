@@ -12,9 +12,9 @@
 			<e:Image id="img_gift2" width="38" height="38" x="65" y="357" anchorOffsetX="0" anchorOffsetY="0" source="gift2_png"/>
 			<e:Image id="img_gift3" width="38" height="38" x="431" y="107" anchorOffsetX="0" anchorOffsetY="0" source="gift3_png"/>
 			<e:Image id="img_face_right" width="60" height="117" y="780" anchorOffsetX="0" anchorOffsetY="0" source="face_right_png" x="290"/>
+			<e:Image id="img_score" width="152" height="77" y="252" anchorOffsetX="0" anchorOffsetY="0" source="score_png" x="244"/>
 		</e:Group>
 	</e:Scroller>
-	<e:Image id="img_gift0" width="40" height="40" y="285" anchorOffsetX="0" anchorOffsetY="0" x="300" source="score_png"/>
 	<e:Button id="btn_return" label="" y="30" width="80" height="80" x="20">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
@@ -23,7 +23,7 @@
 			</e:Skin>
 		</e:skinName>
 	</e:Button>
-	<e:Button id="btn_left" label="" y="991" x="60" width="110" height="112">
+	<e:Button id="btn_left" label="" y="991" x="60" width="112" height="112">
 		<e:skinName>
 		<e:Skin states="up,down,disabled">
 			<e:Image width="100%" height="100%" source="left_png"/>
@@ -31,7 +31,7 @@
 		</e:Skin>
 		</e:skinName>
 	</e:Button>
-	<e:Button id="btn_up" label="" y="991" x="265" width="110" height="112">
+	<e:Button id="btn_up" label="" y="991" x="265" width="112" height="112">
 		<e:skinName>
 		<e:Skin states="up,down,disabled">
 			<e:Image width="100%" height="100%" source="up_png"/>
@@ -39,7 +39,7 @@
 		</e:Skin>
 		</e:skinName>
 	</e:Button>
-	<e:Button id="btn_right" label="" y="987" x="474" width="111" height="111">
+	<e:Button id="btn_right" label="" y="987" x="474" width="112" height="112">
 		<e:skinName>
 		<e:Skin states="up,down,disabled">
 			<e:Image width="100%" height="100%" source="right_png"/>

@@ -476,24 +476,15 @@ var GamePage = (function (_super) {
         }
         //设置小红帽及所在云朵的初始位置
         // this.img_face_right.x = this.width / 2 - 30;
-        this.img_face_right.y = 780;
+        this.img_face_right.y = 530;
         // this.img_cloud1.x = this.width / 2 - 100
-        // console.log("this.img_cloud1", this.img_cloud1.x, this.img_cloud1.y)
-        // 添加缓动动画
-        // var shp:egret.Shape = new egret.Shape();
-        // shp.graphics.beginFill( 0x00ff00 );
-        // shp.graphics.drawRect( 0, 0, 100, 100 );
-        // shp.graphics.endFill();
-        // shp.x = 50;
-        // this.addChild( shp );
-        // var tw = egret.Tween.get( shp );
-        // tw.to( {x:150}, 1000 );
-        // 定义动画缓动时间
+        // 添加缓动动画，定义动画缓动时间
         var time = 2000;
         var time1 = 3000;
+        // 绑定的对象发生变化时调用该方法
         var funcChange = function () {
             // console.log(this.source, this.x);
-            // egret build -e
+            // 在egretProperties.json 中添加 game，需要再执行 egret build -e
         };
         egret.Tween.get(this.img_cloud2, { loop: true, onChange: funcChange, onChangeObj: this.img_cloud2 }).
             to({ x: 0 }, time, egret.Ease.sineIn).
@@ -513,6 +504,9 @@ var GamePage = (function (_super) {
         egret.Tween.get(this.img_gift3, { loop: true }).
             to({ x: 0 }, time1, egret.Ease.sineIn).
             to({ x: 431 }, time1, egret.Ease.sineIn);
+    };
+    // 碰撞检测
+    GamePage.prototype.redHatMeet = function () {
     };
     GamePage.prototype.returnClick = function () {
         this.parent.removeChild(this);
