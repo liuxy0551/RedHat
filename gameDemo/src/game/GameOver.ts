@@ -3,7 +3,7 @@ class GameOver extends eui.Component implements  eui.UIComponent {
 	public btn_again_game:eui.Button;
 	public btn_to_share:eui.Button;
 	public btn_ranking_list:eui.Button;
-	public btn_ranking_list0:eui.Button;
+	public btn_return:eui.Button;
 	public total_score:eui.Label;
 
 	// 单例模式
@@ -33,7 +33,27 @@ class GameOver extends eui.Component implements  eui.UIComponent {
 	
 	// 自定义初始化函数
 	private init() {
-
+		// 给每个按钮绑定点击事件
+		this.btn_again_game.addEventListener(egret.TouchEvent.TOUCH_TAP,this.againGame,this)
+		this.btn_to_share.addEventListener(egret.TouchEvent.TOUCH_TAP,this.toShare,this)
+		this.btn_ranking_list.addEventListener(egret.TouchEvent.TOUCH_TAP,this.rankingListClick,this)
+		this.btn_return.addEventListener(egret.TouchEvent.TOUCH_TAP,this.returnClick,this)
+	}
+	// 再来一局
+	private againGame() {
+		
+	}
+	// 去分享给好友
+	private toShare() {
+		
+	}
+	// 排行榜
+	private rankingListClick() {
+		
+	}
+	// 返回首页
+	private returnClick() {
+		this.parent.removeChild(this);
 	}
 	
 }

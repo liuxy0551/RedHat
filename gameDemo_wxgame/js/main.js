@@ -456,6 +456,24 @@ var GameOver = (function (_super) {
     };
     // 自定义初始化函数
     GameOver.prototype.init = function () {
+        // 给每个按钮绑定点击事件
+        this.btn_again_game.addEventListener(egret.TouchEvent.TOUCH_TAP, this.againGame, this);
+        this.btn_to_share.addEventListener(egret.TouchEvent.TOUCH_TAP, this.toShare, this);
+        this.btn_ranking_list.addEventListener(egret.TouchEvent.TOUCH_TAP, this.rankingListClick, this);
+        this.btn_return.addEventListener(egret.TouchEvent.TOUCH_TAP, this.returnClick, this);
+    };
+    // 再来一局
+    GameOver.prototype.againGame = function () {
+    };
+    // 去分享给好友
+    GameOver.prototype.toShare = function () {
+    };
+    // 排行榜
+    GameOver.prototype.rankingListClick = function () {
+    };
+    // 返回首页
+    GameOver.prototype.returnClick = function () {
+        this.parent.removeChild(this);
     };
     return GameOver;
 }(eui.Component));
@@ -509,8 +527,8 @@ var GamePage = (function (_super) {
         var that = this;
         var funcChange = function () {
             // console.log(this.source, this.x);
-            console.log(that);
-            console.log(this);
+            // console.log(that)
+            // console.log(this)
             // if(this.x + this.width < that.img_face_right.x + that.img_face_right.width / 2) {
             // 	console.log("小红帽右侧掉落");
             // }

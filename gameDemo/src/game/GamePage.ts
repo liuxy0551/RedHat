@@ -76,8 +76,8 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 		var that = this;
 		var funcChange = function(): void {
 			// console.log(this.source, this.x);
-			console.log(that)
-			console.log(this)
+			// console.log(that)
+			// console.log(this)
 			// if(this.x + this.width < that.img_face_right.x + that.img_face_right.width / 2) {
 			// 	console.log("小红帽右侧掉落");
 			// }
