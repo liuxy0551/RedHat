@@ -27,7 +27,7 @@
 		</e:skinName>
 	</e:Button>
 	<e:Label text="排行榜" x="124.52" y="664.68" size="20" fontFamily="PingFangSC" width="60" height="20" textAlign="center"/>
-	<e:Button id="btn_ranking_list0" label="" anchorOffsetX="0" width="80" anchorOffsetY="0" height="80" y="573.68" x="445">
+	<e:Button id="btn_return" label="" anchorOffsetX="0" width="80" anchorOffsetY="0" height="80" y="573.68" x="445">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
 			<e:Image width="100%" height="100%" source="home_btn_png"/>
@@ -36,7 +36,7 @@
 		</e:skinName>
 	</e:Button>
 	<e:Label text="首页" x="455" y="663.68" size="20" fontFamily="PingFangSC" width="60" height="20" textAlign="center"/>
-	<e:Label id="total_score" text="125" size="80" width="320" height="95" anchorOffsetY="0" anchorOffsetX="0" y="280" textAlign="center" fontFamily="Georgia" textColor="0xf1527b" x="160" verticalAlign="middle"/>
+	<e:Label id="total_score" text="0" size="80" width="320" height="95" anchorOffsetY="0" anchorOffsetX="0" y="280" textAlign="center" fontFamily="Georgia" textColor="0xf1527b" x="160" verticalAlign="middle"/>
 	<e:Label text="游戏结束" size="38" width="157" height="35" anchorOffsetY="0" anchorOffsetX="0" x="242" y="155"/>
 	<e:Label text="——  本次得分  ——" size="22" width="250" height="35" anchorOffsetY="0" anchorOffsetX="0" y="240" textAlign="center" strokeColor="0x000000" x="195"/>
 </e:Skin>

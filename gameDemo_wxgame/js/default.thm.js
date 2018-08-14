@@ -1113,11 +1113,11 @@ var egret = window.egret;window.skins={};
 
 	function GameOverSkin() {
 		_super.call(this);
-		this.skinParts = ["btn_again_game","btn_to_share","btn_ranking_list","btn_ranking_list0","total_score"];
+		this.skinParts = ["btn_again_game","btn_to_share","btn_ranking_list","btn_return","total_score"];
 		
 		this.height = 1136;
 		this.width = 640;
-		this.elementsContent = [this._Image1_i(),this.btn_again_game_i(),this.btn_to_share_i(),this.btn_ranking_list_i(),this._Label1_i(),this.btn_ranking_list0_i(),this._Label2_i(),this.total_score_i(),this._Label3_i(),this._Label4_i()];
+		this.elementsContent = [this._Image1_i(),this.btn_again_game_i(),this.btn_to_share_i(),this.btn_ranking_list_i(),this._Label1_i(),this.btn_return_i(),this._Label2_i(),this.total_score_i(),this._Label3_i(),this._Label4_i()];
 	}
 	var _proto = GameOverSkin.prototype;
 
@@ -1179,9 +1179,9 @@ var egret = window.egret;window.skins={};
 		t.y = 664.68;
 		return t;
 	};
-	_proto.btn_ranking_list0_i = function () {
+	_proto.btn_return_i = function () {
 		var t = new eui.Button();
-		this.btn_ranking_list0 = t;
+		this.btn_return = t;
 		t.anchorOffsetX = 0;
 		t.anchorOffsetY = 0;
 		t.height = 80;
@@ -1212,7 +1212,7 @@ var egret = window.egret;window.skins={};
 		t.fontFamily = "Georgia";
 		t.height = 95;
 		t.size = 80;
-		t.text = "125";
+		t.text = "0";
 		t.textAlign = "center";
 		t.textColor = 0xf1527b;
 		t.verticalAlign = "middle";

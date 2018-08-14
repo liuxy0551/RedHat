@@ -4,7 +4,7 @@ class GameOver extends eui.Component implements  eui.UIComponent {
 	public btn_to_share:eui.Button;
 	public btn_ranking_list:eui.Button;
 	public btn_return:eui.Button;
-	public total_score:eui.Label;
+	// public total_score:eui.Label;
 
 	// 单例模式
     private static shared:GameOver;
