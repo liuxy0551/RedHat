@@ -111,22 +111,7 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 	}
 
 	private returnClick() {
-		// this.parent.removeChild(this);
-
-		console.log("img_cloud1+", this.img_cloud1.x);
-		console.log("img_cloud2-", this.img_cloud2.x);
-		console.log("img_cloud3+", this.img_cloud3.x);
-		console.log("img_cloud4-", this.img_cloud4.x);
-		// this.img_cloud1.x = this.img_cloud1.x + 50;
-
-		this.img_cloud2.x = this.img_cloud2.x - 50;
-		this.img_gift1.x = this.img_gift1.x - 50;
-
-		this.img_cloud3.x = this.img_cloud3.x + 50;
-		this.img_gift2.x = this.img_gift2.x + 50;
-
-		this.img_cloud4.x = this.img_cloud4.x - 50;
-		this.img_gift3.x = this.img_gift3.x - 50;
+		this.parent.removeChild(this);
 	}
 	private leftClick() {
         if(this.img_face_right.source == "face_right_png") {
@@ -137,8 +122,6 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 				egret.Tween.get(this.img_face_right).
             		to({ y: this.img_face_right.y + 117 }, 300, egret.Ease.sineOut).
 					to({ rotation: 720, y: this.img_face_right.y + 750 }, 1000 ,egret.Ease.sineIn);
-                // console.log("从左边掉下去啦！")
-                // console.log(this.img_face_right.x + this.img_face_right.width / 2, this.img_cloud1.x)
             }
         }else {
             this.img_face_right.x = this.img_face_right.x - 20
@@ -147,14 +130,11 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 				egret.Tween.get(this.img_face_right).
             		to({ y: this.img_face_right.y + 117 }, 300, egret.Ease.sineOut).
 					to({ rotation: 720, y: this.img_face_right.y + 750 }, 1000 ,egret.Ease.sineIn);
-                // console.log("从左边掉下去啦！")
-                // console.log(this.img_face_right.x + this.img_face_right.width / 2, this.img_cloud1.x)
             }
         }
 	}
 	private upClick() {
         this.img_face_right.source = "face_me_png"
-        // this.img_face_right.y = this.img_face_right.y - 330;
 
 		egret.Tween.get(this.img_face_right).
             to({ y: this.img_face_right.y - 330 }, 800, egret.Ease.sineOut).
@@ -177,8 +157,6 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 				egret.Tween.get(this.img_face_right).
             		to({ y: this.img_face_right.y + 117 }, 300, egret.Ease.sineOut).
 					to({ rotation: 720, y: this.img_face_right.y + 750 }, 1000 ,egret.Ease.sineIn);
-                // console.log("从右边掉下去啦！");
-                // console.log(this.img_face_right.x + this.img_face_right.width / 2, this.img_cloud1.x + this.img_cloud1.width);
             }
         }else {
             this.img_face_right.x = this.img_face_right.x + 20
@@ -187,8 +165,6 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 				egret.Tween.get(this.img_face_right).
             		to({ y: this.img_face_right.y + 117 }, 300, egret.Ease.sineOut).
 					to({ rotation: 720, y: this.img_face_right.y + 750 }, 1000 ,egret.Ease.sineIn);
-                // console.log("从右边掉下去啦！");
-                // console.log(this.img_face_right.x + this.img_face_right.width / 2, this.img_cloud1.x + this.img_cloud1.width);
             }
         }
 	}
