@@ -522,16 +522,12 @@ var GamePage = (function (_super) {
             this.img_face_right.source = "face_left_png";
             this.img_face_right.x = this.img_face_right.x - 20;
             // 小红帽左侧掉落
-            if (this.img_face_right.x + this.img_face_right.width / 2 < this.img_cloud1.x) {
-                this.redHatDrop('left');
-            }
+            this.redHatDrop('left');
         }
         else {
             this.img_face_right.x = this.img_face_right.x - 20;
             // 小红帽左侧掉落
-            if (this.img_face_right.x + this.img_face_right.width / 2 < this.img_cloud1.x) {
-                this.redHatDrop('left');
-            }
+            this.redHatDrop('left');
         }
     };
     GamePage.prototype.upClick = function () {
@@ -549,16 +545,12 @@ var GamePage = (function (_super) {
             this.img_face_right.source = "face_right_png";
             this.img_face_right.x = this.img_face_right.x + 20;
             // 小红帽右侧掉落
-            if (this.img_face_right.x + this.img_face_right.width / 2 > this.img_cloud1.x + this.img_cloud1.width) {
-                this.redHatDrop('right');
-            }
+            this.redHatDrop('right');
         }
         else {
             this.img_face_right.x = this.img_face_right.x + 20;
             // 小红帽右侧掉落
-            if (this.img_face_right.x + this.img_face_right.width / 2 > this.img_cloud1.x + this.img_cloud1.width) {
-                this.redHatDrop('right');
-            }
+            this.redHatDrop('right');
         }
     };
     // 移除某个对象上的全部 Tween 动画
@@ -572,15 +564,19 @@ var GamePage = (function (_super) {
     GamePage.prototype.redHatDrop = function (direction) {
         if (direction == 'left') {
             //小红帽从左边旋转掉落
-            egret.Tween.get(this.img_face_right).
-                to({ y: this.img_face_right.y + 117 }, 300, egret.Ease.sineOut).
-                to({ rotation: 720, y: this.img_face_right.y + 750 }, 1000, egret.Ease.sineIn);
+            if (this.img_face_right.x + this.img_face_right.width / 2 < this.img_cloud1.x) {
+                egret.Tween.get(this.img_face_right).
+                    to({ y: this.img_face_right.y + 117 }, 300, egret.Ease.sineOut).
+                    to({ rotation: 720, y: this.img_face_right.y + 750 }, 1000, egret.Ease.sineIn);
+            }
         }
         else if (direction == 'right') {
             //小红帽从右边旋转掉落
-            egret.Tween.get(this.img_face_right).
-                to({ y: this.img_face_right.y + 117 }, 300, egret.Ease.sineOut).
-                to({ rotation: 720, y: this.img_face_right.y + 750 }, 1000, egret.Ease.sineIn);
+            if (this.img_face_right.x + this.img_face_right.width / 2 > this.img_cloud1.x + this.img_cloud1.width) {
+                egret.Tween.get(this.img_face_right).
+                    to({ y: this.img_face_right.y + 117 }, 300, egret.Ease.sineOut).
+                    to({ rotation: 720, y: this.img_face_right.y + 750 }, 1000, egret.Ease.sineIn);
+            }
         }
     };
     return GamePage;
