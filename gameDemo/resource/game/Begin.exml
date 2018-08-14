@@ -2,8 +2,9 @@
 <e:Skin class="BeginSkin" width="640" height="1136" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ns1="*" >
 	<w:Config id="16517f32a50" ></w:Config>
 	<e:Image source="bg_png" x="2" y="2" height="1136" width="640"/>
-	<e:Image width="201" height="48" x="228" y="517.03" anchorOffsetX="0" anchorOffsetY="0" source="cloud1_png"/>
-	<e:Button id="btn_game_rule" label="" anchorOffsetX="0" width="80" anchorOffsetY="0" height="80" left="96" top="897">
+	<e:Image id="img_gift1" width="38" height="38" x="60" y="219" anchorOffsetX="0" anchorOffsetY="0" source="gift1_png"/>
+	<e:Image width="201" height="48" x="220" y="517" anchorOffsetX="0" anchorOffsetY="0" source="cloud1_png"/>
+	<e:Button id="btn_game_rule" label="" anchorOffsetX="0" width="80" anchorOffsetY="0" height="80" x="96" y="897">
 		<e:skinName>
 		<e:Skin states="up,down,disabled">
 			<e:Image width="100%" height="100%" source="rule_btn_png"/>
@@ -11,7 +12,7 @@
 		</e:Skin>
 		</e:skinName>
 	</e:Button>
-	<e:Button id="btn_ranking_list" label="" anchorOffsetX="0" width="80" anchorOffsetY="0" height="80" left="284" top="897">
+	<e:Button id="btn_ranking_list" label="" anchorOffsetX="0" width="80" anchorOffsetY="0" height="80" y="897" x="284">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
 			<e:Image width="100%" height="100%" source="ranking_list_btn_png"/>
@@ -19,7 +20,7 @@
 			</e:Skin>
 		</e:skinName>
 	</e:Button>
-	<e:Button id="btn_task" label="" anchorOffsetX="0" width="80" anchorOffsetY="0" height="80" left="465" top="897">
+	<e:Button id="btn_task" label="" anchorOffsetX="0" width="80" anchorOffsetY="0" height="80" x="465" y="897">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
 			<e:Image width="100%" height="100%" source="task_btn_png"/>
@@ -30,7 +31,7 @@
 	<e:Label text="游戏规则" x="95.68" y="987.47" size="20" fontFamily="PingFangSC"/>
 	<e:Label text="排行榜" x="292.64" y="987.47" size="20" fontFamily="PingFangSC"/>
 	<e:Label text="任 务" x="483.17" y="987.47" size="20" fontFamily="PingFangSC"/>
-	<e:Button id="btn_start_game" label="" y="692.1" width="300" height="90" horizontalCenter="0">
+	<e:Button id="btn_start_game" label="" y="692" width="300" height="90" x="170">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
 			<e:Image width="100%" height="100%" source="start_png" source.down="start1_png"/>
@@ -38,7 +39,7 @@
 			</e:Skin>
 		</e:skinName>
 	</e:Button>
-	<e:Image width="190" height="56" x="228" y="143.38" anchorOffsetX="0" anchorOffsetY="0" source="title_png"/>
-	<e:Image width="167" height="42" x="35.5" y="257.93" anchorOffsetX="0" anchorOffsetY="0" source="cloud2_png"/>
-	<e:Image width="60" height="117" x="295.36" y="402.19" anchorOffsetX="0" anchorOffsetY="0" source="face_right_png"/>
+	<e:Image width="190" height="56" x="225" y="143" anchorOffsetX="0" anchorOffsetY="0" source="title_png"/>
+	<e:Image width="167" height="42" x="35" y="257" anchorOffsetX="0" anchorOffsetY="0" source="cloud2_png"/>
+	<e:Image width="60" height="117" x="290" y="402" anchorOffsetX="0" anchorOffsetY="0" source="face_right_png"/>
 </e:Skin>

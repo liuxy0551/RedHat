@@ -8,8 +8,8 @@
 			<e:Image id="img_cloud3" width="167" height="42" x="0" y="395" source="cloud2_png"/>
 			<e:Image id="img_cloud4" width="209" height="42" x="431" y="145" source="cloud4_png"/>
 
-			<e:Image id="img_gift1" width="47" height="45" x="593" y="603" anchorOffsetX="0" anchorOffsetY="0" source="gift1_png"/>
-			<e:Image id="img_gift2" width="37" height="37" x="65" y="358" anchorOffsetX="0" anchorOffsetY="0" source="gift2_png"/>
+			<e:Image id="img_gift1" width="38" height="38" x="602" y="607" anchorOffsetX="0" anchorOffsetY="0" source="gift1_png"/>
+			<e:Image id="img_gift2" width="38" height="38" x="65" y="357" anchorOffsetX="0" anchorOffsetY="0" source="gift2_png"/>
 			<e:Image id="img_gift3" width="38" height="38" x="431" y="107" anchorOffsetX="0" anchorOffsetY="0" source="gift3_png"/>
 			<e:Image id="img_face_right" width="60" height="117" y="780" anchorOffsetX="0" anchorOffsetY="0" source="face_right_png" x="290"/>
 		</e:Group>
