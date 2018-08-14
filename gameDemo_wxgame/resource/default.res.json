@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,bg_jpg,egret_icon_png,description_json,cloud4_png,bg_png,ranking_list_btn_png,task_btn_png,home_btn_png,gift1_png,gift2_png,gift3_png,face_right_png,face_left_png,face_me_png,rule_btn_png,cloud1_png,cloud2_png,cloud3_png,return_btn_png,share_btn_png,up_png,right_png,left_png,start_png,again_png,title_png,small_box_png,big_box_png,no_btns_png,to_share_png,start1_png",
+			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,bg_jpg,egret_icon_png,description_json,cloud4_png,bg_png,ranking_list_btn_png,task_btn_png,home_btn_png,gift1_png,gift2_png,gift3_png,face_right_png,face_left_png,face_me_png,rule_btn_png,cloud1_png,cloud2_png,cloud3_png,return_btn_png,share_btn_png,up_png,right_png,left_png,start_png,again_png,title_png,small_box_png,big_box_png,no_btns_png,to_share_png,start1_png,score_png",
 			"name": "preload"
 		}
 	],
@@ -275,6 +275,11 @@
 			"name": "start1_png",
 			"type": "image",
 			"url": "assets/RedHat/start1.png"
+		},
+		{
+			"name": "score_png",
+			"type": "image",
+			"url": "assets/RedHat/score.png"
 		}
 	]
 }

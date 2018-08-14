@@ -117,11 +117,13 @@ class GamePage extends eui.Component implements  eui.UIComponent {
         if(this.img_face_right.source == "face_right_png") {
             this.img_face_right.source = "face_left_png"
             this.img_face_right.x = this.img_face_right.x - 20
+			// 小红帽左侧掉落
             if(this.img_face_right.x + this.img_face_right.width / 2 < this.img_cloud1.x) {
 				this.redHatDrop('left')
             }
         }else {
             this.img_face_right.x = this.img_face_right.x - 20
+			// 小红帽左侧掉落
             if(this.img_face_right.x + this.img_face_right.width / 2 < this.img_cloud1.x) {
 				this.redHatDrop('left')
             }
@@ -133,26 +135,23 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 
 		// 跳起及落下的动作
 		egret.Tween.get(this.img_face_right).
-            to({ y: this.img_face_right.y - 330 }, 800, egret.Ease.sineOut).
-            to({ y: this.img_face_right.y - 250 }, 500, egret.Ease.sineOut).
+            to({ y: this.img_face_right.y - 330 }, 700, egret.Ease.sineOut).
+            to({ y: this.img_face_right.y - 250 }, 400, egret.Ease.sineOut).
 			wait(1).call(this.removeTweens, this, [face_where]);//设置延时，设置回调函数及作用域，用于侦听动画完成;
 
-		
-		// if(this.img_face_right.x < 320) {
-		// 	this.img_face_right.source = "face_left_png"
-		// }else {
-		// 	this.img_face_right.source = "face_right_png"
-		// }
+		console.log(this.img_face_right.x)
 	}
 	private rightClick() {
         if(this.img_face_right.source == "face_left_png") {
             this.img_face_right.source = "face_right_png";
             this.img_face_right.x = this.img_face_right.x + 20;
+			// 小红帽右侧掉落
             if(this.img_face_right.x + this.img_face_right.width / 2 > this.img_cloud1.x + this.img_cloud1.width) {
 				this.redHatDrop('right')
             }
         }else {
             this.img_face_right.x = this.img_face_right.x + 20
+			// 小红帽右侧掉落
             if(this.img_face_right.x + this.img_face_right.width / 2 > this.img_cloud1.x + this.img_cloud1.width) {
 				this.redHatDrop('right');
             }

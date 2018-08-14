@@ -14,6 +14,7 @@
 			<e:Image id="img_face_right" width="60" height="117" y="780" anchorOffsetX="0" anchorOffsetY="0" source="face_right_png" x="290"/>
 		</e:Group>
 	</e:Scroller>
+	<e:Image id="img_gift0" width="40" height="40" y="285" anchorOffsetX="0" anchorOffsetY="0" x="300" source="score_png"/>
 	<e:Button id="btn_return" label="" y="30" width="80" height="80" x="20">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
