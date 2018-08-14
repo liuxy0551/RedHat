@@ -129,12 +129,27 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 		this.img_gift3.x = this.img_gift3.x - 50;
 	}
 	private leftClick() {
-        console.log("this.img_face_right", this.img_face_right.x)
         if(this.img_face_right.source == "face_right_png") {
             this.img_face_right.source = "face_left_png"
             this.img_face_right.x = this.img_face_right.x - 20
+            if(this.img_face_right.x + this.img_face_right.width / 2 < this.img_cloud1.x) {
+				//小红帽旋转掉落
+				egret.Tween.get(this.img_face_right).
+            		to({ y: this.img_face_right.y + 117 }, 300, egret.Ease.sineOut).
+					to({ rotation: 720, y: this.img_face_right.y + 750 }, 1000 ,egret.Ease.sineIn);
+                // console.log("从左边掉下去啦！")
+                // console.log(this.img_face_right.x + this.img_face_right.width / 2, this.img_cloud1.x)
+            }
         }else {
             this.img_face_right.x = this.img_face_right.x - 20
+            if(this.img_face_right.x + this.img_face_right.width / 2 < this.img_cloud1.x) {
+				//小红帽旋转掉落
+				egret.Tween.get(this.img_face_right).
+            		to({ y: this.img_face_right.y + 117 }, 300, egret.Ease.sineOut).
+					to({ rotation: 720, y: this.img_face_right.y + 750 }, 1000 ,egret.Ease.sineIn);
+                // console.log("从左边掉下去啦！")
+                // console.log(this.img_face_right.x + this.img_face_right.width / 2, this.img_cloud1.x)
+            }
         }
 	}
 	private upClick() {
@@ -142,24 +157,39 @@ class GamePage extends eui.Component implements  eui.UIComponent {
         // this.img_face_right.y = this.img_face_right.y - 330;
 
 		egret.Tween.get(this.img_face_right).
-            to({ y: this.img_face_right.y - 330 }, 1200, egret.Ease.sineOut).
-            to({ y: this.img_face_right.y - 250 }, 400, egret.Ease.sineOut).
+            to({ y: this.img_face_right.y - 330 }, 800, egret.Ease.sineOut).
+            to({ y: this.img_face_right.y - 250 }, 500, egret.Ease.sineOut).
 			wait(1).call(this.removeTweens, this, ["img_face_right"]);//设置延时，设置回调函数及作用域，可用于侦听动画完成;
 
 	}
     private removeTweens(e):void {
 		// 删除一个对象上的全部 Tween 动画
-		egret.Tween.removeTweens(this.img_cloud2)
-		egret.Tween.removeTweens(this.img_gift1)
-		this.img_face_right.source = "face_right_png"
+		egret.Tween.removeTweens(this.img_cloud2);
+		egret.Tween.removeTweens(this.img_gift1);
+		this.img_face_right.source = "face_right_png";
     }
 	private rightClick() {
-        console.log("this.img_face_right", this.img_face_right.x)
         if(this.img_face_right.source == "face_left_png") {
-            this.img_face_right.source = "face_right_png"
-            this.img_face_right.x = this.img_face_right.x + 20
+            this.img_face_right.source = "face_right_png";
+            this.img_face_right.x = this.img_face_right.x + 20;
+            if(this.img_face_right.x + this.img_face_right.width / 2 > this.img_cloud1.x + this.img_cloud1.width) {
+				//小红帽旋转掉落
+				egret.Tween.get(this.img_face_right).
+            		to({ y: this.img_face_right.y + 117 }, 300, egret.Ease.sineOut).
+					to({ rotation: 720, y: this.img_face_right.y + 750 }, 1000 ,egret.Ease.sineIn);
+                // console.log("从右边掉下去啦！");
+                // console.log(this.img_face_right.x + this.img_face_right.width / 2, this.img_cloud1.x + this.img_cloud1.width);
+            }
         }else {
             this.img_face_right.x = this.img_face_right.x + 20
+            if(this.img_face_right.x + this.img_face_right.width / 2 > this.img_cloud1.x + this.img_cloud1.width) {
+				//小红帽旋转掉落
+				egret.Tween.get(this.img_face_right).
+            		to({ y: this.img_face_right.y + 117 }, 300, egret.Ease.sineOut).
+					to({ rotation: 720, y: this.img_face_right.y + 750 }, 1000 ,egret.Ease.sineIn);
+                // console.log("从右边掉下去啦！");
+                // console.log(this.img_face_right.x + this.img_face_right.width / 2, this.img_cloud1.x + this.img_cloud1.width);
+            }
         }
 	}
 }
