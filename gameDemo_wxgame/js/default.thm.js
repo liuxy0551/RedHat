@@ -1132,21 +1132,21 @@ var egret = window.egret;window.skins={};
 	_proto.img_cloud1_i = function () {
 		var t = new eui.Image();
 		this.img_cloud1 = t;
-		t.height = 48;
+		t.height = 42;
 		t.source = "cloud1_png";
-		t.width = 201;
-		t.x = 220;
+		t.width = 176;
+		t.x = 232;
 		t.y = 895;
 		return t;
 	};
 	_proto.img_cloud2_i = function () {
 		var t = new eui.Image();
 		this.img_cloud2 = t;
-		t.height = 48;
+		t.height = 42;
 		t.source = "cloud3_png";
-		t.width = 155;
-		t.x = 485;
-		t.y = 640;
+		t.width = 135;
+		t.x = 505;
+		t.y = 645;
 		return t;
 	};
 	_proto.img_cloud3_i = function () {
@@ -1156,7 +1156,7 @@ var egret = window.egret;window.skins={};
 		t.source = "cloud2_png";
 		t.width = 167;
 		t.x = 0;
-		t.y = 391;
+		t.y = 395;
 		return t;
 	};
 	_proto.img_cloud4_i = function () {
@@ -1166,7 +1166,7 @@ var egret = window.egret;window.skins={};
 		t.source = "cloud4_png";
 		t.width = 209;
 		t.x = 431;
-		t.y = 142;
+		t.y = 145;
 		return t;
 	};
 	_proto.img_gift1_i = function () {
@@ -1178,7 +1178,7 @@ var egret = window.egret;window.skins={};
 		t.source = "gift1_png";
 		t.width = 47;
 		t.x = 593;
-		t.y = 600;
+		t.y = 603;
 		return t;
 	};
 	_proto.img_gift2_i = function () {
@@ -1190,7 +1190,7 @@ var egret = window.egret;window.skins={};
 		t.source = "gift2_png";
 		t.width = 37;
 		t.x = 65;
-		t.y = 355;
+		t.y = 358;
 		return t;
 	};
 	_proto.img_gift3_i = function () {
@@ -1202,7 +1202,7 @@ var egret = window.egret;window.skins={};
 		t.source = "gift3_png";
 		t.width = 38;
 		t.x = 431;
-		t.y = 105;
+		t.y = 107;
 		return t;
 	};
 	_proto.img_face_right_i = function () {
@@ -1213,7 +1213,7 @@ var egret = window.egret;window.skins={};
 		t.height = 117;
 		t.source = "face_right_png";
 		t.width = 60;
-		t.x = 292;
+		t.x = 290;
 		t.y = 780;
 		return t;
 	};

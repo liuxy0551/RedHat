@@ -90,9 +90,9 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 		}
 		egret.Tween.get(this.img_cloud2, { loop: true, onChange: funcChange, onChangeObj: this.img_cloud2 }).
             to({ x: 0 }, time, egret.Ease.sineIn).
-            to({ x: 485 }, time, egret.Ease.sineIn);
+            to({ x: 505 }, time, egret.Ease.sineIn);
 		egret.Tween.get(this.img_gift1, { loop: true, onChange: funcChange, onChangeObj: this.img_gift1 }).
-            to({ x: 108 }, time, egret.Ease.sineIn).
+            to({ x: 88 }, time, egret.Ease.sineIn).
             to({ x: 593 }, time, egret.Ease.sineIn);
 
 		egret.Tween.get(this.img_cloud3, { loop: true }).
@@ -143,7 +143,7 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 
 		egret.Tween.get(this.img_face_right).
             to({ y: this.img_face_right.y - 330 }, 1200, egret.Ease.sineOut).
-            to({ y: this.img_face_right.y - 248 }, 600, egret.Ease.sineOut).
+            to({ y: this.img_face_right.y - 250 }, 600, egret.Ease.sineOut).
 			wait(1).call(this.onComplete, this, ["param1"]);//设置延时，设置回调函数及作用域，可用于侦听动画完成;
 
 	}
