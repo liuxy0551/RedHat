@@ -13,38 +13,43 @@
 			<e:Image id="img_gift3" width="38" height="38" x="431" y="107" anchorOffsetX="0" anchorOffsetY="0" source="gift3_png"/>
 			<e:Image id="img_face_right" width="60" height="117" y="780" anchorOffsetX="0" anchorOffsetY="0" source="face_right_png" x="290"/>
 			<e:Image id="img_score" width="152" height="77" y="252" anchorOffsetX="0" anchorOffsetY="0" x="244" source=""/>
+			<e:Button id="btn_left" label="" y="991" x="60" width="112" height="112">
+				<e:skinName>
+				<e:Skin states="up,down,disabled">
+					<e:Image width="100%" height="100%" source="left_png"/>
+					<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+				</e:skinName>
+			</e:Button>
+			<e:Button id="btn_up" label="" y="991" x="265" width="112" height="112">
+				<e:skinName>
+				<e:Skin states="up,down,disabled">
+					<e:Image width="100%" height="100%" source="up_png"/>
+					<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+				</e:skinName>
+			</e:Button>
+			<e:Button id="btn_right" label="" y="987" x="474" width="112" height="112">
+				<e:skinName>
+				<e:Skin states="up,down,disabled">
+					<e:Image width="100%" height="100%" source="right_png"/>
+					<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+				</e:skinName>
+			</e:Button>
+			<e:Button id="btn_return" label="" y="20" width="80" height="80" x="20">
+				<e:skinName>
+				<e:Skin states="up,down,disabled">
+					<e:Image width="100%" height="100%" source="home_btn_png"/>
+					<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+				</e:skinName>
+			</e:Button>
+
 		</e:Group>
 	</e:Scroller>
-	<e:Button id="btn_return" label="" y="20" width="80" height="80" x="20">
-		<e:skinName>
-			<e:Skin states="up,down,disabled">
-			<e:Image width="100%" height="100%" source="home_btn_png"/>
-			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
-			</e:Skin>
-		</e:skinName>
-	</e:Button>
-	<e:Button id="btn_left" label="" y="991" x="60" width="112" height="112">
-		<e:skinName>
-		<e:Skin states="up,down,disabled">
-			<e:Image width="100%" height="100%" source="left_png"/>
-			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
-		</e:Skin>
-		</e:skinName>
-	</e:Button>
-	<e:Button id="btn_up" label="" y="991" x="265" width="112" height="112">
-		<e:skinName>
-		<e:Skin states="up,down,disabled">
-			<e:Image width="100%" height="100%" source="up_png"/>
-			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
-		</e:Skin>
-		</e:skinName>
-	</e:Button>
-	<e:Button id="btn_right" label="" y="987" x="474" width="112" height="112">
-		<e:skinName>
-		<e:Skin states="up,down,disabled">
-			<e:Image width="100%" height="100%" source="right_png"/>
-			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
-		</e:Skin>
-		</e:skinName>
-	</e:Button>
+
+
+
+
 </e:Skin>

@@ -18,6 +18,7 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 
 	// 分数
 	public score = 0;
+	public cloudList = [];
 
 	// 单例模式
     private static shared:GamePage;
@@ -41,14 +42,38 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 	{
 		super.childrenCreated();
 		this.init();
+		this.initList();
 	}
 	
+	private initList() {
+		this.cloudList = [
+			{
+				id: 0,
+				cloudSource: "img_cloud1",
+				cloudX: 0,
+				cloudY: 0,
+				cloudW: 0,
+				cloudH: 0,
+				giftSource: "img_gift1",
+				giftX: 0,
+				giftY: 0,
+				giftW: 0,
+				giftH: 0,
+			}
+		]
+		var list1 = [11, 22, 33, 44, 55, 66, 77, 88]
+		var i = Math.floor(Math.random() * list1.length)
+		console.log(i)
+	}
+
 	// 自定义初始化函数
 	private init() {
+		// this.parent.removeChild(this.btn_up);
+		// console.log(this.btn_up)
 		// 定时器
-		var timer: egret.Timer = new egret.Timer(1000, 5);
+		var timer: egret.Timer = new egret.Timer(20, 0);
         timer.addEventListener(egret.TimerEvent.TIMER, this.timerFunc, this);
-        timer.start();
+        // timer.start();
 
 		// 给每个按钮绑定点击事件
 		this.btn_return.addEventListener(egret.TouchEvent.TOUCH_TAP,this.returnClick,this)
@@ -63,12 +88,14 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 		let group: eui.Group = new eui.Group();
 		this.gp_cloud.addChild(group);
 		group.width = 640;
-		group.height = 0;
+		// group.height = 0;
+		// console.log(this.gp_cloud);
+		// console.log(group);
 
 		// 填充背景图
 		let img_bg: eui.Image = new eui.Image("resource/assets/RedHat/bg.png");
 		this.gp_cloud.addChildAt( img_bg, 0);
-		// for( let i:number = 0; i < 2; i++){
+		// for( let i:number = 0; i < 3; i++){
 		// 	let img_bg: eui.Image = new eui.Image("resource/assets/RedHat/bg.png");
 		// 	img_bg.y = i * this.height ;
 		// 	this.gp_cloud.addChildAt( img_bg, 0);
@@ -109,8 +136,17 @@ class GamePage extends eui.Component implements  eui.UIComponent {
             to({ x: 0 }, time1, egret.Ease.sineIn).
             to({ x: 431 }, time1, egret.Ease.sineIn);
 	}
+	// 定时器
 	private timerFunc() {
-		// this.sc_cloud.viewport.scrollV = this.sc_cloud.viewport.scrollV + 10;
+		this.img_cloud1.y = this.img_cloud1.y + 0.5;
+		this.img_cloud2.y = this.img_cloud2.y + 0.5;
+		this.img_cloud3.y = this.img_cloud3.y + 0.5;
+		this.img_cloud4.y = this.img_cloud4.y + 0.5;
+		this.img_gift1.y = this.img_gift1.y + 0.5;
+		this.img_gift2.y = this.img_gift2.y + 0.5;
+		this.img_gift3.y = this.img_gift3.y + 0.5;
+		this.img_face_right.y = this.img_face_right.y + 0.5;
+		// this.sc_cloud.viewport.scrollV = this.sc_cloud.viewport.scrollV + 1;
 		// console.log(this.sc_cloud.viewport.scrollV);
 	}
 	// 返回首页
@@ -142,7 +178,7 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 		// 跳起及落下的动作
 		egret.Tween.get(this.img_face_right).
             to({ y: this.img_face_right.y - 330 }, 700, egret.Ease.sineOut).
-            to({ y: this.img_face_right.y - 250 }, 400, egret.Ease.sineOut).
+            to({ y: this.img_face_right.y - 233 }, 400, egret.Ease.sineOut).
 			wait(1).call(this.pauseTweens, this, [face_where]);// 设置延时，设置回调函数及作用域，用于侦听动画完成;
 	}
 	// 暂停某个对象上的全部 Tween 动画
