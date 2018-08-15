@@ -15,7 +15,7 @@
 			<e:Image id="img_score" width="152" height="77" y="252" anchorOffsetX="0" anchorOffsetY="0" x="244" source=""/>
 		</e:Group>
 	</e:Scroller>
-	<e:Button id="btn_return" label="" y="30" width="80" height="80" x="20">
+	<e:Button id="btn_return" label="" y="20" width="80" height="80" x="20">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
 			<e:Image width="100%" height="100%" source="home_btn_png"/>

@@ -506,7 +506,7 @@ var GamePage = (function (_super) {
     // 自定义初始化函数
     GamePage.prototype.init = function () {
         // 定时器
-        var timer = new egret.Timer(17, 0);
+        var timer = new egret.Timer(1000, 5);
         timer.addEventListener(egret.TimerEvent.TIMER, this.timerFunc, this);
         timer.start();
         // 给每个按钮绑定点击事件
@@ -522,11 +522,13 @@ var GamePage = (function (_super) {
         group.width = 640;
         group.height = 0;
         // 填充背景图
-        for (var i = 0; i < 2; i++) {
-            var img_bg = new eui.Image("resource/assets/RedHat/bg.png");
-            img_bg.y = i * this.height;
-            this.gp_cloud.addChildAt(img_bg, 0);
-        }
+        var img_bg = new eui.Image("resource/assets/RedHat/bg.png");
+        this.gp_cloud.addChildAt(img_bg, 0);
+        // for( let i:number = 0; i < 2; i++){
+        // 	let img_bg: eui.Image = new eui.Image("resource/assets/RedHat/bg.png");
+        // 	img_bg.y = i * this.height ;
+        // 	this.gp_cloud.addChildAt( img_bg, 0);
+        // }
         //设置小红帽及所在云朵的初始位置
         // this.img_face_right.x = this.width / 2 - 30;
         this.img_face_right.y = 780;
@@ -560,8 +562,8 @@ var GamePage = (function (_super) {
             to({ x: 431 }, time1, egret.Ease.sineIn);
     };
     GamePage.prototype.timerFunc = function () {
-        this.sc_cloud.viewport.scrollV = this.sc_cloud.viewport.scrollV + 1;
-        console.log(this.sc_cloud.viewport.scrollV);
+        // this.sc_cloud.viewport.scrollV = this.sc_cloud.viewport.scrollV + 10;
+        // console.log(this.sc_cloud.viewport.scrollV);
     };
     // 返回首页
     GamePage.prototype.returnClick = function () {

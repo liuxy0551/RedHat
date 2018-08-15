@@ -1558,7 +1558,7 @@ var egret = window.egret;window.skins={};
 		t.label = "";
 		t.width = 80;
 		t.x = 20;
-		t.y = 30;
+		t.y = 20;
 		t.skinName = GamePageSkin$Skin9;
 		return t;
 	};
