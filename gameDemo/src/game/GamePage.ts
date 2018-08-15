@@ -6,17 +6,18 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 	public img_cloud2:eui.Image;
 	public img_cloud3:eui.Image;
 	public img_cloud4:eui.Image;
+	public img_cloud5:eui.Image;
 	public img_gift1:eui.Image;
 	public img_gift2:eui.Image;
 	public img_gift3:eui.Image;
+	public img_gift4:eui.Image;
+	public img_gift5:eui.Image;
 	public img_face_right:eui.Image;
 	public img_score:eui.Image;
 	public btn_left:eui.Button;
 	public btn_up:eui.Button;
 	public btn_right:eui.Button;
 	public btn_return:eui.Button;
-	public img_cloud_new:eui.Image;
-	public img_gift_new:eui.Image;
 
 	// 分数
 	public score = 0;
@@ -71,6 +72,8 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 		var j = Math.floor(Math.random() * giftSourceList.length);
 		console.log(cloudSourceList[i]);
 		console.log(giftSourceList[j]);
+
+
 	}
 
 	// 自定义初始化函数
@@ -81,7 +84,7 @@ class GamePage extends eui.Component implements  eui.UIComponent {
         timer.start();
 
 		// 新云朵
-		var timerCloudGift: egret.Timer = new egret.Timer(3000, 0);
+		var timerCloudGift: egret.Timer = new egret.Timer(8000, 0);
         timerCloudGift.addEventListener(egret.TimerEvent.TIMER, this.timerCloudGiftFunc, this);
         timerCloudGift.start();
 
@@ -125,6 +128,7 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 			// console.log(this.source, this.y);
 			// 在egretProperties.json 中添加 game，需要再执行 egret build -e
 		}
+		this.cross(this.img_cloud2, this.img_gift1)
 		egret.Tween.get(this.img_cloud2, { loop: true }).
             to({ x: 0 }, time, egret.Ease.sineIn).
             to({ x: 473 }, time, egret.Ease.sineIn);
@@ -145,6 +149,15 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 		egret.Tween.get(this.img_gift3, { loop: true }).
             to({ x: 0 }, time1, egret.Ease.sineIn).
             to({ x: 431 }, time1, egret.Ease.sineIn);
+
+		egret.Tween.get(this.img_cloud5, { loop: true }).
+            to({ x: 473 }, time1, egret.Ease.sineIn).
+            to({ x: 0 }, time1, egret.Ease.sineIn);
+	}
+	// 横向移动
+	private cross(cloud, gift) {
+		// if(cloud.width)
+		console.log(cloud.width, gift.x)
 	}
 	// 定时器
 	private timerFunc() {
@@ -152,10 +165,21 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 		this.img_cloud2.y = this.img_cloud2.y + 0.5;
 		this.img_cloud3.y = this.img_cloud3.y + 0.5;
 		this.img_cloud4.y = this.img_cloud4.y + 0.5;
+		this.img_cloud5.y = this.img_cloud5.y + 0.5;
 		this.img_gift1.y = this.img_gift1.y + 0.5;
 		this.img_gift2.y = this.img_gift2.y + 0.5;
 		this.img_gift3.y = this.img_gift3.y + 0.5;
+		this.img_gift4.y = this.img_gift4.y + 0.5;
 		this.img_face_right.y = this.img_face_right.y + 0.5;
+
+		if(this.img_cloud1.y + this.img_cloud1.height == 1136) {
+		
+			// 游戏结束
+			this.addChild(GameOver.getInstance());
+			
+			this.redHatDrop('left');
+			this.redHatDrop('right');
+		}
 	}
 	private timerCloudGiftFunc() {
 		
@@ -166,18 +190,24 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 	private startLoad(): void {
 
 		// 从两个集合中分拨随机选出云朵和 gift 的样式
-		var cloudSourceList = ["cloud1.png", "cloud2.png", "cloud3.png", "cloud4.png"];
-		var giftSourceList = ["gift1.png", "gift2.png", "gift3.png", "", "", ""];
+		var cloudSourceList = ["cloud1_png", "cloud2_png", "cloud3_png", "cloud4_png"];
+		var giftSourceList = ["gift1_png", "gift2_png", "gift3_png", "", "", ""];
 		var i = Math.floor(Math.random() * cloudSourceList.length);
 		var j = Math.floor(Math.random() * giftSourceList.length);
-		// console.log(cloudSourceList[i]);
-		// console.log(giftSourceList[j]);
+		console.log(cloudSourceList[i]);
+		console.log(giftSourceList[j]);
+
+		this.img_cloud5.source = cloudSourceList[i];
+		this.img_cloud5.height = 42;
+		this.img_cloud5.y = -42;
 
         //创建 ImageLoader 对象
         var loaderCloud: egret.ImageLoader = new egret.ImageLoader();
         //添加加载完成侦听
+		var cloudUrlTemp = cloudSourceList[i].split("_");
+		var cloudUrl = cloudUrlTemp[0] + "." + cloudUrlTemp[1];
         loaderCloud.addEventListener(egret.Event.COMPLETE, this.onLoadComplete, this);
-        loaderCloud.load("resource/assets/RedHat/" + cloudSourceList[i]);
+        loaderCloud.load("resource/assets/RedHat/" + cloudUrl);
 		
         //创建 ImageLoader 对象
         // var loaderGift: egret.ImageLoader = new egret.ImageLoader();
@@ -186,39 +216,35 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 		// if(giftSourceList[j] == "") {
 		// 	console.log("没有礼物")
 		// }else {
-        // 	loaderGift.load("resource/assets/RedHat/" + giftSourceList[j]);
+		// 	var giftUrlTemp = giftSourceList[i].split("_");
+		// 	var giftUrl = giftUrlTemp[0] + "." + giftUrlTemp[1];
+        // 	loaderGift.load("resource/assets/RedHat/" + giftUrl);
 		// }
     }
-	public new_cloud;
+	// public new_cloud;
     private onLoadComplete(event: egret.Event): void {
         var texture = new egret.Texture();
         texture.bitmapData = event.target.data;
-		// console.log(event.target.data);
         //创建 Bitmap 进行显示
-		if(this.new_cloud == undefined) {
-			this.newCloud(this.new_cloud, texture);
+		var newCloud = new egret.Bitmap(texture);
+		// newCloud.y = newCloud.height;
+		// console.log(newCloud.width)
+		if(newCloud.width == 236) {
+			this.img_cloud5.width = 176;
+		}else if(newCloud.width == 196) {
+			this.img_cloud5.width = 167;
+		}else if(newCloud.width == 182) {
+			this.img_cloud5.width = 135;
+		}else if(newCloud.width == 245) {
+			this.img_cloud5.width = 209;
 		}
+		console.log(this.img_cloud5.width)
+		// this.addChild(newCloud);
 		
 		// egret.setTimeout(function() {
 		// 	this.removeChild(new_cloud);
 		// }, this, 2000);
     }
-	private newCloud(newCloud, texture) {
-		newCloud = new egret.Bitmap(texture);
-		newCloud.y = newCloud.height;
-		this.addChild(newCloud);
-		newCloud.height = 42;
-		console.log(newCloud.width);
-		if(newCloud.width == 236) {
-			newCloud.width = 176;
-		}else if(newCloud.width == 196) {
-			newCloud.width = 167;
-		}else if(newCloud.width == 182) {
-			newCloud.width = 135;
-		}else if(newCloud.width == 245) {
-			newCloud.width = 209;
-		}
-	}
 	// 返回首页
 	private returnClick() {
 		this.parent.removeChild(this);

@@ -537,7 +537,7 @@ var GamePage = (function (_super) {
         timer.addEventListener(egret.TimerEvent.TIMER, this.timerFunc, this);
         timer.start();
         // 新云朵
-        var timerCloudGift = new egret.Timer(3000, 0);
+        var timerCloudGift = new egret.Timer(8000, 0);
         timerCloudGift.addEventListener(egret.TimerEvent.TIMER, this.timerCloudGiftFunc, this);
         timerCloudGift.start();
         // 给每个按钮绑定点击事件
@@ -575,6 +575,7 @@ var GamePage = (function (_super) {
             // console.log(this.source, this.y);
             // 在egretProperties.json 中添加 game，需要再执行 egret build -e
         };
+        this.cross(this.img_cloud2, this.img_gift1);
         egret.Tween.get(this.img_cloud2, { loop: true }).
             to({ x: 0 }, time, egret.Ease.sineIn).
             to({ x: 473 }, time, egret.Ease.sineIn);
@@ -593,6 +594,14 @@ var GamePage = (function (_super) {
         egret.Tween.get(this.img_gift3, { loop: true }).
             to({ x: 0 }, time1, egret.Ease.sineIn).
             to({ x: 431 }, time1, egret.Ease.sineIn);
+        egret.Tween.get(this.img_cloud5, { loop: true }).
+            to({ x: 473 }, time1, egret.Ease.sineIn).
+            to({ x: 0 }, time1, egret.Ease.sineIn);
+    };
+    // 横向移动
+    GamePage.prototype.cross = function (cloud, gift) {
+        // if(cloud.width)
+        console.log(cloud.width, gift.x);
     };
     // 定时器
     GamePage.prototype.timerFunc = function () {
@@ -600,10 +609,18 @@ var GamePage = (function (_super) {
         this.img_cloud2.y = this.img_cloud2.y + 0.5;
         this.img_cloud3.y = this.img_cloud3.y + 0.5;
         this.img_cloud4.y = this.img_cloud4.y + 0.5;
+        this.img_cloud5.y = this.img_cloud5.y + 0.5;
         this.img_gift1.y = this.img_gift1.y + 0.5;
         this.img_gift2.y = this.img_gift2.y + 0.5;
         this.img_gift3.y = this.img_gift3.y + 0.5;
+        this.img_gift4.y = this.img_gift4.y + 0.5;
         this.img_face_right.y = this.img_face_right.y + 0.5;
+        if (this.img_cloud1.y + this.img_cloud1.height == 1136) {
+            // 游戏结束
+            this.addChild(GameOver.getInstance());
+            this.redHatDrop('left');
+            this.redHatDrop('right');
+        }
     };
     GamePage.prototype.timerCloudGiftFunc = function () {
         // this.initList();
@@ -611,17 +628,22 @@ var GamePage = (function (_super) {
     };
     GamePage.prototype.startLoad = function () {
         // 从两个集合中分拨随机选出云朵和 gift 的样式
-        var cloudSourceList = ["cloud1.png", "cloud2.png", "cloud3.png", "cloud4.png"];
-        var giftSourceList = ["gift1.png", "gift2.png", "gift3.png", "", "", ""];
+        var cloudSourceList = ["cloud1_png", "cloud2_png", "cloud3_png", "cloud4_png"];
+        var giftSourceList = ["gift1_png", "gift2_png", "gift3_png", "", "", ""];
         var i = Math.floor(Math.random() * cloudSourceList.length);
         var j = Math.floor(Math.random() * giftSourceList.length);
-        // console.log(cloudSourceList[i]);
-        // console.log(giftSourceList[j]);
+        console.log(cloudSourceList[i]);
+        console.log(giftSourceList[j]);
+        this.img_cloud5.source = cloudSourceList[i];
+        this.img_cloud5.height = 42;
+        this.img_cloud5.y = -42;
         //创建 ImageLoader 对象
         var loaderCloud = new egret.ImageLoader();
         //添加加载完成侦听
+        var cloudUrlTemp = cloudSourceList[i].split("_");
+        var cloudUrl = cloudUrlTemp[0] + "." + cloudUrlTemp[1];
         loaderCloud.addEventListener(egret.Event.COMPLETE, this.onLoadComplete, this);
-        loaderCloud.load("resource/assets/RedHat/" + cloudSourceList[i]);
+        loaderCloud.load("resource/assets/RedHat/" + cloudUrl);
         //创建 ImageLoader 对象
         // var loaderGift: egret.ImageLoader = new egret.ImageLoader();
         // //添加加载完成侦听
@@ -629,39 +651,36 @@ var GamePage = (function (_super) {
         // if(giftSourceList[j] == "") {
         // 	console.log("没有礼物")
         // }else {
-        // 	loaderGift.load("resource/assets/RedHat/" + giftSourceList[j]);
+        // 	var giftUrlTemp = giftSourceList[i].split("_");
+        // 	var giftUrl = giftUrlTemp[0] + "." + giftUrlTemp[1];
+        // 	loaderGift.load("resource/assets/RedHat/" + giftUrl);
         // }
     };
+    // public new_cloud;
     GamePage.prototype.onLoadComplete = function (event) {
         var texture = new egret.Texture();
         texture.bitmapData = event.target.data;
-        // console.log(event.target.data);
         //创建 Bitmap 进行显示
-        if (this.new_cloud == undefined) {
-            this.newCloud(this.new_cloud, texture);
+        var newCloud = new egret.Bitmap(texture);
+        // newCloud.y = newCloud.height;
+        // console.log(newCloud.width)
+        if (newCloud.width == 236) {
+            this.img_cloud5.width = 176;
         }
+        else if (newCloud.width == 196) {
+            this.img_cloud5.width = 167;
+        }
+        else if (newCloud.width == 182) {
+            this.img_cloud5.width = 135;
+        }
+        else if (newCloud.width == 245) {
+            this.img_cloud5.width = 209;
+        }
+        console.log(this.img_cloud5.width);
+        // this.addChild(newCloud);
         // egret.setTimeout(function() {
         // 	this.removeChild(new_cloud);
         // }, this, 2000);
-    };
-    GamePage.prototype.newCloud = function (newCloud, texture) {
-        newCloud = new egret.Bitmap(texture);
-        newCloud.y = newCloud.height;
-        this.addChild(newCloud);
-        newCloud.height = 42;
-        console.log(newCloud.width);
-        if (newCloud.width == 236) {
-            newCloud.width = 176;
-        }
-        else if (newCloud.width == 196) {
-            newCloud.width = 167;
-        }
-        else if (newCloud.width == 182) {
-            newCloud.width = 135;
-        }
-        else if (newCloud.width == 245) {
-            newCloud.width = 209;
-        }
     };
     // 返回首页
     GamePage.prototype.returnClick = function () {
