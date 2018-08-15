@@ -75,12 +75,13 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 
 	// 自定义初始化函数
 	private init() {
-		// 定时器
+		// 云朵和 gift 缓缓向下
 		var timer: egret.Timer = new egret.Timer(20, 0);
         timer.addEventListener(egret.TimerEvent.TIMER, this.timerFunc, this);
         timer.start();
 
-		var timerCloudGift: egret.Timer = new egret.Timer(2000, 0);
+		// 新云朵
+		var timerCloudGift: egret.Timer = new egret.Timer(3000, 0);
         timerCloudGift.addEventListener(egret.TimerEvent.TIMER, this.timerCloudGiftFunc, this);
         timerCloudGift.start();
 
@@ -155,7 +156,6 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 		this.img_gift2.y = this.img_gift2.y + 0.5;
 		this.img_gift3.y = this.img_gift3.y + 0.5;
 		this.img_face_right.y = this.img_face_right.y + 0.5;
-
 	}
 	private timerCloudGiftFunc() {
 		
@@ -163,27 +163,62 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 		this.startLoad()
 
 	}    
-	private startLoad():void {
+	private startLoad(): void {
+
+		// 从两个集合中分拨随机选出云朵和 gift 的样式
+		var cloudSourceList = ["cloud1.png", "cloud2.png", "cloud3.png", "cloud4.png"];
+		var giftSourceList = ["gift1.png", "gift2.png", "gift3.png", "", "", ""];
+		var i = Math.floor(Math.random() * cloudSourceList.length);
+		var j = Math.floor(Math.random() * giftSourceList.length);
+		// console.log(cloudSourceList[i]);
+		// console.log(giftSourceList[j]);
+
         //创建 ImageLoader 对象
-        var loader: egret.ImageLoader = new egret.ImageLoader();
+        var loaderCloud: egret.ImageLoader = new egret.ImageLoader();
         //添加加载完成侦听
-        loader.addEventListener(egret.Event.COMPLETE, this.onLoadComplete, this);
-        // var url: string = "resource/assets/RedHat/cloud1.png";
-        //开始加载
-        loader.load("resource/assets/RedHat/cloud1.png");
-        loader.load("resource/assets/RedHat/cloud2.png");
+        loaderCloud.addEventListener(egret.Event.COMPLETE, this.onLoadComplete, this);
+        loaderCloud.load("resource/assets/RedHat/" + cloudSourceList[i]);
+		
+        //创建 ImageLoader 对象
+        // var loaderGift: egret.ImageLoader = new egret.ImageLoader();
+        // //添加加载完成侦听
+        // loaderGift.addEventListener(egret.Event.COMPLETE, this.onLoadComplete, this);
+		// if(giftSourceList[j] == "") {
+		// 	console.log("没有礼物")
+		// }else {
+        // 	loaderGift.load("resource/assets/RedHat/" + giftSourceList[j]);
+		// }
     }
-    private onLoadComplete(event:egret.Event):void {
-        var loader: egret.ImageLoader = <egret.ImageLoader>event.target;
-        //获取加载到的纹理对象
-        var bitmapData: egret.BitmapData = loader.data;
-		console.log(bitmapData)
-        //创建纹理对象
+	public new_cloud;
+    private onLoadComplete(event: egret.Event): void {
         var texture = new egret.Texture();
-        texture.bitmapData = bitmapData;
+        texture.bitmapData = event.target.data;
+		// console.log(event.target.data);
         //创建 Bitmap 进行显示
-        this.addChild(new egret.Bitmap(texture));
+		if(this.new_cloud == undefined) {
+			this.newCloud(this.new_cloud, texture);
+		}
+		
+		// egret.setTimeout(function() {
+		// 	this.removeChild(new_cloud);
+		// }, this, 2000);
     }
+	private newCloud(newCloud, texture) {
+		newCloud = new egret.Bitmap(texture);
+		newCloud.y = newCloud.height;
+		this.addChild(newCloud);
+		newCloud.height = 42;
+		console.log(newCloud.width);
+		if(newCloud.width == 236) {
+			newCloud.width = 176;
+		}else if(newCloud.width == 196) {
+			newCloud.width = 167;
+		}else if(newCloud.width == 182) {
+			newCloud.width = 135;
+		}else if(newCloud.width == 245) {
+			newCloud.width = 209;
+		}
+	}
 	// 返回首页
 	private returnClick() {
 		this.parent.removeChild(this);
