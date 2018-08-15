@@ -3,18 +3,20 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 	public sc_cloud:eui.Scroller;
 	public gp_cloud:eui.Group;
 	public img_cloud1:eui.Image;
-	public img_cloud3:eui.Image;
 	public img_cloud2:eui.Image;
+	public img_cloud3:eui.Image;
 	public img_cloud4:eui.Image;
-	public img_face_right:eui.Image;
 	public img_gift1:eui.Image;
 	public img_gift2:eui.Image;
 	public img_gift3:eui.Image;
+	public img_face_right:eui.Image;
 	public img_score:eui.Image;
-	public btn_return:eui.Button;
 	public btn_left:eui.Button;
 	public btn_up:eui.Button;
 	public btn_right:eui.Button;
+	public btn_return:eui.Button;
+	public img_cloud_new:eui.Image;
+	public img_gift_new:eui.Image;
 
 	// 分数
 	public score = 0;
@@ -42,38 +44,45 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 	{
 		super.childrenCreated();
 		this.init();
-		this.initList();
+		// this.initList();
 	}
 	
 	private initList() {
 		this.cloudList = [
 			{
 				id: 0,
-				cloudSource: "img_cloud1",
+				cloudSource: "",
 				cloudX: 0,
 				cloudY: 0,
 				cloudW: 0,
 				cloudH: 0,
-				giftSource: "img_gift1",
+				giftSource: "",
 				giftX: 0,
 				giftY: 0,
 				giftW: 0,
 				giftH: 0,
+				time: 0
 			}
 		]
-		var list1 = [11, 22, 33, 44, 55, 66, 77, 88]
-		var i = Math.floor(Math.random() * list1.length)
-		console.log(i)
+		// 从两个集合中分拨随机选出云朵和 gift 的样式
+		var cloudSourceList = ["cloud1_png", "cloud2_png", "cloud3_png", "cloud4_png"];
+		var giftSourceList = ["gift1_png", "gift2_png", "gift3_png", "", "", "", ""];
+		var i = Math.floor(Math.random() * cloudSourceList.length);
+		var j = Math.floor(Math.random() * giftSourceList.length);
+		console.log(cloudSourceList[i]);
+		console.log(giftSourceList[j]);
 	}
 
 	// 自定义初始化函数
 	private init() {
-		// this.parent.removeChild(this.btn_up);
-		// console.log(this.btn_up)
 		// 定时器
 		var timer: egret.Timer = new egret.Timer(20, 0);
         timer.addEventListener(egret.TimerEvent.TIMER, this.timerFunc, this);
-        // timer.start();
+        timer.start();
+
+		var timerCloudGift: egret.Timer = new egret.Timer(2000, 0);
+        timerCloudGift.addEventListener(egret.TimerEvent.TIMER, this.timerCloudGiftFunc, this);
+        timerCloudGift.start();
 
 		// 给每个按钮绑定点击事件
 		this.btn_return.addEventListener(egret.TouchEvent.TOUCH_TAP,this.returnClick,this)
@@ -82,15 +91,15 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 		this.btn_right.addEventListener(egret.TouchEvent.TOUCH_TAP,this.rightClick,this)
 
 		// scroller  关闭水平方向滚动
-		this.sc_cloud.scrollPolicyH = eui.ScrollPolicy.OFF;
+		this.sc_cloud.scrollPolicyH = eui.ScrollPolicy.OFF;	
+		// 不显示滚动条		
+		this.sc_cloud.verticalScrollBar.autoVisibility = false;
+		this.sc_cloud.verticalScrollBar.visible = false;
 
 		//创建icon的group添加到scroller上
-		let group: eui.Group = new eui.Group();
-		this.gp_cloud.addChild(group);
-		group.width = 640;
-		// group.height = 0;
-		// console.log(this.gp_cloud);
-		// console.log(group);
+		// let group: eui.Group = new eui.Group();
+		// this.gp_cloud.addChild(group);
+		// group.width = 640;
 
 		// 填充背景图
 		let img_bg: eui.Image = new eui.Image("resource/assets/RedHat/bg.png");
@@ -112,10 +121,10 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 		// 绑定的对象发生变化时调用该方法
 		var that = this;
 		var funcChange = function(): void {
-			// console.log(this.source, this.x);
+			// console.log(this.source, this.y);
 			// 在egretProperties.json 中添加 game，需要再执行 egret build -e
 		}
-		egret.Tween.get(this.img_cloud2, { loop: true, onChange: funcChange, onChangeObj: this.img_cloud2 }).
+		egret.Tween.get(this.img_cloud2, { loop: true }).
             to({ x: 0 }, time, egret.Ease.sineIn).
             to({ x: 473 }, time, egret.Ease.sineIn);
 		egret.Tween.get(this.img_gift1, { loop: true }).
@@ -129,7 +138,7 @@ class GamePage extends eui.Component implements  eui.UIComponent {
             to({ x: 554 }, time1, egret.Ease.sineIn).
             to({ x: 49 }, time1, egret.Ease.sineIn);
 
-		egret.Tween.get(this.img_cloud4, { loop: true }).
+		egret.Tween.get(this.img_cloud4, { loop: true, onChange: funcChange, onChangeObj: this.img_cloud4 }).
             to({ x: 0 }, time1, egret.Ease.sineIn).
             to({ x: 431 }, time1, egret.Ease.sineIn);
 		egret.Tween.get(this.img_gift3, { loop: true }).
@@ -146,9 +155,35 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 		this.img_gift2.y = this.img_gift2.y + 0.5;
 		this.img_gift3.y = this.img_gift3.y + 0.5;
 		this.img_face_right.y = this.img_face_right.y + 0.5;
-		// this.sc_cloud.viewport.scrollV = this.sc_cloud.viewport.scrollV + 1;
-		// console.log(this.sc_cloud.viewport.scrollV);
+
 	}
+	private timerCloudGiftFunc() {
+		
+		// this.initList();
+		this.startLoad()
+
+	}    
+	private startLoad():void {
+        //创建 ImageLoader 对象
+        var loader: egret.ImageLoader = new egret.ImageLoader();
+        //添加加载完成侦听
+        loader.addEventListener(egret.Event.COMPLETE, this.onLoadComplete, this);
+        // var url: string = "resource/assets/RedHat/cloud1.png";
+        //开始加载
+        loader.load("resource/assets/RedHat/cloud1.png");
+        loader.load("resource/assets/RedHat/cloud2.png");
+    }
+    private onLoadComplete(event:egret.Event):void {
+        var loader: egret.ImageLoader = <egret.ImageLoader>event.target;
+        //获取加载到的纹理对象
+        var bitmapData: egret.BitmapData = loader.data;
+		console.log(bitmapData)
+        //创建纹理对象
+        var texture = new egret.Texture();
+        texture.bitmapData = bitmapData;
+        //创建 Bitmap 进行显示
+        this.addChild(new egret.Bitmap(texture));
+    }
 	// 返回首页
 	private returnClick() {
 		this.parent.removeChild(this);
@@ -178,7 +213,7 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 		// 跳起及落下的动作
 		egret.Tween.get(this.img_face_right).
             to({ y: this.img_face_right.y - 330 }, 700, egret.Ease.sineOut).
-            to({ y: this.img_face_right.y - 233 }, 400, egret.Ease.sineOut).
+            to({ y: this.img_face_right.y - 235 }, 400, egret.Ease.sineOut).
 			wait(1).call(this.pauseTweens, this, [face_where]);// 设置延时，设置回调函数及作用域，用于侦听动画完成;
 	}
 	// 暂停某个对象上的全部 Tween 动画

@@ -503,36 +503,42 @@ var GamePage = (function (_super) {
     GamePage.prototype.childrenCreated = function () {
         _super.prototype.childrenCreated.call(this);
         this.init();
-        this.initList();
+        // this.initList();
     };
     GamePage.prototype.initList = function () {
         this.cloudList = [
             {
                 id: 0,
-                cloudSource: "img_cloud1",
+                cloudSource: "",
                 cloudX: 0,
                 cloudY: 0,
                 cloudW: 0,
                 cloudH: 0,
-                giftSource: "img_gift1",
+                giftSource: "",
                 giftX: 0,
                 giftY: 0,
                 giftW: 0,
                 giftH: 0,
+                time: 0
             }
         ];
-        var list1 = [11, 22, 33, 44, 55, 66, 77, 88];
-        var i = Math.floor(Math.random() * list1.length);
-        console.log(i);
+        // 从两个集合中分拨随机选出云朵和 gift 的样式
+        var cloudSourceList = ["cloud1_png", "cloud2_png", "cloud3_png", "cloud4_png"];
+        var giftSourceList = ["gift1_png", "gift2_png", "gift3_png", "", "", "", ""];
+        var i = Math.floor(Math.random() * cloudSourceList.length);
+        var j = Math.floor(Math.random() * giftSourceList.length);
+        console.log(cloudSourceList[i]);
+        console.log(giftSourceList[j]);
     };
     // 自定义初始化函数
     GamePage.prototype.init = function () {
-        // this.parent.removeChild(this.btn_up);
-        // console.log(this.btn_up)
         // 定时器
         var timer = new egret.Timer(20, 0);
         timer.addEventListener(egret.TimerEvent.TIMER, this.timerFunc, this);
-        // timer.start();
+        timer.start();
+        var timerCloudGift = new egret.Timer(2000, 0);
+        timerCloudGift.addEventListener(egret.TimerEvent.TIMER, this.timerCloudGiftFunc, this);
+        timerCloudGift.start();
         // 给每个按钮绑定点击事件
         this.btn_return.addEventListener(egret.TouchEvent.TOUCH_TAP, this.returnClick, this);
         this.btn_left.addEventListener(egret.TouchEvent.TOUCH_TAP, this.leftClick, this);
@@ -540,13 +546,13 @@ var GamePage = (function (_super) {
         this.btn_right.addEventListener(egret.TouchEvent.TOUCH_TAP, this.rightClick, this);
         // scroller  关闭水平方向滚动
         this.sc_cloud.scrollPolicyH = eui.ScrollPolicy.OFF;
+        // 不显示滚动条		
+        this.sc_cloud.verticalScrollBar.autoVisibility = false;
+        this.sc_cloud.verticalScrollBar.visible = false;
         //创建icon的group添加到scroller上
-        var group = new eui.Group();
-        this.gp_cloud.addChild(group);
-        group.width = 640;
-        // group.height = 0;
-        // console.log(this.gp_cloud);
-        // console.log(group);
+        // let group: eui.Group = new eui.Group();
+        // this.gp_cloud.addChild(group);
+        // group.width = 640;
         // 填充背景图
         var img_bg = new eui.Image("resource/assets/RedHat/bg.png");
         this.gp_cloud.addChildAt(img_bg, 0);
@@ -565,10 +571,10 @@ var GamePage = (function (_super) {
         // 绑定的对象发生变化时调用该方法
         var that = this;
         var funcChange = function () {
-            // console.log(this.source, this.x);
+            // console.log(this.source, this.y);
             // 在egretProperties.json 中添加 game，需要再执行 egret build -e
         };
-        egret.Tween.get(this.img_cloud2, { loop: true, onChange: funcChange, onChangeObj: this.img_cloud2 }).
+        egret.Tween.get(this.img_cloud2, { loop: true }).
             to({ x: 0 }, time, egret.Ease.sineIn).
             to({ x: 473 }, time, egret.Ease.sineIn);
         egret.Tween.get(this.img_gift1, { loop: true }).
@@ -580,7 +586,7 @@ var GamePage = (function (_super) {
         egret.Tween.get(this.img_gift2, { loop: true }).
             to({ x: 554 }, time1, egret.Ease.sineIn).
             to({ x: 49 }, time1, egret.Ease.sineIn);
-        egret.Tween.get(this.img_cloud4, { loop: true }).
+        egret.Tween.get(this.img_cloud4, { loop: true, onChange: funcChange, onChangeObj: this.img_cloud4 }).
             to({ x: 0 }, time1, egret.Ease.sineIn).
             to({ x: 431 }, time1, egret.Ease.sineIn);
         egret.Tween.get(this.img_gift3, { loop: true }).
@@ -597,8 +603,31 @@ var GamePage = (function (_super) {
         this.img_gift2.y = this.img_gift2.y + 0.5;
         this.img_gift3.y = this.img_gift3.y + 0.5;
         this.img_face_right.y = this.img_face_right.y + 0.5;
-        // this.sc_cloud.viewport.scrollV = this.sc_cloud.viewport.scrollV + 1;
-        // console.log(this.sc_cloud.viewport.scrollV);
+    };
+    GamePage.prototype.timerCloudGiftFunc = function () {
+        // this.initList();
+        this.startLoad();
+    };
+    GamePage.prototype.startLoad = function () {
+        //创建 ImageLoader 对象
+        var loader = new egret.ImageLoader();
+        //添加加载完成侦听
+        loader.addEventListener(egret.Event.COMPLETE, this.onLoadComplete, this);
+        // var url: string = "resource/assets/RedHat/cloud1.png";
+        //开始加载
+        loader.load("resource/assets/RedHat/cloud1.png");
+        loader.load("resource/assets/RedHat/cloud2.png");
+    };
+    GamePage.prototype.onLoadComplete = function (event) {
+        var loader = event.target;
+        //获取加载到的纹理对象
+        var bitmapData = loader.data;
+        console.log(bitmapData);
+        //创建纹理对象
+        var texture = new egret.Texture();
+        texture.bitmapData = bitmapData;
+        //创建 Bitmap 进行显示
+        this.addChild(new egret.Bitmap(texture));
     };
     // 返回首页
     GamePage.prototype.returnClick = function () {
@@ -627,7 +656,7 @@ var GamePage = (function (_super) {
         // 跳起及落下的动作
         egret.Tween.get(this.img_face_right).
             to({ y: this.img_face_right.y - 330 }, 700, egret.Ease.sineOut).
-            to({ y: this.img_face_right.y - 233 }, 400, egret.Ease.sineOut).
+            to({ y: this.img_face_right.y - 235 }, 400, egret.Ease.sineOut).
             wait(1).call(this.pauseTweens, this, [face_where]); // 设置延时，设置回调函数及作用域，用于侦听动画完成;
     };
     // 暂停某个对象上的全部 Tween 动画
