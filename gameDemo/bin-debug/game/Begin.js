@@ -40,16 +40,13 @@ var Begin = (function (_super) {
         this.addChild(GameRule.getInstance());
     };
     Begin.prototype.rankingListClick = function () {
-        var rankingList = new RankingList();
-        this.addChild(rankingList);
+        this.addChild(RankingList.getInstance());
     };
     Begin.prototype.taskClick = function () {
-        var task = new Task();
-        this.addChild(task);
+        this.addChild(Task.getInstance());
     };
     Begin.prototype.startGameClick = function () {
-        var gamePage = new GamePage();
-        this.addChild(gamePage);
+        this.addChild(GamePage.getInstance());
     };
     return Begin;
 }(eui.Component));

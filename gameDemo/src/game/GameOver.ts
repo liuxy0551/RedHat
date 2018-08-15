@@ -4,12 +4,12 @@ class GameOver extends eui.Component implements  eui.UIComponent {
 	public btn_to_share:eui.Button;
 	public btn_ranking_list:eui.Button;
 	public btn_return:eui.Button;
-	// public total_score:eui.Label;
+	public total_score:eui.Label;
 
 	// 单例模式
-    private static shared:GameOver;
-    public static getInstance(){
-        if( !GameOver.shared){
+    private static shared: GameOver;
+    public static getInstance() {
+        if( !GameOver.shared) {
             GameOver.shared =  new GameOver();
         }
         return GameOver.shared;
@@ -38,6 +38,11 @@ class GameOver extends eui.Component implements  eui.UIComponent {
 		this.btn_to_share.addEventListener(egret.TouchEvent.TOUCH_TAP,this.toShare,this)
 		this.btn_ranking_list.addEventListener(egret.TouchEvent.TOUCH_TAP,this.rankingListClick,this)
 		this.btn_return.addEventListener(egret.TouchEvent.TOUCH_TAP,this.returnClick,this)
+	}
+	// 设置分数
+	public setScore(score) {
+		
+		console.log(this.total_score.text);
 	}
 	// 再来一局
 	private againGame() {

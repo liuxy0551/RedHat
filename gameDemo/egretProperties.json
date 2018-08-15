@@ -28,6 +28,9 @@
       "name": "tween"
     },
     {
+      "name": "game"
+    },
+    {
       "name": "promise"
     }
   ]

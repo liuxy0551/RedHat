@@ -16,6 +16,9 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 	public btn_up:eui.Button;
 	public btn_right:eui.Button;
 
+	// 分数
+	public score;
+
 	// 单例模式
     private static shared:GamePage;
     public static getInstance(){
@@ -67,7 +70,6 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 		//设置小红帽及所在云朵的初始位置
         // this.img_face_right.x = this.width / 2 - 30;
         this.img_face_right.y = 780;
-		this.img_gift1.source = "";
 		// this.img_cloud1.x = this.width / 2 - 100
 
 		// 添加缓动动画，定义动画缓动时间
@@ -111,14 +113,18 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 	// 向左移动
 	private leftClick() {
         if(this.img_face_right.source == "face_right_png") {
-            this.img_face_right.source = "face_left_png"
-            this.img_face_right.x = this.img_face_right.x - 20
+            this.img_face_right.source = "face_left_png";
+            this.img_face_right.x = this.img_face_right.x - 20;
 			// 小红帽左侧掉落
-			this.redHatDrop('left')
+			this.redHatDrop('left');
+
+			this.redHatGift("walk");
         }else {
-            this.img_face_right.x = this.img_face_right.x - 20
+            this.img_face_right.x = this.img_face_right.x - 20;
 			// 小红帽左侧掉落
-			this.redHatDrop('left')
+			this.redHatDrop('left');
+
+			this.redHatGift("walk");
         }
 	}
 	// 向上跳起
@@ -141,38 +147,68 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 		// 判断小红帽是否落在云上
 		if((this.img_face_right.x + this.img_face_right.width / 2) > this.img_cloud2.x && (this.img_face_right.x + this.img_face_right.width / 2) < (this.img_cloud2.x + this.img_cloud2.width)) {
 			console.log("恭喜，小红帽落在了云上！");
-			this.img_score.source = "score1_png";
-			egret.Tween.get(this.img_face_right).
-				to({ y: this.img_face_right.y - 1 }, 1, egret.Ease.sineOut).
-				wait(1000).call(this.addScoreEnd, this, [face_where]);// 设置延时，设置回调函数及作用域，用于侦听动画完成;
+
+			this.redHatGift("jump");
 		}else {
 			console.log("很遗憾，小红帽没落在云上！");
 			this.resumeTweens();
 			egret.Tween.get(this.img_face_right).
 				to({ rotation: 720, y: this.img_face_right.y + 750 }, 1000 ,egret.Ease.sineIn);
+		
+			// 游戏结束
 			this.addChild(GameOver.getInstance());
+			
+			// 通过深度值获取子对象来设置分数
+			var gameOver: egret.DisplayObject = GameOver.getInstance().getChildAt(1).parent;
+			gameOver.total_score.text = 5;
 		}
     }
-	// 加分完成
-	private addScoreEnd() {
-		this.img_score.source = "score_png"
-	}
 	// 恢复某个对象上的全部 Tween 动画
     private resumeTweens():void {
 		egret.Tween.resumeTweens(this.img_cloud2);
 		egret.Tween.resumeTweens(this.img_gift1);
     }
+	// 判断小红帽和 gift 的位置关系
+	private redHatGift(from) {
+		// 判断小红帽是否落在云上恰好又落在了 gift 上
+		if(((this.img_face_right.x + this.img_face_right.width - 10) < (this.img_gift1.x + this.img_gift1.width) && (this.img_face_right.x + this.img_face_right.width - 10) > this.img_gift1.x)
+				|| ((this.img_face_right.x + 10) > this.img_gift1.x && (this.img_face_right.x + 10) < (this.img_gift1.x + this.img_gift1.width))) {
+			if(from == "walk") {
+				this.img_gift1.source = "";
+				this.img_score.source = "score2_png";
+			}else if(from == "jump") {
+				this.img_gift1.source = "";
+				this.img_score.source = "score3_png";
+			}
+			// console.log("this.img_face_right.x + this.img_face_right.width", this.img_face_right.x + this.img_face_right.width);
+			// console.log("this.img_gift1.x", this.img_gift1.x);
+		}else {
+			if(from == "jump") {
+				this.img_score.source = "score1_png";
+			}
+		}
+
+
+		// 加分完成，消除加分的显示
+		egret.setTimeout(function() {
+			this.img_score.source = "score_png";
+		}, this, 1000);
+	}
 	// 向右移动
 	private rightClick() {
         if(this.img_face_right.source == "face_left_png") {
             this.img_face_right.source = "face_right_png";
             this.img_face_right.x = this.img_face_right.x + 20;
 			// 小红帽右侧掉落
-			this.redHatDrop('right')
+			this.redHatDrop('right');
+
+			this.redHatGift("walk");
         }else {
             this.img_face_right.x = this.img_face_right.x + 20
 			// 小红帽右侧掉落
 			this.redHatDrop('right')
+
+			this.redHatGift("walk");
         }
 	}
 	//小红帽旋转掉落
