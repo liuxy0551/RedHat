@@ -41,7 +41,7 @@ class GameOver extends eui.Component implements  eui.UIComponent {
 	}
 	// 再来一局
 	private againGame() {
-		
+        this.addChild(GamePage.getInstance());
 	}
 	// 去分享给好友
 	private toShare() {
@@ -49,11 +49,12 @@ class GameOver extends eui.Component implements  eui.UIComponent {
 	}
 	// 排行榜
 	private rankingListClick() {
-		
+        this.addChild(RankingList.getInstance());
 	}
 	// 返回首页
 	private returnClick() {
-		this.parent.removeChild(this);
+		// this.parent.removeChild(this);
+        this.addChild(Begin.getInstance());
 	}
 	
 }

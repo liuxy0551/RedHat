@@ -2,6 +2,7 @@
 <e:Skin class="GameOverSkin" width="640" height="1136" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" >
 	<w:Config id="165378886ce" ></w:Config>
 	<e:Image width="640" height="1136" x="-0.87" y="0" anchorOffsetX="0" anchorOffsetY="0" source="big_box_png"/>
+	<e:Image width="640" height="1136" x="0" y="0" anchorOffsetX="0" anchorOffsetY="0" source="big_box_png"/>
 	<e:Button id="btn_again_game" label="" y="896.54" width="300" height="90" x="169.13">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
@@ -36,7 +37,7 @@
 		</e:skinName>
 	</e:Button>
 	<e:Label text="首页" x="455" y="663.68" size="20" fontFamily="PingFangSC" width="60" height="20" textAlign="center"/>
-	<e:Label id="total_score" text="0" size="80" width="320" height="95" anchorOffsetY="0" anchorOffsetX="0" y="280" textAlign="center" fontFamily="Georgia" textColor="0xf1527b" x="160" verticalAlign="middle"/>
+	<e:Label id="total_score" text="5" size="80" width="320" height="95" anchorOffsetY="0" anchorOffsetX="0" y="280" textAlign="center" fontFamily="Georgia" textColor="0xf1527b" x="160" verticalAlign="middle"/>
 	<e:Label text="游戏结束" size="38" width="157" height="35" anchorOffsetY="0" anchorOffsetX="0" x="242" y="155"/>
 	<e:Label text="——  本次得分  ——" size="22" width="250" height="35" anchorOffsetY="0" anchorOffsetX="0" y="240" textAlign="center" strokeColor="0x000000" x="195"/>
 </e:Skin>

@@ -67,6 +67,7 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 		//设置小红帽及所在云朵的初始位置
         // this.img_face_right.x = this.width / 2 - 30;
         this.img_face_right.y = 780;
+		this.img_gift1.source = "";
 		// this.img_cloud1.x = this.width / 2 - 100
 
 		// 添加缓动动画，定义动画缓动时间
@@ -113,12 +114,10 @@ class GamePage extends eui.Component implements  eui.UIComponent {
             this.img_face_right.source = "face_left_png"
             this.img_face_right.x = this.img_face_right.x - 20
 			// 小红帽左侧掉落
-			console.log("left", this.img_face_right.x)
 			this.redHatDrop('left')
         }else {
             this.img_face_right.x = this.img_face_right.x - 20
 			// 小红帽左侧掉落
-			console.log("left", this.img_face_right.x)
 			this.redHatDrop('left')
         }
 	}
@@ -141,19 +140,23 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 
 		// 判断小红帽是否落在云上
 		if((this.img_face_right.x + this.img_face_right.width / 2) > this.img_cloud2.x && (this.img_face_right.x + this.img_face_right.width / 2) < (this.img_cloud2.x + this.img_cloud2.width)) {
-			console.log("恭喜，小红帽落在了云上！")
-		}else {
-			console.log("很遗憾，小红帽没落在云上！")
-			this.resumeTweens()
+			console.log("恭喜，小红帽落在了云上！");
+			this.img_score.source = "score1_png";
 			egret.Tween.get(this.img_face_right).
-				// to({ y: this.img_face_right.y + 117 }, 300, egret.Ease.sineOut).
+				to({ y: this.img_face_right.y - 1 }, 1, egret.Ease.sineOut).
+				wait(1000).call(this.addScoreEnd, this, [face_where]);// 设置延时，设置回调函数及作用域，用于侦听动画完成;
+		}else {
+			console.log("很遗憾，小红帽没落在云上！");
+			this.resumeTweens();
+			egret.Tween.get(this.img_face_right).
 				to({ rotation: 720, y: this.img_face_right.y + 750 }, 1000 ,egret.Ease.sineIn);
-			this.addChild(GameOver.getInstance())
+			this.addChild(GameOver.getInstance());
 		}
-		console.log("小红帽", this.img_face_right.x + this.img_face_right.width / 2)
-		console.log("云左边", this.img_cloud2.x)
-		console.log("云右边", this.img_cloud2.x + this.img_cloud2.width)
     }
+	// 加分完成
+	private addScoreEnd() {
+		this.img_score.source = "score_png"
+	}
 	// 恢复某个对象上的全部 Tween 动画
     private resumeTweens():void {
 		egret.Tween.resumeTweens(this.img_cloud2);
@@ -165,31 +168,30 @@ class GamePage extends eui.Component implements  eui.UIComponent {
             this.img_face_right.source = "face_right_png";
             this.img_face_right.x = this.img_face_right.x + 20;
 			// 小红帽右侧掉落
-			console.log("right", this.img_face_right.x)
 			this.redHatDrop('right')
         }else {
             this.img_face_right.x = this.img_face_right.x + 20
 			// 小红帽右侧掉落
-			console.log("right", this.img_face_right.x)
 			this.redHatDrop('right')
         }
 	}
 	//小红帽旋转掉落
 	private redHatDrop(direction):void {
-		
 		if(direction == 'left') {
 			//小红帽从左边旋转掉落
-			if((this.img_face_right.x + this.img_face_right.width / 2) < this.img_cloud1.x) {
+			if((this.img_face_right.x + this.img_face_right.width / 2) < this.img_cloud2.x) {
 				egret.Tween.get(this.img_face_right).
-					to({ y: this.img_face_right.y + 117 }, 300, egret.Ease.sineOut).
+					// to({ y: this.img_face_right.y + 117 }, 300, egret.Ease.sineOut).
 					to({ rotation: 720, y: this.img_face_right.y + 750 }, 1000 ,egret.Ease.sineIn);
+				this.addChild(GameOver.getInstance())
             }
 		}else if(direction == 'right') {
 			//小红帽从右边旋转掉落
-			if((this.img_face_right.x + this.img_face_right.width / 2) > (this.img_cloud1.x + this.img_cloud1.width)) {
+			if((this.img_face_right.x + this.img_face_right.width / 2) > (this.img_cloud2.x + this.img_cloud2.width)) {
 				egret.Tween.get(this.img_face_right).
-					to({ y: this.img_face_right.y + 117 }, 300, egret.Ease.sineOut).
+					// to({ y: this.img_face_right.y + 117 }, 300, egret.Ease.sineOut).
 					to({ rotation: 720, y: this.img_face_right.y + 750 }, 1000 ,egret.Ease.sineIn);
+				this.addChild(GameOver.getInstance())
             }
 		}
 	}

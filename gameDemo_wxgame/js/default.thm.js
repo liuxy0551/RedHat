@@ -1117,7 +1117,7 @@ var egret = window.egret;window.skins={};
 		
 		this.height = 1136;
 		this.width = 640;
-		this.elementsContent = [this._Image1_i(),this.btn_again_game_i(),this.btn_to_share_i(),this.btn_ranking_list_i(),this._Label1_i(),this.btn_return_i(),this._Label2_i(),this.total_score_i(),this._Label3_i(),this._Label4_i()];
+		this.elementsContent = [this._Image1_i(),this._Image2_i(),this.btn_again_game_i(),this.btn_to_share_i(),this.btn_ranking_list_i(),this._Label1_i(),this.btn_return_i(),this._Label2_i(),this.total_score_i(),this._Label3_i(),this._Label4_i()];
 	}
 	var _proto = GameOverSkin.prototype;
 
@@ -1129,6 +1129,17 @@ var egret = window.egret;window.skins={};
 		t.source = "big_box_png";
 		t.width = 640;
 		t.x = -0.87;
+		t.y = 0;
+		return t;
+	};
+	_proto._Image2_i = function () {
+		var t = new eui.Image();
+		t.anchorOffsetX = 0;
+		t.anchorOffsetY = 0;
+		t.height = 1136;
+		t.source = "big_box_png";
+		t.width = 640;
+		t.x = 0;
 		t.y = 0;
 		return t;
 	};
@@ -1212,7 +1223,7 @@ var egret = window.egret;window.skins={};
 		t.fontFamily = "Georgia";
 		t.height = 95;
 		t.size = 80;
-		t.text = "0";
+		t.text = "5";
 		t.textAlign = "center";
 		t.textColor = 0xf1527b;
 		t.verticalAlign = "middle";
