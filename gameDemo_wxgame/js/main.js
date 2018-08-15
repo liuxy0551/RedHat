@@ -636,7 +636,7 @@ var GamePage = (function (_super) {
         // 加分完成，消除加分的显示
         egret.setTimeout(function () {
             this.img_score.source = "";
-        }, this, 1000);
+        }, this, 1200);
     };
     // 向右移动
     GamePage.prototype.rightClick = function () {
@@ -661,7 +661,7 @@ var GamePage = (function (_super) {
             if ((this.img_face_right.x + this.img_face_right.width / 2) < this.img_cloud2.x) {
                 egret.Tween.get(this.img_face_right).
                     // to({ y: this.img_face_right.y + 117 }, 300, egret.Ease.sineOut).
-                    to({ rotation: 720, y: this.img_face_right.y + 750 }, 1000, egret.Ease.sineIn);
+                    to({ rotation: 720, y: this.img_face_right.y + 1000 }, 1200, egret.Ease.sineIn);
                 this.addChild(GameOver.getInstance());
                 // 通过深度值获取子对象来设置分数
                 var gameOver = GameOver.getInstance().getChildAt(1).parent;
@@ -673,7 +673,7 @@ var GamePage = (function (_super) {
             if ((this.img_face_right.x + this.img_face_right.width / 2) > (this.img_cloud2.x + this.img_cloud2.width)) {
                 egret.Tween.get(this.img_face_right).
                     // to({ y: this.img_face_right.y + 117 }, 300, egret.Ease.sineOut).
-                    to({ rotation: 720, y: this.img_face_right.y + 750 }, 1000, egret.Ease.sineIn);
+                    to({ rotation: 720, y: this.img_face_right.y + 1000 }, 1200, egret.Ease.sineIn);
                 this.addChild(GameOver.getInstance());
                 // 通过深度值获取子对象来设置分数
                 var gameOver = GameOver.getInstance().getChildAt(1).parent;
