@@ -17,7 +17,7 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 	public btn_right:eui.Button;
 
 	// 分数
-	public score;
+	public score = 0;
 
 	// 单例模式
     private static shared:GamePage;
@@ -102,10 +102,6 @@ class GamePage extends eui.Component implements  eui.UIComponent {
             to({ x: 0 }, time1, egret.Ease.sineIn).
             to({ x: 431 }, time1, egret.Ease.sineIn);
 	}
-	// 碰撞检测
-	private redHatMeet() {
-
-	}
 	// 返回首页
 	private returnClick() {
 		this.parent.removeChild(this);
@@ -157,10 +153,6 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 		
 			// 游戏结束
 			this.addChild(GameOver.getInstance());
-			
-			// 通过深度值获取子对象来设置分数
-			var gameOver: egret.DisplayObject = GameOver.getInstance().getChildAt(1).parent;
-			gameOver.total_score.text = 5;
 		}
     }
 	// 恢复某个对象上的全部 Tween 动画
@@ -174,24 +166,26 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 		if(((this.img_face_right.x + this.img_face_right.width - 10) < (this.img_gift1.x + this.img_gift1.width) && (this.img_face_right.x + this.img_face_right.width - 10) > this.img_gift1.x)
 				|| ((this.img_face_right.x + 10) > this.img_gift1.x && (this.img_face_right.x + 10) < (this.img_gift1.x + this.img_gift1.width))) {
 			if(from == "walk") {
-				this.img_gift1.source = "";
+				this.img_gift1.x = 0;
+				this.img_gift1.width = 0;
 				this.img_score.source = "score2_png";
+				this.score = this.score + 15;
 			}else if(from == "jump") {
-				this.img_gift1.source = "";
+				this.img_gift1.x = 0;
+				this.img_gift1.width = 0;
 				this.img_score.source = "score3_png";
+				this.score = this.score + 20;
 			}
-			// console.log("this.img_face_right.x + this.img_face_right.width", this.img_face_right.x + this.img_face_right.width);
-			// console.log("this.img_gift1.x", this.img_gift1.x);
 		}else {
 			if(from == "jump") {
 				this.img_score.source = "score1_png";
+				this.score = this.score + 5;
 			}
 		}
 
-
 		// 加分完成，消除加分的显示
 		egret.setTimeout(function() {
-			this.img_score.source = "score_png";
+			this.img_score.source = "";
 		}, this, 1000);
 	}
 	// 向右移动
@@ -220,6 +214,10 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 					// to({ y: this.img_face_right.y + 117 }, 300, egret.Ease.sineOut).
 					to({ rotation: 720, y: this.img_face_right.y + 750 }, 1000 ,egret.Ease.sineIn);
 				this.addChild(GameOver.getInstance())
+			
+				// 通过深度值获取子对象来设置分数
+				var gameOver: egret.DisplayObject = GameOver.getInstance().getChildAt(1).parent;
+				gameOver.total_score.text = this.score;
             }
 		}else if(direction == 'right') {
 			//小红帽从右边旋转掉落
@@ -228,6 +226,10 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 					// to({ y: this.img_face_right.y + 117 }, 300, egret.Ease.sineOut).
 					to({ rotation: 720, y: this.img_face_right.y + 750 }, 1000 ,egret.Ease.sineIn);
 				this.addChild(GameOver.getInstance())
+			
+				// 通过深度值获取子对象来设置分数
+				var gameOver: egret.DisplayObject = GameOver.getInstance().getChildAt(1).parent;
+				gameOver.total_score.text = this.score;
             }
 		}
 	}
