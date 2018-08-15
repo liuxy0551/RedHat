@@ -505,6 +505,10 @@ var GamePage = (function (_super) {
     };
     // 自定义初始化函数
     GamePage.prototype.init = function () {
+        // 定时器
+        var timer = new egret.Timer(17, 0);
+        timer.addEventListener(egret.TimerEvent.TIMER, this.timerFunc, this);
+        timer.start();
         // 给每个按钮绑定点击事件
         this.btn_return.addEventListener(egret.TouchEvent.TOUCH_TAP, this.returnClick, this);
         this.btn_left.addEventListener(egret.TouchEvent.TOUCH_TAP, this.leftClick, this);
@@ -554,6 +558,10 @@ var GamePage = (function (_super) {
         egret.Tween.get(this.img_gift3, { loop: true }).
             to({ x: 0 }, time1, egret.Ease.sineIn).
             to({ x: 431 }, time1, egret.Ease.sineIn);
+    };
+    GamePage.prototype.timerFunc = function () {
+        this.sc_cloud.viewport.scrollV = this.sc_cloud.viewport.scrollV + 1;
+        console.log(this.sc_cloud.viewport.scrollV);
     };
     // 返回首页
     GamePage.prototype.returnClick = function () {

@@ -45,6 +45,11 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 	
 	// 自定义初始化函数
 	private init() {
+		// 定时器
+		var timer: egret.Timer = new egret.Timer(1000, 5);
+        timer.addEventListener(egret.TimerEvent.TIMER, this.timerFunc, this);
+        timer.start();
+
 		// 给每个按钮绑定点击事件
 		this.btn_return.addEventListener(egret.TouchEvent.TOUCH_TAP,this.returnClick,this)
 		this.btn_left.addEventListener(egret.TouchEvent.TOUCH_TAP,this.leftClick,this)
@@ -101,6 +106,10 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 		egret.Tween.get(this.img_gift3, { loop: true }).
             to({ x: 0 }, time1, egret.Ease.sineIn).
             to({ x: 431 }, time1, egret.Ease.sineIn);
+	}
+	private timerFunc() {
+		this.sc_cloud.viewport.scrollV = this.sc_cloud.viewport.scrollV + 10;
+		console.log(this.sc_cloud.viewport.scrollV);
 	}
 	// 返回首页
 	private returnClick() {
