@@ -489,6 +489,7 @@ var GamePage = (function (_super) {
         // 分数
         _this.score = 0;
         _this.cloudList = [];
+        _this.whichCloud = 2;
         return _this;
     }
     GamePage.getInstance = function () {
@@ -503,39 +504,13 @@ var GamePage = (function (_super) {
     GamePage.prototype.childrenCreated = function () {
         _super.prototype.childrenCreated.call(this);
         this.init();
-        // this.initList();
-    };
-    GamePage.prototype.initList = function () {
-        this.cloudList = [
-            {
-                id: 0,
-                cloudSource: "",
-                cloudX: 0,
-                cloudY: 0,
-                cloudW: 0,
-                cloudH: 0,
-                giftSource: "",
-                giftX: 0,
-                giftY: 0,
-                giftW: 0,
-                giftH: 0,
-                time: 0
-            }
-        ];
-        // 从两个集合中分拨随机选出云朵和 gift 的样式
-        var cloudSourceList = ["cloud1_png", "cloud2_png", "cloud3_png", "cloud4_png"];
-        var giftSourceList = ["gift1_png", "gift2_png", "gift3_png", "", "", "", ""];
-        var i = Math.floor(Math.random() * cloudSourceList.length);
-        var j = Math.floor(Math.random() * giftSourceList.length);
-        console.log(cloudSourceList[i]);
-        console.log(giftSourceList[j]);
     };
     // 自定义初始化函数
     GamePage.prototype.init = function () {
         // 云朵和 gift 缓缓向下
         var timer = new egret.Timer(20, 0);
         timer.addEventListener(egret.TimerEvent.TIMER, this.timerFunc, this);
-        timer.start();
+        // timer.start();
         // 新云朵
         var timerCloudGift = new egret.Timer(8000, 0);
         timerCloudGift.addEventListener(egret.TimerEvent.TIMER, this.timerCloudGiftFunc, this);
@@ -564,37 +539,38 @@ var GamePage = (function (_super) {
         // }
         //设置小红帽及所在云朵的初始位置
         // this.img_face_right.x = this.width / 2 - 30;
-        this.img_face_right.y = 780;
+        this.img_face_right.y = 530;
         // this.img_cloud1.x = this.width / 2 - 100
         // 添加缓动动画，定义动画缓动时间
-        var time = 2000;
+        var time = 3000;
         var time1 = 3000;
         // 绑定的对象发生变化时调用该方法
-        var that = this;
+        // var that = this;
         var funcChange = function () {
             // console.log(this.source, this.y);
             // 在egretProperties.json 中添加 game，需要再执行 egret build -e
         };
-        this.cross(this.img_cloud2, this.img_gift1);
-        egret.Tween.get(this.img_cloud2, { loop: true }).
-            to({ x: 0 }, time, egret.Ease.sineIn).
-            to({ x: 473 }, time, egret.Ease.sineIn);
-        egret.Tween.get(this.img_gift1, { loop: true }).
-            to({ x: 129 }, time, egret.Ease.sineIn).
-            to({ x: 602 }, time, egret.Ease.sineIn);
+        // this.cross(this.img_cloud2, this.img_gift1)
+        egret.Tween.get(this.img_cloud1, { loop: true }).
+            to({ x: 464 }, time, egret.Ease.sineIn).
+            to({ x: 0 }, time, egret.Ease.sineIn);
+        // egret.Tween.get(this.img_gift1, { loop: true }).
+        //     to({ x: 129 }, time, egret.Ease.sineIn).
+        //     to({ x: 602 }, time, egret.Ease.sineIn);
         egret.Tween.get(this.img_cloud3, { loop: true }).
             to({ x: 505 }, time1, egret.Ease.sineIn).
             to({ x: 0 }, time1, egret.Ease.sineIn);
         egret.Tween.get(this.img_gift2, { loop: true }).
             to({ x: 554 }, time1, egret.Ease.sineIn).
             to({ x: 49 }, time1, egret.Ease.sineIn);
-        egret.Tween.get(this.img_cloud4, { loop: true, onChange: funcChange, onChangeObj: this.img_cloud4 }).
+        // egret.Tween.get(this.img_cloud4, { loop: true, onChange: funcChange, onChangeObj: this.img_cloud4 }).
+        egret.Tween.get(this.img_cloud4, { loop: true }).
             to({ x: 0 }, time1, egret.Ease.sineIn).
             to({ x: 431 }, time1, egret.Ease.sineIn);
         egret.Tween.get(this.img_gift3, { loop: true }).
             to({ x: 0 }, time1, egret.Ease.sineIn).
             to({ x: 431 }, time1, egret.Ease.sineIn);
-        egret.Tween.get(this.img_cloud5, { loop: true }).
+        egret.Tween.get(this.img_cloud2, { loop: true }).
             to({ x: 473 }, time1, egret.Ease.sineIn).
             to({ x: 0 }, time1, egret.Ease.sineIn);
     };
@@ -615,7 +591,7 @@ var GamePage = (function (_super) {
         this.img_gift3.y = this.img_gift3.y + 0.5;
         this.img_gift4.y = this.img_gift4.y + 0.5;
         this.img_face_right.y = this.img_face_right.y + 0.5;
-        if (this.img_cloud1.y + this.img_cloud1.height == 1136) {
+        if (this.img_face_right.y + this.img_face_right.height == 1136) {
             // 游戏结束
             this.addChild(GameOver.getInstance());
             this.redHatDrop('left');
@@ -624,26 +600,44 @@ var GamePage = (function (_super) {
     };
     GamePage.prototype.timerCloudGiftFunc = function () {
         // this.initList();
-        this.startLoad();
+        // this.startLoad(this.img_cloud5);
     };
-    GamePage.prototype.startLoad = function () {
+    GamePage.prototype.startLoad = function (cloud) {
         // 从两个集合中分拨随机选出云朵和 gift 的样式
         var cloudSourceList = ["cloud1_png", "cloud2_png", "cloud3_png", "cloud4_png"];
         var giftSourceList = ["gift1_png", "gift2_png", "gift3_png", "", "", ""];
         var i = Math.floor(Math.random() * cloudSourceList.length);
         var j = Math.floor(Math.random() * giftSourceList.length);
-        console.log(cloudSourceList[i]);
-        console.log(giftSourceList[j]);
-        this.img_cloud5.source = cloudSourceList[i];
-        this.img_cloud5.height = 42;
-        this.img_cloud5.y = -42;
-        //创建 ImageLoader 对象
-        var loaderCloud = new egret.ImageLoader();
-        //添加加载完成侦听
-        var cloudUrlTemp = cloudSourceList[i].split("_");
-        var cloudUrl = cloudUrlTemp[0] + "." + cloudUrlTemp[1];
-        loaderCloud.addEventListener(egret.Event.COMPLETE, this.onLoadComplete, this);
-        loaderCloud.load("resource/assets/RedHat/" + cloudUrl);
+        // console.log(cloudSourceList[i]);
+        // console.log(giftSourceList[j]);
+        cloud.source = cloudSourceList[i];
+        if (cloud.source.indexOf("1") == 5) {
+            cloud.width = 176;
+            console.log(cloud.source, cloud.width, cloud.height);
+        }
+        else if (cloud.source.indexOf("2") == 5) {
+            cloud.width = 167;
+            console.log(cloud.source, cloud.width, cloud.height);
+        }
+        else if (cloud.source.indexOf("3") == 5) {
+            cloud.width = 135;
+            console.log(cloud.source, cloud.width, cloud.height);
+        }
+        else if (cloud.source.indexOf("4") == 5) {
+            cloud.width = 209;
+            console.log(cloud.source, cloud.width, cloud.height);
+        }
+        cloud.height = 42;
+        cloud.x = 0;
+        cloud.y = -355;
+        this.vertical([cloud]);
+        // //创建 ImageLoader 对象
+        // var loaderCloud: egret.ImageLoader = new egret.ImageLoader();
+        // //添加加载完成侦听
+        // var cloudUrlTemp = cloudSourceList[i].split("_");
+        // var cloudUrl = cloudUrlTemp[0] + "." + cloudUrlTemp[1];
+        // loaderCloud.addEventListener(egret.Event.COMPLETE, this.onLoadComplete, this);
+        // loaderCloud.load("resource/assets/RedHat/" + cloudUrl);
         //创建 ImageLoader 对象
         // var loaderGift: egret.ImageLoader = new egret.ImageLoader();
         // //添加加载完成侦听
@@ -708,27 +702,55 @@ var GamePage = (function (_super) {
         this.img_face_right.source = "face_me_png";
         // 跳起及落下的动作
         egret.Tween.get(this.img_face_right).
-            to({ y: this.img_face_right.y - 330 }, 700, egret.Ease.sineOut).
-            to({ y: this.img_face_right.y - 235 }, 400, egret.Ease.sineOut).
+            to({ y: this.img_face_right.y - 100 }, 700, egret.Ease.sineOut).
+            to({ y: this.img_face_right.y }, 400, egret.Ease.sineOut).
             wait(1).call(this.pauseTweens, this, [face_where]); // 设置延时，设置回调函数及作用域，用于侦听动画完成;
+        var verticalList = [this.img_cloud1, this.img_cloud2, this.img_cloud3, this.img_cloud4, this.img_gift1, this.img_gift2, this.img_gift3];
+        this.vertical(verticalList);
+    };
+    // 封装纵向移动的方法
+    GamePage.prototype.vertical = function (verticalList) {
+        // if(this.img_cloud5.y < 1136) {
+        // 	egret.Tween.get(this.img_cloud5).
+        // 		to({ y: this.img_cloud5.y + 250 }, 1100, egret.Ease.sineOut);
+        // 	console.log(this.img_cloud5.y)
+        // }
+        // wait(1).call(this.changeCloudGift, this, [verticalList[i]]);// 设置延时，设置回调函数及作用域，用于侦听动画完成;;
+        for (var i = 0; i < verticalList.length; i++) {
+            egret.Tween.get(verticalList[i]).
+                to({ y: verticalList[i].y + 250 }, 1100, egret.Ease.sineOut).
+                wait(1).call(this.changeCloudGift, this, [verticalList[i]]); // 设置延时，设置回调函数及作用域，用于侦听动画完成
+        }
+    };
+    GamePage.prototype.changeCloudGift = function (vertical) {
+        if (vertical.y + vertical.height > 1136) {
+            // 将落到屏幕下方的云和 gift 进行替换重新在顶部出现
+            this.startLoad(vertical);
+        }
+        // if(this.whichCloud == 2) {
+        // 	if((this.img_cloud1.y + 250)> 1136) {
+        // 		// 将落到屏幕下方的云和 gift 进行替换重新在顶部出现
+        // 		this.startLoad(this.img_cloud1)
+        // 	}
+        // }
     };
     // 暂停某个对象上的全部 Tween 动画
     GamePage.prototype.pauseTweens = function (face_where) {
-        egret.Tween.pauseTweens(this.img_cloud2);
-        egret.Tween.pauseTweens(this.img_gift1);
+        // egret.Tween.pauseTweens(this.img_cloud2);
+        // egret.Tween.pauseTweens(this.img_gift1);
         this.img_face_right.source = face_where;
         // 判断小红帽是否落在云上
         if ((this.img_face_right.x + this.img_face_right.width / 2) > this.img_cloud2.x && (this.img_face_right.x + this.img_face_right.width / 2) < (this.img_cloud2.x + this.img_cloud2.width)) {
             console.log("恭喜，小红帽落在了云上！");
-            this.redHatGift("jump");
+            // this.redHatGift("jump");
         }
         else {
             console.log("很遗憾，小红帽没落在云上！");
             this.resumeTweens();
-            egret.Tween.get(this.img_face_right).
-                to({ rotation: 720, y: this.img_face_right.y + 750 }, 1000, egret.Ease.sineIn);
-            // 游戏结束
-            this.addChild(GameOver.getInstance());
+            // egret.Tween.get(this.img_face_right).
+            // 	to({ rotation: 720, y: this.img_face_right.y + 750 }, 1000 ,egret.Ease.sineIn);
+            // 	// 游戏结束
+            // 	this.addChild(GameOver.getInstance());
         }
     };
     // 恢复某个对象上的全部 Tween 动画
