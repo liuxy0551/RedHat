@@ -4,16 +4,16 @@
 	<e:Scroller id="sc_cloud" width="640" height="1136" x="0" y="0">
 		<e:Group id="gp_cloud" anchorOffsetX="0" width="640" anchorOffsetY="0" height="1136">
 		<e:Image id="img_cloud1" width="176" height="42" y="895" source="cloud1_png" x="0"/>
-		<e:Image id="img_cloud2" width="167" height="42" y="645" source="cloud2_png" x="0"/>
+		<e:Image id="img_cloud2" width="167" height="42" y="645" source="cloud2_png" x="473"/>
 		<e:Image id="img_cloud3" width="135" height="42" x="0" y="395" source="cloud3_png"/>
 		<e:Image id="img_cloud4" width="209" height="42" x="431" y="145" source="cloud4_png"/>
 			<e:Image id="img_cloud5" width="176" height="42" x="0" y="-105" source="cloud1_png"/>
-		<e:Image id="img_gift1" width="38" height="38" x="120" y="607" anchorOffsetX="0" anchorOffsetY="0" source="gift1_png"/>
+		<e:Image id="img_gift1" width="38" height="38" x="600" y="607" anchorOffsetX="0" anchorOffsetY="0" source="gift1_png"/>
 		<e:Image id="img_gift2" width="38" height="38" x="49" y="357" anchorOffsetX="0" anchorOffsetY="0" source="gift2_png"/>
 		<e:Image id="img_gift3" width="38" height="38" x="431" y="107" anchorOffsetX="0" anchorOffsetY="0" source="gift3_png"/>
 			<e:Image id="img_gift4" anchorOffsetX="0" anchorOffsetY="0" source=""/>
 			<e:Image id="img_gift5" anchorOffsetX="0" anchorOffsetY="0" source=""/>
-			<e:Image id="img_face_right" width="60" height="117" y="530" anchorOffsetX="0" anchorOffsetY="0" source="face_right_png" x="53"/>
+			<e:Image id="img_face_right" width="60" height="117" y="530" anchorOffsetX="0" anchorOffsetY="0" source="face_right_png" x="520"/>
 		<e:Image id="img_score" width="152" height="77" y="252" anchorOffsetX="0" anchorOffsetY="0" x="244" source=""/>
 		<e:Button id="btn_left" label="" y="991" x="60" width="112" height="112">
 			<e:skinName>

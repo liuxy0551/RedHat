@@ -554,9 +554,9 @@ var GamePage = (function (_super) {
         egret.Tween.get(this.img_cloud1, { loop: true }).
             to({ x: 464 }, time, egret.Ease.sineIn).
             to({ x: 0 }, time, egret.Ease.sineIn);
-        // egret.Tween.get(this.img_gift1, { loop: true }).
-        //     to({ x: 129 }, time, egret.Ease.sineIn).
-        //     to({ x: 602 }, time, egret.Ease.sineIn);
+        egret.Tween.get(this.img_gift1, { loop: true }).
+            to({ x: 129 }, time, egret.Ease.sineIn).
+            to({ x: 602 }, time, egret.Ease.sineIn);
         egret.Tween.get(this.img_cloud3, { loop: true }).
             to({ x: 505 }, time1, egret.Ease.sineIn).
             to({ x: 0 }, time1, egret.Ease.sineIn);
@@ -610,26 +610,27 @@ var GamePage = (function (_super) {
         var j = Math.floor(Math.random() * giftSourceList.length);
         // console.log(cloudSourceList[i]);
         // console.log(giftSourceList[j]);
+        // console.log(cloud);
+        cloud.x = 0;
+        cloud.y = -355;
+        cloud.height = 42;
         cloud.source = cloudSourceList[i];
         if (cloud.source.indexOf("1") == 5) {
             cloud.width = 176;
-            console.log(cloud.source, cloud.width, cloud.height);
+            // console.log(cloud.source, cloud.width, cloud.height);
         }
         else if (cloud.source.indexOf("2") == 5) {
             cloud.width = 167;
-            console.log(cloud.source, cloud.width, cloud.height);
+            // console.log(cloud.source, cloud.width, cloud.height);
         }
         else if (cloud.source.indexOf("3") == 5) {
             cloud.width = 135;
-            console.log(cloud.source, cloud.width, cloud.height);
+            // console.log(cloud.source, cloud.width, cloud.height);
         }
         else if (cloud.source.indexOf("4") == 5) {
             cloud.width = 209;
-            console.log(cloud.source, cloud.width, cloud.height);
+            // console.log(cloud.source, cloud.width, cloud.height);
         }
-        cloud.height = 42;
-        cloud.x = 0;
-        cloud.y = -355;
         this.vertical([cloud]);
         // //创建 ImageLoader 对象
         // var loaderCloud: egret.ImageLoader = new egret.ImageLoader();
@@ -705,8 +706,9 @@ var GamePage = (function (_super) {
             to({ y: this.img_face_right.y - 100 }, 700, egret.Ease.sineOut).
             to({ y: this.img_face_right.y }, 400, egret.Ease.sineOut).
             wait(1).call(this.pauseTweens, this, [face_where]); // 设置延时，设置回调函数及作用域，用于侦听动画完成;
-        var verticalList = [this.img_cloud1, this.img_cloud2, this.img_cloud3, this.img_cloud4, this.img_gift1, this.img_gift2, this.img_gift3];
+        var verticalList = [this.img_cloud1, this.img_cloud2, this.img_cloud3, this.img_cloud4, this.img_cloud5, this.img_gift1, this.img_gift2, this.img_gift3];
         this.vertical(verticalList);
+        console.log(this.img_cloud5);
     };
     // 封装纵向移动的方法
     GamePage.prototype.vertical = function (verticalList) {
@@ -723,7 +725,9 @@ var GamePage = (function (_super) {
         }
     };
     GamePage.prototype.changeCloudGift = function (vertical) {
-        if (vertical.y + vertical.height > 1136) {
+        if ((vertical.y + vertical.height) > 1136 && vertical.source.indexOf("cloud") == 0) {
+            // vertical.y = 0;
+            console.log(vertical.source, vertical.source.indexOf("cloud"));
             // 将落到屏幕下方的云和 gift 进行替换重新在顶部出现
             this.startLoad(vertical);
         }
