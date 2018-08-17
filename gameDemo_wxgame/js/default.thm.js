@@ -1509,8 +1509,8 @@ var egret = window.egret;window.skins={};
 		t.height = 38;
 		t.source = "gift1_png";
 		t.width = 38;
-		t.x = 600;
-		t.y = 607;
+		t.x = 80;
+		t.y = 857;
 		return t;
 	};
 	_proto.img_gift2_i = function () {
@@ -1521,8 +1521,8 @@ var egret = window.egret;window.skins={};
 		t.height = 38;
 		t.source = "gift2_png";
 		t.width = 38;
-		t.x = 49;
-		t.y = 357;
+		t.x = 600;
+		t.y = 607;
 		return t;
 	};
 	_proto.img_gift3_i = function () {
@@ -1533,8 +1533,8 @@ var egret = window.egret;window.skins={};
 		t.height = 38;
 		t.source = "gift3_png";
 		t.width = 38;
-		t.x = 431;
-		t.y = 107;
+		t.x = 58;
+		t.y = 357;
 		return t;
 	};
 	_proto.img_gift4_i = function () {
@@ -1542,7 +1542,11 @@ var egret = window.egret;window.skins={};
 		this.img_gift4 = t;
 		t.anchorOffsetX = 0;
 		t.anchorOffsetY = 0;
+		t.height = 38;
 		t.source = "";
+		t.width = 38;
+		t.x = 580;
+		t.y = 107;
 		return t;
 	};
 	_proto.img_gift5_i = function () {
@@ -1550,7 +1554,11 @@ var egret = window.egret;window.skins={};
 		this.img_gift5 = t;
 		t.anchorOffsetX = 0;
 		t.anchorOffsetY = 0;
+		t.height = 38;
 		t.source = "";
+		t.width = 38;
+		t.x = 50;
+		t.y = -143;
 		return t;
 	};
 	_proto.img_face_right_i = function () {
