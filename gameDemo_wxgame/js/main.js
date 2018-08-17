@@ -609,7 +609,7 @@ var GamePage = (function (_super) {
     GamePage.prototype.startLoad = function (cloud) {
         // 从集合中分拨随机选出 source
         // var cloudSourceList = ["cloud1_png", "cloud2_png", "cloud3_png", "cloud4_png"];
-        var giftSourceList = ["gift1_png", "gift2_png", "gift3_png", "", "", ""];
+        var giftSourceList = ["gift1_png", "gift2_png", "gift3_png"];
         // var i = Math.floor(Math.random() * cloudSourceList.length);
         var j = Math.floor(Math.random() * giftSourceList.length);
         var gift;
@@ -635,9 +635,12 @@ var GamePage = (function (_super) {
         }
         cloud.x = 0;
         cloud.y = -105;
-        // cloud.height = 42;
-        gift.y = -143;
-        gift.source = giftSourceList[j];
+        if (gift != this.img_gift2) {
+            gift.y = cloud.x + 100;
+            gift.width = 38;
+            gift.y = -143;
+            gift.source = giftSourceList[j];
+        }
         // 放开注释则随机产生云朵，但原来云朵的 width不可控
         // cloud.source = cloudSourceList[i];
         // if(cloud.source.indexOf("1") == 5) {
@@ -681,6 +684,7 @@ var GamePage = (function (_super) {
     };
     // 向左移动
     GamePage.prototype.leftClick = function () {
+        this.hiddenGift();
         if (this.img_face_right.x > 0) {
             // console.log(this.whichCloud)
             // this.resumeTweens(this.img_cloud2, this.img_gift2)
@@ -769,12 +773,27 @@ var GamePage = (function (_super) {
         // 封装横向移动的方法
         this.cross();
     };
+    // 小红帽跳起时隐藏方向按键
     GamePage.prototype.hiddenUp = function () {
         if (this.btn_up.width == 112) {
             this.btn_up.width = 0;
+            this.btn_left.width = 0;
+            this.btn_right.width = 0;
         }
         else if (this.btn_up.width != 112) {
             this.btn_up.width = 112;
+            this.btn_left.width = 112;
+            this.btn_right.width = 112;
+        }
+    };
+    // 左右移动时隐藏无 source 的 gift
+    GamePage.prototype.hiddenGift = function () {
+        var giftList = [this.img_gift1, this.img_gift2, this.img_gift3, this.img_gift4, this.img_gift5];
+        for (var i = 0; i < giftList.length; i++) {
+            if (giftList[i].source == '') {
+                giftList[i].x = 0;
+                giftList[i].width = 0;
+            }
         }
     };
     GamePage.prototype.changeCloudGift = function (vertical) {
@@ -806,12 +825,6 @@ var GamePage = (function (_super) {
             else if (this.whichCloud = 5) {
                 this.whichCloud = 1;
             }
-            // this.img_score.source = "score1_png";
-            // this.score = this.score + 5;
-            // // 加分完成，消除加分的显示
-            // egret.setTimeout(function() {
-            // 	this.img_score.source = "";
-            // }, this, 1100);
             this.redHatGift("jump");
         }
         else {
@@ -874,10 +887,11 @@ var GamePage = (function (_super) {
         // 加分完成，消除加分的显示
         egret.setTimeout(function () {
             this.img_score.source = "";
-        }, this, 1200);
+        }, this, 1000);
     };
     // 向右移动
     GamePage.prototype.rightClick = function () {
+        this.hiddenGift();
         if (this.img_face_right.x + this.img_face_right.width < 640) {
             // console.log(this.whichCloud)
             if (this.img_face_right.source == "face_left_png") {

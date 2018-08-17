@@ -948,7 +948,7 @@ var egret = window.egret;window.skins={};
 		t.height = 117;
 		t.source = "face_right_png";
 		t.width = 60;
-		t.x = 520;
+		t.x = 480;
 		t.y = 530;
 		return t;
 	};

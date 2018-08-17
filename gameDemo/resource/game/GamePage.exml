@@ -13,7 +13,7 @@
 		<e:Image id="img_gift3" width="38" height="38" x="100" y="357" anchorOffsetX="0" anchorOffsetY="0" source="gift3_png"/>
 			<e:Image id="img_gift4" anchorOffsetX="0" anchorOffsetY="0" width="38" height="38" y="107" x="531" source="gift2_png"/>
 			<e:Image id="img_gift5" anchorOffsetX="0" anchorOffsetY="0" source="" y="-143" x="100" width="38" height="38"/>
-			<e:Image id="img_face_right" width="60" height="117" y="530" anchorOffsetX="0" anchorOffsetY="0" source="face_right_png" x="520"/>
+			<e:Image id="img_face_right" width="60" height="117" y="530" anchorOffsetX="0" anchorOffsetY="0" source="face_right_png" x="480"/>
 		<e:Image id="img_score" width="152" height="77" y="252" anchorOffsetX="0" anchorOffsetY="0" x="244" source=""/>
 		<e:Button id="btn_left" label="" y="991" x="60" width="112" height="112">
 			<e:skinName>
