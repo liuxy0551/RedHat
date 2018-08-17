@@ -489,7 +489,7 @@ var GamePage = (function (_super) {
         // 分数
         _this.score = 0;
         _this.whichCloud = 2;
-        _this.cloudList = [];
+        _this.cloudList = [_this.img_cloud1, _this.img_cloud2, _this.img_cloud3, _this.img_cloud4, _this.img_cloud5];
         return _this;
     }
     GamePage.getInstance = function () {
@@ -547,15 +547,14 @@ var GamePage = (function (_super) {
             // 在egretProperties.json 中添加 game，需要再执行 egret build -e
         };
         this.cross();
-        // this.pauseTweens(this.img_cloud2, this.img_gift2, "face_right_png");
         egret.Tween.pauseTweens(this.img_cloud2);
     };
     // 横向移动
     GamePage.prototype.cross = function () {
         var time1 = 2500;
         var time2 = 3500;
-        // 云朵的横向移动
         this.cloudList = [this.img_cloud1, this.img_cloud2, this.img_cloud3, this.img_cloud4, this.img_cloud5];
+        // 云朵的横向移动
         for (var i = 0; i < this.cloudList.length; i++) {
             if (i % 2 == 0) {
                 egret.Tween.get(this.cloudList[i], { loop: true }).
@@ -572,7 +571,6 @@ var GamePage = (function (_super) {
         var giftList = [this.img_gift1, this.img_gift2, this.img_gift3, this.img_gift4, this.img_gift5];
         for (var i = 0; i < giftList.length; i++) {
             if (i % 2 == 0) {
-                console.log(740 - this.cloudList[i].width);
                 egret.Tween.get(giftList[i], { loop: true }).
                     to({ x: 740 - this.cloudList[i].width }, time2, egret.Ease.sineIn).
                     to({ x: 100 }, time2, egret.Ease.sineIn);
@@ -614,24 +612,32 @@ var GamePage = (function (_super) {
         var giftSourceList = ["gift1_png", "gift2_png", "gift3_png", "", "", ""];
         // var i = Math.floor(Math.random() * cloudSourceList.length);
         var j = Math.floor(Math.random() * giftSourceList.length);
+        var gift;
         if (this.whichCloud == 1) {
             cloud = this.img_cloud5;
+            gift = this.img_gift5;
         }
         else if (this.whichCloud == 2) {
             cloud = this.img_cloud1;
+            gift = this.img_gift1;
         }
         else if (this.whichCloud == 3) {
             cloud = this.img_cloud2;
+            gift = this.img_gift2;
         }
         else if (this.whichCloud == 4) {
             cloud = this.img_cloud3;
+            gift = this.img_gift3;
         }
         else if (this.whichCloud == 5) {
             cloud = this.img_cloud4;
+            gift = this.img_gift4;
         }
         cloud.x = 0;
         cloud.y = -105;
-        cloud.height = 42;
+        // cloud.height = 42;
+        gift.y = -143;
+        gift.source = giftSourceList[j];
         // 放开注释则随机产生云朵，但原来云朵的 width不可控
         // cloud.source = cloudSourceList[i];
         // if(cloud.source.indexOf("1") == 5) {
@@ -675,50 +681,58 @@ var GamePage = (function (_super) {
     };
     // 向左移动
     GamePage.prototype.leftClick = function () {
-        // console.log(this.whichCloud)
-        // this.resumeTweens(this.img_cloud2, this.img_gift2)
-        if (this.img_face_right.source == "face_right_png") {
-            this.img_face_right.source = "face_left_png";
-            this.img_face_right.x = this.img_face_right.x - 20;
-            // 小红帽左侧掉落
-            this.redHatDrop('left');
-            this.redHatGift("walk");
-        }
-        else {
-            this.img_face_right.x = this.img_face_right.x - 20;
-            // 小红帽左侧掉落
-            this.redHatDrop('left');
-            this.redHatGift("walk");
+        if (this.img_face_right.x > 0) {
+            // console.log(this.whichCloud)
+            // this.resumeTweens(this.img_cloud2, this.img_gift2)
+            if (this.img_face_right.source == "face_right_png") {
+                this.img_face_right.source = "face_left_png";
+                this.img_face_right.x = this.img_face_right.x - 20;
+                // 小红帽左侧掉落
+                this.redHatDrop('left');
+                this.redHatGift("walk");
+            }
+            else {
+                this.img_face_right.x = this.img_face_right.x - 20;
+                // 小红帽左侧掉落
+                this.redHatDrop('left');
+                this.redHatGift("walk");
+            }
         }
     };
     // 向上跳起
     GamePage.prototype.upClick = function () {
+        this.hiddenUp();
         var face_where = this.img_face_right.source;
         this.img_face_right.source = "face_me_png";
         // 跳起时解除之前所在云朵的暂停事件
         var cloud;
+        var gift;
         if (this.whichCloud == 1) {
             cloud = this.img_cloud1;
+            gift = this.img_gift1;
         }
         else if (this.whichCloud == 2) {
             cloud = this.img_cloud2;
+            gift = this.img_gift2;
         }
         else if (this.whichCloud == 3) {
             cloud = this.img_cloud3;
+            gift = this.img_gift3;
         }
         else if (this.whichCloud == 4) {
             cloud = this.img_cloud4;
+            gift = this.img_gift4;
         }
         else if (this.whichCloud == 5) {
             cloud = this.img_cloud5;
+            gift = this.img_gift5;
         }
-        this.resumeTweens(cloud, this.img_gift2);
-        // this.pauseTweens(this.img_cloud2, this.img_gift2, "face_right_png");
+        this.resumeTweens(cloud, gift);
         // 跳起及落下的动作
         egret.Tween.get(this.img_face_right).
             to({ y: this.img_face_right.y - 100 }, 700, egret.Ease.sineOut).
-            to({ y: this.img_face_right.y }, 400, egret.Ease.sineOut);
-        // wait(1).call(this.pauseTweens, this, [this.img_cloud3, this.img_gift3, face_where]);// 设置延时，设置回调函数及作用域，用于侦听动画完成;
+            to({ y: this.img_face_right.y }, 400, egret.Ease.sineOut).
+            wait(1).call(this.hiddenUp, this, []); // 设置延时，设置回调函数及作用域，用于侦听动画完成;
         // 延时方法，在小红帽落到规定高度时暂停所在云朵的缓动动画
         if (this.whichCloud == 1) {
             egret.setTimeout(function () {
@@ -754,11 +768,17 @@ var GamePage = (function (_super) {
         }
         // 封装横向移动的方法
         this.cross();
-        // this.pauseTweens(this.img_cloud3, this.img_gift3, face_where);
-        // this.resumeTweens(this.img_cloud2, this.img_gift2)
+    };
+    GamePage.prototype.hiddenUp = function () {
+        if (this.btn_up.width == 112) {
+            this.btn_up.width = 0;
+        }
+        else if (this.btn_up.width != 112) {
+            this.btn_up.width = 112;
+        }
     };
     GamePage.prototype.changeCloudGift = function (vertical) {
-        if ((vertical.y + vertical.height) > 1136 && vertical.source.indexOf("cloud") == 0) {
+        if ((vertical.y + vertical.height) > 1136) {
             // vertical.y = 0;
             // 将落到屏幕下方的云和 gift 进行替换重新在顶部出现
             this.startLoad(vertical);
@@ -786,13 +806,13 @@ var GamePage = (function (_super) {
             else if (this.whichCloud = 5) {
                 this.whichCloud = 1;
             }
-            this.img_score.source = "score1_png";
-            this.score = this.score + 5;
-            // 加分完成，消除加分的显示
-            egret.setTimeout(function () {
-                this.img_score.source = "";
-            }, this, 1200);
-            // this.redHatGift("jump");
+            // this.img_score.source = "score1_png";
+            // this.score = this.score + 5;
+            // // 加分完成，消除加分的显示
+            // egret.setTimeout(function() {
+            // 	this.img_score.source = "";
+            // }, this, 1100);
+            this.redHatGift("jump");
         }
         else {
             console.log("很遗憾，小红帽没落在云上！");
@@ -813,18 +833,34 @@ var GamePage = (function (_super) {
     };
     // 判断小红帽和 gift 的位置关系
     GamePage.prototype.redHatGift = function (from) {
+        var gift;
+        if (this.whichCloud == 1) {
+            gift = this.img_gift1;
+        }
+        else if (this.whichCloud == 2) {
+            gift = this.img_gift2;
+        }
+        else if (this.whichCloud == 3) {
+            gift = this.img_gift3;
+        }
+        else if (this.whichCloud == 4) {
+            gift = this.img_gift4;
+        }
+        else if (this.whichCloud == 5) {
+            gift = this.img_gift5;
+        }
         // 判断小红帽是否落在云上恰好又落在了 gift 上
-        if (((this.img_face_right.x + this.img_face_right.width - 10) < (this.img_gift1.x + this.img_gift1.width) && (this.img_face_right.x + this.img_face_right.width - 10) > this.img_gift1.x)
-            || ((this.img_face_right.x + 10) > this.img_gift1.x && (this.img_face_right.x + 10) < (this.img_gift1.x + this.img_gift1.width))) {
+        if (((this.img_face_right.x + this.img_face_right.width - 10) < (gift.x + gift.width) && (this.img_face_right.x + this.img_face_right.width - 10) > gift.x)
+            || ((this.img_face_right.x + 10) > gift.x && (this.img_face_right.x + 10) < (gift.x + gift.width))) {
             if (from == "walk") {
-                this.img_gift1.x = 0;
-                this.img_gift1.width = 0;
+                gift.x = 0;
+                gift.width = 0;
                 this.img_score.source = "score2_png";
                 this.score = this.score + 15;
             }
             else if (from == "jump") {
-                this.img_gift1.x = 0;
-                this.img_gift1.width = 0;
+                gift.x = 0;
+                gift.width = 0;
                 this.img_score.source = "score3_png";
                 this.score = this.score + 20;
             }
@@ -842,19 +878,21 @@ var GamePage = (function (_super) {
     };
     // 向右移动
     GamePage.prototype.rightClick = function () {
-        // console.log(this.whichCloud)
-        if (this.img_face_right.source == "face_left_png") {
-            this.img_face_right.source = "face_right_png";
-            this.img_face_right.x = this.img_face_right.x + 20;
-            // 小红帽右侧掉落
-            this.redHatDrop('right');
-            this.redHatGift("walk");
-        }
-        else {
-            this.img_face_right.x = this.img_face_right.x + 20;
-            // 小红帽右侧掉落
-            this.redHatDrop('right');
-            this.redHatGift("walk");
+        if (this.img_face_right.x + this.img_face_right.width < 640) {
+            // console.log(this.whichCloud)
+            if (this.img_face_right.source == "face_left_png") {
+                this.img_face_right.source = "face_right_png";
+                this.img_face_right.x = this.img_face_right.x + 20;
+                // 小红帽右侧掉落
+                this.redHatDrop('right');
+                this.redHatGift("walk");
+            }
+            else {
+                this.img_face_right.x = this.img_face_right.x + 20;
+                // 小红帽右侧掉落
+                this.redHatDrop('right');
+                this.redHatGift("walk");
+            }
         }
     };
     //小红帽旋转掉落
