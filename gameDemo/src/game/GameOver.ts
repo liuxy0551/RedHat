@@ -46,7 +46,7 @@ class GameOver extends eui.Component implements  eui.UIComponent {
 	}
 	// 再来一局
 	private againGame() {
-        this.addChild(GamePage.getInstance());
+        // this.addChild(GamePage.getInstance());
 	}
 	// 去分享给好友
 	private toShare() {
