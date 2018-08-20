@@ -35,16 +35,20 @@ class WxgamePlatform {
     }
 
     showShareMenu() {
-      return new Promise((resolve, reject) => {
-        wx.showShareMenu({
-          withShareTicket: true,
-          success: function (res) {
-              resolve(res);
-          },
-          fail: function (res) { },
-          complete: function (res) { },
+        return new Promise((resolve, reject) => {
+            wx.showShareMenu({
+                withShareTicket: true,
+                success: function (res) {
+                    resolve(res);
+                },
+                fail: function (res) {
+                    console.log("fail", res);
+                },
+                complete: function (res) {
+                    console.log("complete", res);
+                }
+            })
         })
-      })
     }
 
     openDataContext = new WxgameOpenDataContext();

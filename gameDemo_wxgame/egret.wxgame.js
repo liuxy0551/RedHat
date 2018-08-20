@@ -246,7 +246,7 @@ r.prototype = e.prototype, t.prototype = new r();
             return WebFps;
         }(egret.DisplayObject));
         wxgame.WebFps = WebFps;
-        __reflect(WebFps.prototype, "egret.wxgame.WebFps", ["egret.FPSDisplay", "egret.DisplayObject"]);
+        __reflect(WebFps.prototype, "egret.wxgame.WebFps", ["egret.FPSDisplay"]);
         egret.FPSDisplay = WebFps;
     })(wxgame = egret.wxgame || (egret.wxgame = {}));
 })(egret || (egret = {}));
@@ -1941,7 +1941,7 @@ if (window['HTMLVideoElement'] == undefined) {
 (function (egret) {
     var wxgame;
     (function (wxgame) {
-        var winURL = window["URL"] || window["URL"];
+        var winURL = window["URL"] || window["webkitURL"];
         /**
          * @private
          * ImageLoader 类可用于加载图像（JPG、PNG 或 GIF）文件。使用 load() 方法来启动加载。被加载的图像对象数据将存储在 ImageLoader.data 属性上 。
@@ -2745,18 +2745,22 @@ if (window['HTMLVideoElement'] == undefined) {
          * @private
          */
         wxgame.WebLifeCycleHandler = function (context) {
-            wx.onShow(function () {
-                if (!isShow) {
-                    context.resume();
-                    isShow = true;
-                }
-            });
-            wx.onHide(function () {
-                if (isShow) {
-                    context.pause();
-                    isShow = false;
-                }
-            });
+            if (wx.onShow) {
+                wx.onShow(function () {
+                    if (!isShow) {
+                        context.resume();
+                        isShow = true;
+                    }
+                });
+            }
+            if (wx.onHide) {
+                wx.onHide(function () {
+                    if (isShow) {
+                        context.pause();
+                        isShow = false;
+                    }
+                });
+            }
         };
     })(wxgame = egret.wxgame || (egret.wxgame = {}));
 })(egret || (egret = {}));
@@ -2863,7 +2867,7 @@ if (window['HTMLVideoElement'] == undefined) {
                         }
                     }
                 }
-                var winURL = window["URL"] || window["URL"];
+                var winURL = window["URL"] || window["webkitURL"];
                 if (!winURL) {
                     Html5Capatibility._canUseBlob = false;
                 }
@@ -2985,7 +2989,7 @@ if (window['HTMLVideoElement'] == undefined) {
         /**
          * 微信小游戏支持库版本号
          */
-        wxgame.version = "1.1.5";
+        wxgame.version = "1.1.6";
         /**
          * 运行环境是否为子域
          */
@@ -3502,7 +3506,7 @@ egret.Capabilities["runtimeType" + ""] = egret.RuntimeType.WXGAME;
                 option.contentWidth = options.contentWidth || 640;
                 option.contentHeight = options.contentHeight || 1136;
                 option.orientation = options.orientation || egret.OrientationMode.AUTO;
-                option.maxTouches = 2;
+                option.maxTouches = options.maxTouches;
                 option.textureScaleFactor = 1;
                 option.showFPS = false;
                 var styleStr = "x:0,y:0,size:12,textColor:0xffffff,bgAlpha:0.9";

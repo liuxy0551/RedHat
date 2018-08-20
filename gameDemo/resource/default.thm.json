@@ -22,12 +22,6 @@
 	},
 	"autoGenerateExmlsList": true,
 	"exmls": [
-		"resource/game/Begin.exml",
-		"resource/game/GameOver.exml",
-		"resource/game/GamePage.exml",
-		"resource/game/GameRule.exml",
-		"resource/game/RankingList.exml",
-		"resource/game/Task.exml",
 		"resource/eui_skins/ButtonSkin.exml",
 		"resource/eui_skins/CheckBoxSkin.exml",
 		"resource/eui_skins/HScrollBarSkin.exml",
@@ -40,7 +34,13 @@
 		"resource/eui_skins/TextInputSkin.exml",
 		"resource/eui_skins/ToggleSwitchSkin.exml",
 		"resource/eui_skins/VScrollBarSkin.exml",
-		"resource/eui_skins/VSliderSkin.exml"
+		"resource/eui_skins/VSliderSkin.exml",
+		"resource/game/Begin.exml",
+		"resource/game/GameOver.exml",
+		"resource/game/GamePage.exml",
+		"resource/game/GameRule.exml",
+		"resource/game/RankingList.exml",
+		"resource/game/Task.exml"
 	],
 	"path": "resource/default.thm.json"
 }

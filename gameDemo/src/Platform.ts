@@ -8,9 +8,9 @@ declare interface Platform {
 
     getUserInfo(): Promise<any>;
 
-    login(): Promise<any>
+    login(): Promise<any>;
 
-    showShareMenu(): Promise<any>
+    showShareMenu(): Promise<any>;
 }
 
 class DebugPlatform implements Platform {
