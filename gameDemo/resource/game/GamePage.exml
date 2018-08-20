@@ -49,8 +49,8 @@
 		</e:Button>
 		</e:Group>
 	</e:Scroller>
-	<e:Label id="total_score" text="0" size="26" width="91" height="43" anchorOffsetY="0" anchorOffsetX="0" y="70" textAlign="center" fontFamily="Microsoft YaHei" x="553" verticalAlign="middle" textColor="0xF1527B" bold="true"/>
-	<e:Label text="得分：" size="26" width="112" height="43" anchorOffsetY="0" anchorOffsetX="0" y="68" textAlign="right" fontFamily="Microsoft YaHei" x="456" verticalAlign="middle" textColor="0xF1527B" bold="true"/>
+	<e:Label id="total_score" text="0" size="26" width="91" height="43" anchorOffsetY="0" anchorOffsetX="0" y="98" textAlign="center" fontFamily="Microsoft YaHei" x="66" verticalAlign="middle" textColor="0xF1527B" bold="true"/>
+	<e:Label text="得分：" size="26" width="94" height="43" anchorOffsetY="0" anchorOffsetX="0" y="97" textAlign="center" fontFamily="Microsoft YaHei" x="0" verticalAlign="middle" textColor="0xF1527B" bold="true"/>
 
 
 
