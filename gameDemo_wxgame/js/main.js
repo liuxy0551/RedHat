@@ -444,21 +444,9 @@ var GameOver = (function (_super) {
         this.btn_to_share.addEventListener(egret.TouchEvent.TOUCH_TAP, this.toShare, this);
         this.btn_ranking_list.addEventListener(egret.TouchEvent.TOUCH_TAP, this.rankingListClick, this);
         this.btn_return.addEventListener(egret.TouchEvent.TOUCH_TAP, this.returnClick, this);
-        // egret.setTimeout(function() {
-        this.btn_again_game.visible = true;
-        // }, this, 500);
-    };
-    // 设置分数
-    GameOver.prototype.setScore = function (score) {
-        console.log(this.total_score.text);
     };
     // 再来一局
     GameOver.prototype.againGame = function () {
-        // this.addChild(GamePage.getInstance());
-        // 通过深度值获取子对象来设置分数
-        // var gameOver: egret.DisplayObject = GameOver.getInstance().getChildAt(1).parent;
-        // // gameOver.total_score.text = this.score;
-        // console.log(gameOver);
         this.parent.removeChild(this);
         GamePage.getInstance().initGame();
     };
@@ -472,8 +460,9 @@ var GameOver = (function (_super) {
     };
     // 返回首页
     GameOver.prototype.returnClick = function () {
-        // this.parent.removeChild(this);
-        // this.addChild(Begin.getInstance());
+        GamePage.getInstance().initGame();
+        this.parent.removeChild(this);
+        GamePage.getInstance().returnClick();
     };
     return GameOver;
 }(eui.Component));
@@ -504,7 +493,7 @@ var GamePage = (function (_super) {
         this.init();
         this.initGame();
     };
-    // 初始化游戏，再来一局
+    // 初始化游戏
     GamePage.prototype.initGame = function () {
         if (this.deathReason == "jump") {
             if (this.whichCloud < 5) {
@@ -513,7 +502,7 @@ var GamePage = (function (_super) {
             else if (this.whichCloud == 5) {
                 this.whichCloud = 1;
             }
-            console.log("again.whichCloud", this.whichCloud);
+            // console.log("again.whichCloud", this.whichCloud);
             if (this.whichCloud == 1) {
                 this.img_cloud1.x = this.deathX - 20;
                 this.img_gift1.x = this.img_cloud1.x + 100;
@@ -542,8 +531,8 @@ var GamePage = (function (_super) {
         this.img_face_right.x = this.deathX;
         this.img_face_right.y = 530;
         var face_where = this.img_face_right.source;
-        console.log("this.whichCloud", this.whichCloud);
-        console.log("this.deathX", this.deathX);
+        // console.log("this.whichCloud", this.whichCloud);
+        // console.log("this.deathX", this.deathX);
         if (this.whichCloud == 1) {
             egret.Tween.pauseTweens(this.img_cloud1);
             egret.Tween.pauseTweens(this.img_gift1);
@@ -602,7 +591,13 @@ var GamePage = (function (_super) {
         this.cloudList = [this.img_cloud1, this.img_cloud2, this.img_cloud3, this.img_cloud4, this.img_cloud5];
         // 云朵的横向移动
         for (var i = 0; i < this.cloudList.length; i++) {
-            if (i % 2 == 0) {
+            if (i == 1) {
+                egret.Tween.get(this.cloudList[i], { loop: true }).
+                    to({ x: 0 }, time1 / 2, egret.Ease.sineIn).
+                    to({ x: (640 - this.cloudList[i].width) }, time1, egret.Ease.sineIn).
+                    to({ x: this.cloudList[i].x }, time1 / 2, egret.Ease.sineIn);
+            }
+            else if (i % 2 == 0) {
                 egret.Tween.get(this.cloudList[i], { loop: true }).
                     to({ x: (640 - this.cloudList[i].width) }, time2, egret.Ease.sineIn).
                     to({ x: 0 }, time2, egret.Ease.sineIn);
@@ -696,12 +691,7 @@ var GamePage = (function (_super) {
     };
     // 返回首页
     GamePage.prototype.returnClick = function () {
-        var verticalList = [this.img_cloud1, this.img_cloud2, this.img_cloud3, this.img_cloud4, this.img_cloud5, this.img_gift1, this.img_gift2, this.img_gift3, this.img_gift4, this.img_gift5];
-        // 封装纵向移动的方法
-        for (var i = 0; i < verticalList.length; i++) {
-            console.log(verticalList[i].source, verticalList[i].x, verticalList[i].y);
-        }
-        // this.parent.removeChild(this);
+        this.parent.removeChild(this);
     };
     // 向左移动
     GamePage.prototype.leftClick = function () {
@@ -828,7 +818,7 @@ var GamePage = (function (_super) {
         this.img_face_right.source = face_where;
         // 判断小红帽是否落在云上
         if ((this.img_face_right.x + this.img_face_right.width / 2) > cloud.x && (this.img_face_right.x + this.img_face_right.width / 2) < (cloud.x + cloud.width)) {
-            console.log("恭喜，小红帽落在了云上！");
+            // console.log("恭喜，小红帽落在了云上！");
             if (this.whichCloud < 5) {
                 this.whichCloud = this.whichCloud + 1;
             }
@@ -839,11 +829,11 @@ var GamePage = (function (_super) {
         }
         else {
             this.deathReason = "jump";
-            console.log("很遗憾，小红帽没落在云上！");
+            // console.log("很遗憾，小红帽没落在云上！");
             this.resumeTweens(cloud, gift);
             egret.Tween.get(this.img_face_right).
                 to({ rotation: 720, y: this.img_face_right.y + 1000 }, 500, egret.Ease.sineIn);
-            console.log("this.img_face_right.x", this.img_face_right.x);
+            // console.log("this.img_face_right.x", this.img_face_right.x);
             // 游戏结束
             this.addChild(GameOver.getInstance());
             // 通过深度值获取子对象来设置分数
@@ -958,7 +948,7 @@ var GamePage = (function (_super) {
                 egret.Tween.get(this.img_face_right).
                     // to({ y: this.img_face_right.y + 117 }, 300, egret.Ease.sineOut).
                     to({ rotation: 720, y: this.img_face_right.y + 1000 }, 500, egret.Ease.sineIn);
-                console.log("this.img_face_right.x", this.img_face_right.x);
+                // console.log("this.img_face_right.x", this.img_face_right.x);
                 this.addChild(GameOver.getInstance());
                 // 通过深度值获取子对象来设置分数
                 var gameOver = GameOver.getInstance().getChildAt(1).parent;
@@ -972,7 +962,7 @@ var GamePage = (function (_super) {
                 egret.Tween.get(this.img_face_right).
                     // to({ y: this.img_face_right.y + 117 }, 300, egret.Ease.sineOut).
                     to({ rotation: 720, y: this.img_face_right.y + 1000 }, 500, egret.Ease.sineIn);
-                console.log("this.img_face_right.x", this.img_face_right.x);
+                // console.log("this.img_face_right.x", this.img_face_right.x);
                 this.addChild(GameOver.getInstance());
                 // 通过深度值获取子对象来设置分数
                 var gameOver = GameOver.getInstance().getChildAt(1).parent;

@@ -3,7 +3,7 @@
 	<w:Config id="165378886ce" ></w:Config>
 	<e:Image width="640" height="1136" x="-0.87" y="0" anchorOffsetX="0" anchorOffsetY="0" source="big_box_png"/>
 	<e:Image width="640" height="1136" x="0" y="0" anchorOffsetX="0" anchorOffsetY="0" source="big_box_png"/>
-	<e:Button id="btn_again_game" label="" y="896" width="300" height="90" x="169" visible="false">
+	<e:Button id="btn_again_game" label="" y="896" width="300" height="90" x="169">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
 			<e:Image width="100%" height="100%" source="again_png"/>

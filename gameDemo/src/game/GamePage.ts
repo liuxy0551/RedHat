@@ -51,7 +51,7 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 		this.init();
 		this.initGame();
 	}
-	// 初始化游戏，再来一局
+	// 初始化游戏
 	public initGame() {
 		if(this.deathReason == "jump") {
 			if(this.whichCloud < 5) {
@@ -59,7 +59,7 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 			}else if(this.whichCloud == 5) {
 				this.whichCloud = 1;
 			}
-			console.log("again.whichCloud", this.whichCloud);
+			// console.log("again.whichCloud", this.whichCloud);
 			
 			if(this.whichCloud == 1) {
 				this.img_cloud1.x = this.deathX - 20;
@@ -86,8 +86,8 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 		this.img_face_right.y = 530;
 
 		var face_where = this.img_face_right.source;
-		console.log("this.whichCloud", this.whichCloud);
-		console.log("this.deathX", this.deathX);
+		// console.log("this.whichCloud", this.whichCloud);
+		// console.log("this.deathX", this.deathX);
 		if(this.whichCloud == 1) {
 			egret.Tween.pauseTweens(this.img_cloud1);
 			egret.Tween.pauseTweens(this.img_gift1);
@@ -150,7 +150,12 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 
 		// 云朵的横向移动
 		for(var i = 0; i < this.cloudList.length; i ++) {
-			if(i % 2 == 0) {
+			if(i == 1) {
+				egret.Tween.get(this.cloudList[i], { loop: true }).
+					to({ x: 0 }, time1 / 2, egret.Ease.sineIn).
+					to({ x: (640 - this.cloudList[i].width) }, time1, egret.Ease.sineIn).
+					to({ x: this.cloudList[i].x }, time1 / 2, egret.Ease.sineIn);
+			}else if(i % 2 == 0) {
 				egret.Tween.get(this.cloudList[i], { loop: true }).
 					to({ x: (640 - this.cloudList[i].width) }, time2, egret.Ease.sineIn).
 					to({ x: 0 }, time2, egret.Ease.sineIn);
@@ -240,14 +245,8 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 		}
     }
 	// 返回首页
-	private returnClick() {
-		var verticalList = [this.img_cloud1, this.img_cloud2, this.img_cloud3, this.img_cloud4, this.img_cloud5, this.img_gift1, this.img_gift2, this.img_gift3, this.img_gift4, this.img_gift5];
-		// 封装纵向移动的方法
-		for(var i = 0; i < verticalList.length; i ++) {
-			console.log(verticalList[i].source, verticalList[i].x, verticalList[i].y);
-		}
-
-		// this.parent.removeChild(this);
+	public returnClick() {
+		this.parent.removeChild(this);
 	}
 	// 向左移动
 	private leftClick() {
@@ -258,13 +257,11 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 				this.img_face_right.x = this.img_face_right.x - 20;
 				// 小红帽左侧掉落
 				this.redHatDrop('left');
-
 				this.redHatGift("walk");
 			}else {
 				this.img_face_right.x = this.img_face_right.x - 20;
 				// 小红帽左侧掉落
 				this.redHatDrop('left');
-
 				this.redHatGift("walk");
 			}
 		}
@@ -373,7 +370,7 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 
 		// 判断小红帽是否落在云上
 		if((this.img_face_right.x + this.img_face_right.width / 2) > cloud.x && (this.img_face_right.x + this.img_face_right.width / 2) < (cloud.x + cloud.width)) {
-			console.log("恭喜，小红帽落在了云上！");
+			// console.log("恭喜，小红帽落在了云上！");
 
 			if(this.whichCloud < 5) {
 				this.whichCloud = this.whichCloud + 1;
@@ -384,12 +381,12 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 			this.redHatGift("jump");
 		}else {
 			this.deathReason = "jump";
-			console.log("很遗憾，小红帽没落在云上！");
+			// console.log("很遗憾，小红帽没落在云上！");
 			this.resumeTweens(cloud, gift);
 
 			egret.Tween.get(this.img_face_right).
 				to({ rotation: 720, y: this.img_face_right.y + 1000 }, 500 ,egret.Ease.sineIn);
-					console.log("this.img_face_right.x", this.img_face_right.x);
+					// console.log("this.img_face_right.x", this.img_face_right.x);
 		
 			// 游戏结束
 			this.addChild(GameOver.getInstance());			
@@ -464,13 +461,11 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 				this.img_face_right.x = this.img_face_right.x + 20;
 				// 小红帽右侧掉落
 				this.redHatDrop('right');
-
 				this.redHatGift("walk");
 			}else {
 				this.img_face_right.x = this.img_face_right.x + 20
 				// 小红帽右侧掉落
 				this.redHatDrop('right')
-
 				this.redHatGift("walk");
 			}
 		}
@@ -497,7 +492,7 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 				egret.Tween.get(this.img_face_right).
 					// to({ y: this.img_face_right.y + 117 }, 300, egret.Ease.sineOut).
 					to({ rotation: 720, y: this.img_face_right.y + 1000 }, 500 ,egret.Ease.sineIn);
-					console.log("this.img_face_right.x", this.img_face_right.x);
+					// console.log("this.img_face_right.x", this.img_face_right.x);
 
 				this.addChild(GameOver.getInstance());			
 				// 通过深度值获取子对象来设置分数
@@ -511,7 +506,7 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 				egret.Tween.get(this.img_face_right).
 					// to({ y: this.img_face_right.y + 117 }, 300, egret.Ease.sineOut).
 					to({ rotation: 720, y: this.img_face_right.y + 1000 }, 500 ,egret.Ease.sineIn);
-					console.log("this.img_face_right.x", this.img_face_right.x);
+					// console.log("this.img_face_right.x", this.img_face_right.x);
 
 				this.addChild(GameOver.getInstance());
 				// 通过深度值获取子对象来设置分数

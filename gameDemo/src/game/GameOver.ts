@@ -39,27 +39,11 @@ class GameOver extends eui.Component implements  eui.UIComponent {
 		this.btn_ranking_list.addEventListener(egret.TouchEvent.TOUCH_TAP,this.rankingListClick,this);
 		this.btn_return.addEventListener(egret.TouchEvent.TOUCH_TAP,this.returnClick,this);
 
-		
-		// egret.setTimeout(function() {
-			this.btn_again_game.visible = true;
-		// }, this, 500);
-	}
-	// 设置分数
-	public setScore(score) {
-		
-		console.log(this.total_score.text);
 	}
 	// 再来一局
 	private againGame() {
-        // this.addChild(GamePage.getInstance());
-		// 通过深度值获取子对象来设置分数
-		// var gameOver: egret.DisplayObject = GameOver.getInstance().getChildAt(1).parent;
-		// // gameOver.total_score.text = this.score;
-		// console.log(gameOver);
-
 		this.parent.removeChild(this);
 		GamePage.getInstance().initGame();
-
 	}
 	// 去分享给好友
 	private toShare() {
@@ -71,8 +55,9 @@ class GameOver extends eui.Component implements  eui.UIComponent {
 	}
 	// 返回首页
 	private returnClick() {
-		// this.parent.removeChild(this);
-        // this.addChild(Begin.getInstance());
+		GamePage.getInstance().initGame();
+		this.parent.removeChild(this);
+		GamePage.getInstance().returnClick();
 	}
 	
 }
