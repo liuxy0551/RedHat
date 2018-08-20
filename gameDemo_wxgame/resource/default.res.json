@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "description_json,cloud4_png,bg_png,ranking_list_btn_png,task_btn_png,home_btn_png,gift1_png,gift2_png,gift3_png,face_right_png,face_left_png,face_me_png,rule_btn_png,cloud1_png,cloud2_png,cloud3_png,return_btn_png,share_btn_png,up_png,right_png,left_png,start_png,again_png,title_png,small_box_png,big_box_png,no_btns_png,to_share_png,start1_png,score1_png,score2_png,score3_png,roundthumb_png,track_sb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,bg_jpg,egret_icon_png",
+			"keys": "description_json,cloud4_png,bg_png,ranking_list_btn_png,task_btn_png,home_btn_png,gift1_png,gift2_png,gift3_png,face_right_png,face_left_png,face_me_png,rule_btn_png,cloud1_png,cloud2_png,cloud3_png,return_btn_png,share_btn_png,up_png,right_png,left_png,start_png,again_png,title_png,small_box_png,big_box_png,no_btns_png,to_share_png,start1_png,score1_png,score2_png,score3_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,bg_jpg,egret_icon_png",
 			"name": "preload"
 		}
 	],
@@ -165,16 +165,6 @@
 			"name": "score3_png",
 			"type": "image",
 			"url": "assets/RedHat/score3.png"
-		},
-		{
-			"name": "roundthumb_png",
-			"type": "image",
-			"url": "assets/ScrollBar/roundthumb.png"
-		},
-		{
-			"name": "track_sb_png",
-			"type": "image",
-			"url": "assets/ScrollBar/track_sb.png"
 		},
 		{
 			"name": "thumb_png",
