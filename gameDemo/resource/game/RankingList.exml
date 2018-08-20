@@ -12,6 +12,7 @@
 		</e:skinName>
 	</e:Button>
 	<e:Image width="523" height="596" y="232.92" horizontalCenter="0.5" source="small_box_png"/>
+	<e:Label text="暂未开放" y="512.14" anchorOffsetX="0" width="419.45" anchorOffsetY="0" height="37.57" size="24" fontFamily="Microsoft YaHei" scaleX="1" scaleY="1" textAlign="center" horizontalCenter="2.5"/>
 	<e:Label text="好友排行榜" size="32" top="278" width="173.94" height="34" anchorOffsetY="0" bottom="824" anchorOffsetX="0" horizontalCenter="0"/>
 	<e:Label text="每周一零点数据刷新" y="851.36" anchorOffsetX="0" width="223.99" anchorOffsetY="0" height="37.57" size="22" fontFamily="Microsoft YaHei" verticalAlign="top" scaleX="1" scaleY="1" right="39" visible="false"/>
 </e:Skin>

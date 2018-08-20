@@ -47,6 +47,10 @@ class GameOver extends eui.Component implements  eui.UIComponent {
 	// 再来一局
 	private againGame() {
         // this.addChild(GamePage.getInstance());
+			// 通过深度值获取子对象来设置分数
+			var gameOver: egret.DisplayObject = GameOver.getInstance().getChildAt(1).parent;
+			// gameOver.total_score.text = this.score;
+			console.log(gameOver);
 	}
 	// 去分享给好友
 	private toShare() {

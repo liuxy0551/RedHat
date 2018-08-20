@@ -452,6 +452,10 @@ var GameOver = (function (_super) {
     // 再来一局
     GameOver.prototype.againGame = function () {
         // this.addChild(GamePage.getInstance());
+        // 通过深度值获取子对象来设置分数
+        var gameOver = GameOver.getInstance().getChildAt(1).parent;
+        // gameOver.total_score.text = this.score;
+        console.log(gameOver);
     };
     // 去分享给好友
     GameOver.prototype.toShare = function () {
@@ -1033,7 +1037,7 @@ var Task = (function (_super) {
         this.parent.removeChild(this);
     };
     Task.prototype.toShare = function () {
-        platform.shareAppMessage();
+        platform.showShareMenu();
     };
     return Task;
 }(eui.Component));
