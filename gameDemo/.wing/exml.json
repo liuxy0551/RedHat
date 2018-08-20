@@ -5,7 +5,7 @@
     "parentPath": ""
   },
   "global": {
-    "globalAutoLayerMarkEnable": false
+    "globalAutoLayerMarkEnable": true
   },
   "1651838f2a8": {
     "path": "game\\GameRule.ts",

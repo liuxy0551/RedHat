@@ -3,17 +3,17 @@
 	<w:Config id="165183c8fd9" ></w:Config>
 	<e:Image width="523" height="117.21" y="893.8" horizontalCenter="1.5" anchorOffsetY="0" source="no_btns_png"/>
 	<e:Image width="640" height="1136" x="-0.87" y="0" anchorOffsetX="0" anchorOffsetY="0" source="big_box_png"/>
-	<e:Image width="523" height="596" y="232.92" horizontalCenter="0.5" source="small_box_png"/>
-	<e:Label text="       所有云层会随着小红帽的上升而" y="678.63" anchorOffsetX="0" width="419.45" anchorOffsetY="0" height="37.57" size="24" fontFamily="Microsoft YaHei" verticalAlign="top" scaleX="1" scaleY="1" horizontalCenter="7.5"/>
-	<e:Label text="下降，跳跃后未落在云层上或小红帽" y="722.58" anchorOffsetX="0" width="395.21" anchorOffsetY="0" height="37.57" size="24" fontFamily="Microsoft YaHei" verticalAlign="top" horizontalCenter="-0.5" scaleX="1" scaleY="1"/>
-	<e:Label text="掉下云层会造成游戏结束。" y="761.58" anchorOffsetX="0" width="395.21" anchorOffsetY="0" height="37.57" size="24" fontFamily="Microsoft YaHei" verticalAlign="top" horizontalCenter="-0.5" scaleX="1" scaleY="1"/>
-	<e:Label text="游戏规则" size="32" top="284" width="143.64" height="34" anchorOffsetY="0" bottom="818" anchorOffsetX="0" horizontalCenter="0"/>
-	<e:Label text="       操控小红帽向上跳或左右移动，" y="386.2" anchorOffsetX="0" width="414.91" anchorOffsetY="0" height="37.57" size="24" fontFamily="Microsoft YaHei" verticalAlign="top" scaleX="1" scaleY="1" horizontalCenter="6.5"/>
-	<e:Label text="小红帽当前所在的云层不移动，所在" y="431.67" anchorOffsetX="0" width="419.45" anchorOffsetY="0" height="37.57" size="24" fontFamily="Microsoft YaHei" verticalAlign="top" scaleX="1" scaleY="1" horizontalCenter="7.5"/>
-	<e:Label text="云层的上下两层在屏幕中左右移动。" y="475.62" anchorOffsetX="0" width="425.51" anchorOffsetY="0" height="37.57" size="24" fontFamily="Microsoft YaHei" verticalAlign="top" scaleX="1" scaleY="1" horizontalCenter="8"/>
-	<e:Label text="抓住时机跳跃至上一层获得分数，云" y="518.09" anchorOffsetX="0" width="420.97" anchorOffsetY="0" height="37.57" size="24" fontFamily="Microsoft YaHei" verticalAlign="top" scaleX="1" scaleY="1" horizontalCenter="8.5"/>
-	<e:Label text="层上随机出现加分道具。小红帽仅在" y="560.57" anchorOffsetX="0" width="413.39" anchorOffsetY="0" height="37.57" size="24" fontFamily="Microsoft YaHei" verticalAlign="top" scaleX="1" scaleY="1" horizontalCenter="5.5"/>
-	<e:Label text="云层上能左右移动。" y="603.01" anchorOffsetX="0" width="395.21" anchorOffsetY="0" height="37.57" size="24" fontFamily="Microsoft YaHei" verticalAlign="top" horizontalCenter="-2.5" scaleX="1" scaleY="1"/>
+	<e:Image width="523" height="620" y="205.56" horizontalCenter="0.5" source="small_box_png"/>
+	<e:Label text="       所有云层会随着小红帽的上升而" y="637.59" anchorOffsetX="0" width="419.45" anchorOffsetY="0" height="37.57" size="24" fontFamily="Microsoft YaHei" verticalAlign="top" scaleX="1" scaleY="1" horizontalCenter="7.5"/>
+	<e:Label text="下降，跳跃后未落在云层上或小红帽" y="681.54" anchorOffsetX="0" width="395.21" anchorOffsetY="0" height="37.57" size="24" fontFamily="Microsoft YaHei" verticalAlign="top" horizontalCenter="-0.5" scaleX="1" scaleY="1"/>
+	<e:Label text="掉下云层会造成游戏结束。" y="720.54" anchorOffsetX="0" width="395.21" anchorOffsetY="0" height="37.57" size="24" fontFamily="Microsoft YaHei" verticalAlign="top" horizontalCenter="-0.5" scaleX="1" scaleY="1"/>
+	<e:Label text="游戏规则" size="32" top="248" width="143.64" height="34" anchorOffsetY="0" bottom="854" anchorOffsetX="0" horizontalCenter="0"/>
+	<e:Label text="       操控小红帽向上跳或左右移动，" y="345.16" anchorOffsetX="0" width="414.91" anchorOffsetY="0" height="37.57" size="24" fontFamily="Microsoft YaHei" verticalAlign="top" scaleX="1" scaleY="1" horizontalCenter="6.5"/>
+	<e:Label text="小红帽当前所在的云层不移动，所在" y="390.63" anchorOffsetX="0" width="419.45" anchorOffsetY="0" height="37.57" size="24" fontFamily="Microsoft YaHei" verticalAlign="top" scaleX="1" scaleY="1" horizontalCenter="7.5"/>
+	<e:Label text="云层的上下两层在屏幕中左右移动。" y="434.58" anchorOffsetX="0" width="425.51" anchorOffsetY="0" height="37.57" size="24" fontFamily="Microsoft YaHei" verticalAlign="top" scaleX="1" scaleY="1" horizontalCenter="8"/>
+	<e:Label text="抓住时机跳跃至上一层获得分数，云" y="477.05" anchorOffsetX="0" width="420.97" anchorOffsetY="0" height="37.57" size="24" fontFamily="Microsoft YaHei" verticalAlign="top" scaleX="1" scaleY="1" horizontalCenter="8.5"/>
+	<e:Label text="层上随机出现加分道具。小红帽仅在" y="519.53" anchorOffsetX="0" width="413.39" anchorOffsetY="0" height="37.57" size="24" fontFamily="Microsoft YaHei" verticalAlign="top" scaleX="1" scaleY="1" horizontalCenter="5.5"/>
+	<e:Label text="云层上能左右移动。" y="561.97" anchorOffsetX="0" width="395.21" anchorOffsetY="0" height="37.57" size="24" fontFamily="Microsoft YaHei" verticalAlign="top" horizontalCenter="-2.5" scaleX="1" scaleY="1"/>
 	<e:Button id="btn_return" label="" x="74" y="912.41" width="80" height="80">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">

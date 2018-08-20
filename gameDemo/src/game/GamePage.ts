@@ -18,9 +18,11 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 	public btn_up:eui.Button;
 	public btn_right:eui.Button;
 	public btn_return:eui.Button;
+	public total_score:eui.Label;
 
 	// 分数
 	public score = 0;
+	public deathX = 0;
 	public whichCloud = 2;
 	public cloudList = [this.img_cloud1, this.img_cloud2, this.img_cloud3, this.img_cloud4, this.img_cloud5];
 
@@ -47,7 +49,14 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 		super.childrenCreated();
 		this.init();
 	}
-
+	// 初始化游戏，再来一局
+	public initGame() {
+		this.score = 0;
+		this.total_score.text = 0;
+		this.img_face_right.x = this.deathX;
+		this.img_face_right.y = 530;
+		// var face_where = this.img_face_right.source;
+	}
 	// 自定义初始化函数
 	private init() {
 		// 云朵和 gift 缓缓向下
@@ -66,8 +75,9 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 		this.btn_up.addEventListener(egret.TouchEvent.TOUCH_TAP,this.upClick,this)
 		this.btn_right.addEventListener(egret.TouchEvent.TOUCH_TAP,this.rightClick,this)
 
-		// scroller  关闭水平方向滚动
+		// scroller  关闭垂直和水平方向的滚动
 		this.sc_cloud.scrollPolicyH = eui.ScrollPolicy.OFF;	
+		this.sc_cloud.scrollPolicyV = eui.ScrollPolicy.OFF;	
 		// 不显示滚动条		
 		this.sc_cloud.verticalScrollBar.autoVisibility = false;
 		this.sc_cloud.verticalScrollBar.visible = false;
@@ -134,7 +144,6 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 					to({ x: giftList[i].x }, time1, egret.Ease.sineIn);
 			}
 		}
-		
 	}
 	// 定时器
 	private timerFunc() {
@@ -201,7 +210,6 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 			gift.source = giftSourceList[j];
 		}
 
-
 		// 放开注释则随机产生云朵，但原来云朵的 width不可控
 		// cloud.source = cloudSourceList[i];
 		// if(cloud.source.indexOf("1") == 5) {
@@ -239,7 +247,13 @@ class GamePage extends eui.Component implements  eui.UIComponent {
     }
 	// 返回首页
 	private returnClick() {
-		this.parent.removeChild(this);
+		var verticalList = [this.img_cloud1, this.img_cloud2, this.img_cloud3, this.img_cloud4, this.img_cloud5, this.img_gift1, this.img_gift2, this.img_gift3, this.img_gift4, this.img_gift5];
+		// 封装纵向移动的方法
+		for(var i = 0; i < verticalList.length; i ++) {
+			console.log(verticalList[i].source, verticalList[i].x, verticalList[i].y);
+		}
+
+		// this.parent.removeChild(this);
 	}
 	// 向左移动
 	private leftClick() {
@@ -265,7 +279,6 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 	}
 	// 向上跳起
 	private upClick() {
-
 		this.hiddenUp()
 
 		var face_where = this.img_face_right.source;
@@ -429,23 +442,34 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 				gift.width = 0;
 				this.img_score.source = "score2_png";
 				this.score = this.score + 15;
+				this.total_score.text = this.score;
+				// 加分完成，消除加分的显示
+				egret.setTimeout(function() {
+					this.img_score.source = "";
+				}, this, 1000);
 			}else if(from == "jump") {
 				gift.x = 0;
 				gift.width = 0;
 				this.img_score.source = "score3_png";
 				this.score = this.score + 20;
+				this.total_score.text = this.score;
+				// 加分完成，消除加分的显示
+				egret.setTimeout(function() {
+					this.img_score.source = "";
+				}, this, 1000);
 			}
 		}else {
 			if(from == "jump") {
 				this.img_score.source = "score1_png";
 				this.score = this.score + 5;
+				this.total_score.text = this.score;
+				// 加分完成，消除加分的显示
+				egret.setTimeout(function() {
+					this.img_score.source = "";
+				}, this, 1000);
 			}
 		}
 
-		// 加分完成，消除加分的显示
-		egret.setTimeout(function() {
-			this.img_score.source = "";
-		}, this, 1000);
 	}
 	// 向右移动
 	private rightClick() {
@@ -483,6 +507,7 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 			cloud = this.img_cloud5;
 		}
 		if(direction == 'left') {
+			this.deathX = this.img_face_right.x + 50;
 			//小红帽从左边旋转掉落
 			if((this.img_face_right.x + this.img_face_right.width / 2) < cloud.x) {
 				egret.Tween.get(this.img_face_right).
@@ -495,6 +520,7 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 				gameOver.total_score.text = this.score;
             }
 		}else if(direction == 'right') {
+			this.deathX = this.img_face_right.x - 50;
 			//小红帽从右边旋转掉落
 			if((this.img_face_right.x + this.img_face_right.width / 2) > (cloud.x + cloud.width)) {
 				egret.Tween.get(this.img_face_right).

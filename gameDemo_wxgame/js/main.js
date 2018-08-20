@@ -453,12 +453,15 @@ var GameOver = (function (_super) {
     GameOver.prototype.againGame = function () {
         // this.addChild(GamePage.getInstance());
         // 通过深度值获取子对象来设置分数
-        var gameOver = GameOver.getInstance().getChildAt(1).parent;
-        // gameOver.total_score.text = this.score;
-        console.log(gameOver);
+        // var gameOver: egret.DisplayObject = GameOver.getInstance().getChildAt(1).parent;
+        // // gameOver.total_score.text = this.score;
+        // console.log(gameOver);
+        this.parent.removeChild(this);
+        GamePage.getInstance().initGame();
     };
     // 去分享给好友
     GameOver.prototype.toShare = function () {
+        this.addChild(Task.getInstance());
     };
     // 排行榜
     GameOver.prototype.rankingListClick = function () {
@@ -467,7 +470,7 @@ var GameOver = (function (_super) {
     // 返回首页
     GameOver.prototype.returnClick = function () {
         // this.parent.removeChild(this);
-        this.addChild(Begin.getInstance());
+        // this.addChild(Begin.getInstance());
     };
     return GameOver;
 }(eui.Component));
@@ -478,6 +481,7 @@ var GamePage = (function (_super) {
         var _this = _super.call(this) || this;
         // 分数
         _this.score = 0;
+        _this.deathX = 0;
         _this.whichCloud = 2;
         _this.cloudList = [_this.img_cloud1, _this.img_cloud2, _this.img_cloud3, _this.img_cloud4, _this.img_cloud5];
         return _this;
@@ -495,6 +499,14 @@ var GamePage = (function (_super) {
         _super.prototype.childrenCreated.call(this);
         this.init();
     };
+    // 初始化游戏，再来一局
+    GamePage.prototype.initGame = function () {
+        this.score = 0;
+        this.total_score.text = 0;
+        this.img_face_right.x = this.deathX;
+        this.img_face_right.y = 530;
+        // var face_where = this.img_face_right.source;
+    };
     // 自定义初始化函数
     GamePage.prototype.init = function () {
         // 云朵和 gift 缓缓向下
@@ -510,8 +522,9 @@ var GamePage = (function (_super) {
         this.btn_left.addEventListener(egret.TouchEvent.TOUCH_TAP, this.leftClick, this);
         this.btn_up.addEventListener(egret.TouchEvent.TOUCH_TAP, this.upClick, this);
         this.btn_right.addEventListener(egret.TouchEvent.TOUCH_TAP, this.rightClick, this);
-        // scroller  关闭水平方向滚动
+        // scroller  关闭垂直和水平方向的滚动
         this.sc_cloud.scrollPolicyH = eui.ScrollPolicy.OFF;
+        this.sc_cloud.scrollPolicyV = eui.ScrollPolicy.OFF;
         // 不显示滚动条		
         this.sc_cloud.verticalScrollBar.autoVisibility = false;
         this.sc_cloud.verticalScrollBar.visible = false;
@@ -670,7 +683,12 @@ var GamePage = (function (_super) {
     };
     // 返回首页
     GamePage.prototype.returnClick = function () {
-        this.parent.removeChild(this);
+        var verticalList = [this.img_cloud1, this.img_cloud2, this.img_cloud3, this.img_cloud4, this.img_cloud5, this.img_gift1, this.img_gift2, this.img_gift3, this.img_gift4, this.img_gift5];
+        // 封装纵向移动的方法
+        for (var i = 0; i < verticalList.length; i++) {
+            console.log(verticalList[i].source, verticalList[i].x, verticalList[i].y);
+        }
+        // this.parent.removeChild(this);
     };
     // 向左移动
     GamePage.prototype.leftClick = function () {
@@ -860,24 +878,35 @@ var GamePage = (function (_super) {
                 gift.width = 0;
                 this.img_score.source = "score2_png";
                 this.score = this.score + 15;
+                this.total_score.text = this.score;
+                // 加分完成，消除加分的显示
+                egret.setTimeout(function () {
+                    this.img_score.source = "";
+                }, this, 1000);
             }
             else if (from == "jump") {
                 gift.x = 0;
                 gift.width = 0;
                 this.img_score.source = "score3_png";
                 this.score = this.score + 20;
+                this.total_score.text = this.score;
+                // 加分完成，消除加分的显示
+                egret.setTimeout(function () {
+                    this.img_score.source = "";
+                }, this, 1000);
             }
         }
         else {
             if (from == "jump") {
                 this.img_score.source = "score1_png";
                 this.score = this.score + 5;
+                this.total_score.text = this.score;
+                // 加分完成，消除加分的显示
+                egret.setTimeout(function () {
+                    this.img_score.source = "";
+                }, this, 1000);
             }
         }
-        // 加分完成，消除加分的显示
-        egret.setTimeout(function () {
-            this.img_score.source = "";
-        }, this, 1000);
     };
     // 向右移动
     GamePage.prototype.rightClick = function () {
@@ -918,6 +947,7 @@ var GamePage = (function (_super) {
             cloud = this.img_cloud5;
         }
         if (direction == 'left') {
+            this.deathX = this.img_face_right.x + 50;
             //小红帽从左边旋转掉落
             if ((this.img_face_right.x + this.img_face_right.width / 2) < cloud.x) {
                 egret.Tween.get(this.img_face_right).
@@ -930,6 +960,7 @@ var GamePage = (function (_super) {
             }
         }
         else if (direction == 'right') {
+            this.deathX = this.img_face_right.x - 50;
             //小红帽从右边旋转掉落
             if ((this.img_face_right.x + this.img_face_right.width / 2) > (cloud.x + cloud.width)) {
                 egret.Tween.get(this.img_face_right).

@@ -49,7 +49,7 @@ class Begin extends eui.Component implements  eui.UIComponent {
 	private taskClick() {
         this.addChild(Task.getInstance());
 	}
-	private startGameClick() {
+	public startGameClick() {
         this.addChild(GamePage.getInstance());
 	}
 }
