@@ -34,10 +34,15 @@ class GameOver extends eui.Component implements  eui.UIComponent {
 	// 自定义初始化函数
 	private init() {
 		// 给每个按钮绑定点击事件
-		this.btn_again_game.addEventListener(egret.TouchEvent.TOUCH_TAP,this.againGame,this)
-		this.btn_to_share.addEventListener(egret.TouchEvent.TOUCH_TAP,this.toShare,this)
-		this.btn_ranking_list.addEventListener(egret.TouchEvent.TOUCH_TAP,this.rankingListClick,this)
-		this.btn_return.addEventListener(egret.TouchEvent.TOUCH_TAP,this.returnClick,this)
+		this.btn_again_game.addEventListener(egret.TouchEvent.TOUCH_TAP,this.againGame,this);
+		this.btn_to_share.addEventListener(egret.TouchEvent.TOUCH_TAP,this.toShare,this);
+		this.btn_ranking_list.addEventListener(egret.TouchEvent.TOUCH_TAP,this.rankingListClick,this);
+		this.btn_return.addEventListener(egret.TouchEvent.TOUCH_TAP,this.returnClick,this);
+
+		
+		// egret.setTimeout(function() {
+			this.btn_again_game.visible = true;
+		// }, this, 500);
 	}
 	// 设置分数
 	public setScore(score) {
