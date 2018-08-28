@@ -94,20 +94,6 @@ var Main = (function (_super) {
             });
         });
     };
-    Main.prototype.getApi = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var userInfo;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, platform.getUserInfo()];
-                    case 1:
-                        userInfo = _a.sent();
-                        console.log(userInfo);
-                        return [2 /*return*/];
-                }
-            });
-        });
-    };
     Main.prototype.loadResource = function () {
         return __awaiter(this, void 0, void 0, function () {
             var loadingView, e_1;
@@ -183,3 +169,4 @@ var Main = (function (_super) {
     return Main;
 }(eui.UILayer));
 __reflect(Main.prototype, "Main");
+//# sourceMappingURL=Main.js.map

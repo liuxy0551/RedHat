@@ -39,3 +39,4 @@ var RankingList = (function (_super) {
     return RankingList;
 }(eui.Component));
 __reflect(RankingList.prototype, "RankingList", ["eui.UIComponent", "egret.DisplayObject"]);
+//# sourceMappingURL=RankingList.js.map

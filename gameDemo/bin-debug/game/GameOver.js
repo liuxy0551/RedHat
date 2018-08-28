@@ -34,16 +34,14 @@ var GameOver = (function (_super) {
         this.btn_ranking_list.addEventListener(egret.TouchEvent.TOUCH_TAP, this.rankingListClick, this);
         this.btn_return.addEventListener(egret.TouchEvent.TOUCH_TAP, this.returnClick, this);
     };
-    // 设置分数
-    GameOver.prototype.setScore = function (score) {
-        console.log(this.total_score.text);
-    };
     // 再来一局
     GameOver.prototype.againGame = function () {
-        this.addChild(GamePage.getInstance());
+        this.parent.removeChild(this);
+        GamePage.getInstance().initGame();
     };
     // 去分享给好友
     GameOver.prototype.toShare = function () {
+        this.addChild(Task.getInstance());
     };
     // 排行榜
     GameOver.prototype.rankingListClick = function () {
@@ -51,9 +49,11 @@ var GameOver = (function (_super) {
     };
     // 返回首页
     GameOver.prototype.returnClick = function () {
-        // this.parent.removeChild(this);
-        this.addChild(Begin.getInstance());
+        GamePage.getInstance().initGame();
+        this.parent.removeChild(this);
+        GamePage.getInstance().returnClick();
     };
     return GameOver;
 }(eui.Component));
 __reflect(GameOver.prototype, "GameOver", ["eui.UIComponent", "egret.DisplayObject"]);
+//# sourceMappingURL=GameOver.js.map

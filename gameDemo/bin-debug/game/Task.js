@@ -38,7 +38,9 @@ var Task = (function (_super) {
         this.parent.removeChild(this);
     };
     Task.prototype.toShare = function () {
+        platform.showShareMenu();
     };
     return Task;
 }(eui.Component));
 __reflect(Task.prototype, "Task", ["eui.UIComponent", "egret.DisplayObject"]);
+//# sourceMappingURL=Task.js.map

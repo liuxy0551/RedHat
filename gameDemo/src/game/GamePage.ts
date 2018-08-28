@@ -81,7 +81,7 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 
 		}
 		this.score = 0;
-		this.total_score.text = 0;
+		this.total_score.text = "0";
 		this.img_face_right.x = this.deathX;
 		this.img_face_right.y = 530;
 
@@ -422,7 +422,7 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 				gift.width = 0;
 				this.img_score.source = "score2_png";
 				this.score = this.score + 15;
-				this.total_score.text = this.score;
+				this.total_score.text = String(this.score);
 				// 加分完成，消除加分的显示
 				egret.setTimeout(function() {
 					this.img_score.source = "";
@@ -432,7 +432,7 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 				gift.width = 0;
 				this.img_score.source = "score3_png";
 				this.score = this.score + 20;
-				this.total_score.text = this.score;
+				this.total_score.text = String(this.score);
 				// 加分完成，消除加分的显示
 				egret.setTimeout(function() {
 					this.img_score.source = "";
@@ -442,7 +442,7 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 			if(from == "jump") {
 				this.img_score.source = "score1_png";
 				this.score = this.score + 5;
-				this.total_score.text = this.score;
+				this.total_score.text = String(this.score);
 				// 加分完成，消除加分的显示
 				egret.setTimeout(function() {
 					this.img_score.source = "";

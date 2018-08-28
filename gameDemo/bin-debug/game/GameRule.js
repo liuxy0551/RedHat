@@ -39,3 +39,4 @@ var GameRule = (function (_super) {
     return GameRule;
 }(eui.Component));
 __reflect(GameRule.prototype, "GameRule", ["eui.UIComponent", "egret.DisplayObject"]);
+//# sourceMappingURL=GameRule.js.map

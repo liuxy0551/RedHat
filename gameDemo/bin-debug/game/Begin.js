@@ -51,3 +51,4 @@ var Begin = (function (_super) {
     return Begin;
 }(eui.Component));
 __reflect(Begin.prototype, "Begin", ["eui.UIComponent", "egret.DisplayObject"]);
+//# sourceMappingURL=Begin.js.map
