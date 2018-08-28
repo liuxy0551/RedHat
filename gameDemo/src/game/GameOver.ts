@@ -59,5 +59,15 @@ class GameOver extends eui.Component implements  eui.UIComponent {
 		this.parent.removeChild(this);
 		GamePage.getInstance().returnClick();
 	}
+	// 设置分数
+	public setScore() {
+		var key:string = "score";
+		var score:string = egret.localStorage.getItem(key);
+		this.total_score.text = score;
+		
+		egret.setTimeout(function() {
+			egret.localStorage.removeItem(key);
+		}, this, 5000);
+	}
 	
 }

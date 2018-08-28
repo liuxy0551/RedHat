@@ -53,6 +53,15 @@ var GameOver = (function (_super) {
         this.parent.removeChild(this);
         GamePage.getInstance().returnClick();
     };
+    // 设置分数
+    GameOver.prototype.setScore = function () {
+        var key = "score";
+        var score = egret.localStorage.getItem(key);
+        this.total_score.text = score;
+        egret.setTimeout(function () {
+            egret.localStorage.removeItem(key);
+        }, this, 5000);
+    };
     return GameOver;
 }(eui.Component));
 __reflect(GameOver.prototype, "GameOver", ["eui.UIComponent", "egret.DisplayObject"]);

@@ -68,8 +68,7 @@ var GamePage = (function (_super) {
         else if (this.deathReason = "walk") {
         }
         this.score = 0;
-        // Number(this.total_score.text) = 0;
-        console.log(this.total_score.text);
+        this.total_score.text = "0";
         this.img_face_right.x = this.deathX;
         this.img_face_right.y = 530;
         var face_where = this.img_face_right.source;
@@ -379,8 +378,11 @@ var GamePage = (function (_super) {
             // 游戏结束
             this.addChild(GameOver.getInstance());
             // 通过深度值获取子对象来设置分数
-            var gameOver = GameOver.getInstance().getChildAt(1).parent;
-            gameOver.total_score.text = this.score;
+            // var gameOver: egret.DisplayObject = GameOver.getInstance().getChildAt(1).parent;
+            // gameOver.total_score.text = this.score;
+            var key = "score";
+            egret.localStorage.setItem(key, String(this.score));
+            GameOver.getInstance().setScore();
         }
     };
     // 恢复某个对象上的全部 Tween 动画
@@ -414,7 +416,7 @@ var GamePage = (function (_super) {
                 gift.width = 0;
                 this.img_score.source = "score2_png";
                 this.score = this.score + 15;
-                this.total_score.text = this.score;
+                this.total_score.text = String(this.score);
                 // 加分完成，消除加分的显示
                 egret.setTimeout(function () {
                     this.img_score.source = "";
@@ -425,7 +427,7 @@ var GamePage = (function (_super) {
                 gift.width = 0;
                 this.img_score.source = "score3_png";
                 this.score = this.score + 20;
-                this.total_score.text = this.score;
+                this.total_score.text = String(this.score);
                 // 加分完成，消除加分的显示
                 egret.setTimeout(function () {
                     this.img_score.source = "";
@@ -436,7 +438,7 @@ var GamePage = (function (_super) {
             if (from == "jump") {
                 this.img_score.source = "score1_png";
                 this.score = this.score + 5;
-                this.total_score.text = this.score;
+                this.total_score.text = String(this.score);
                 // 加分完成，消除加分的显示
                 egret.setTimeout(function () {
                     this.img_score.source = "";
@@ -493,8 +495,11 @@ var GamePage = (function (_super) {
                 // console.log("this.img_face_right.x", this.img_face_right.x);
                 this.addChild(GameOver.getInstance());
                 // 通过深度值获取子对象来设置分数
-                var gameOver = GameOver.getInstance().getChildAt(1).parent;
-                gameOver.total_score.text = this.score;
+                // var gameOver: egret.DisplayObject = GameOver.getInstance().getChildAt(1).parent;
+                // gameOver.total_score.text = this.score;
+                var key = "score";
+                egret.localStorage.setItem(key, String(this.score));
+                GameOver.getInstance().setScore();
             }
         }
         else if (direction == 'right') {
@@ -507,8 +512,11 @@ var GamePage = (function (_super) {
                 // console.log("this.img_face_right.x", this.img_face_right.x);
                 this.addChild(GameOver.getInstance());
                 // 通过深度值获取子对象来设置分数
-                var gameOver = GameOver.getInstance().getChildAt(1).parent;
-                gameOver.total_score.text = this.score;
+                // var gameOver: egret.DisplayObject = GameOver.getInstance().getChildAt(1).parent;
+                // gameOver.total_score.text = this.score;
+                var key = "score";
+                egret.localStorage.setItem(key, String(this.score));
+                GameOver.getInstance().setScore();
             }
         }
     };

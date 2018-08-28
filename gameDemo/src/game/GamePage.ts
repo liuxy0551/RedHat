@@ -391,8 +391,12 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 			// 游戏结束
 			this.addChild(GameOver.getInstance());			
 			// 通过深度值获取子对象来设置分数
-			var gameOver: egret.DisplayObject = GameOver.getInstance().getChildAt(1).parent;
-			gameOver.total_score.text = this.score;
+			// var gameOver: egret.DisplayObject = GameOver.getInstance().getChildAt(1).parent;
+			// gameOver.total_score.text = this.score;
+
+			var key:string = "score";
+			egret.localStorage.setItem(key, String(this.score));
+			GameOver.getInstance().setScore();
 		}
     }
 	// 恢复某个对象上的全部 Tween 动画
@@ -496,8 +500,12 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 
 				this.addChild(GameOver.getInstance());			
 				// 通过深度值获取子对象来设置分数
-				var gameOver: egret.DisplayObject = GameOver.getInstance().getChildAt(1).parent;
-				gameOver.total_score.text = this.score;
+				// var gameOver: egret.DisplayObject = GameOver.getInstance().getChildAt(1).parent;
+				// gameOver.total_score.text = this.score;
+
+				var key:string = "score";
+				egret.localStorage.setItem(key, String(this.score));
+				GameOver.getInstance().setScore();
             }
 		}else if(direction == 'right') {
 			this.deathX = this.img_face_right.x - 50;
@@ -510,8 +518,12 @@ class GamePage extends eui.Component implements  eui.UIComponent {
 
 				this.addChild(GameOver.getInstance());
 				// 通过深度值获取子对象来设置分数
-				var gameOver: egret.DisplayObject = GameOver.getInstance().getChildAt(1).parent;
-				gameOver.total_score.text = this.score;
+				// var gameOver: egret.DisplayObject = GameOver.getInstance().getChildAt(1).parent;
+				// gameOver.total_score.text = this.score;
+
+				var key:string = "score";
+				egret.localStorage.setItem(key, String(this.score));
+				GameOver.getInstance().setScore();
             }
 		}
 	}
